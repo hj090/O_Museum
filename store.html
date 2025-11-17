@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="2415347 윤서영", content="기념품 페이지">
+    <title>박물관 기념품 페이지</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .slider-container {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .slide-content {
+            position: absolute;
+            top: 20%;
+            left: 5%;
+            text-align: left;
+            color: white;
+            z-index: 10;
+            padding-bottom: 60px;
+        }
+
+        .slide-content h2 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide-content p {
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* 인디케이터 */
+        .indicators {
+            position: absolute;
+            top: 20%;
+            left: 5%;
+            margin-top: calc(3rem + 1.3rem * 1.5 + 150px);
+            display: flex;
+            z-index: 20;
+        }
+
+        .indicator {
+            width: 100px;
+            height: 5px;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .indicator:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            transform: scale(1.2);
+        }
+
+        .indicator.active {
+            background-color: white;
+            width: 100px;
+            border-radius: 10px;
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .slide-content h2 {
+                font-size: 2rem;
+            }
+
+            .slide-content p {
+                font-size: 1rem;
+            }
+            
+            .indicators {
+                margin-top: calc(3rem + 1.3rem * 1.5 + 70px);
+            }
+        }
+
+
+        .tabpanel-container {
+            background-color: rgb(122, 216, 216);  /*삭제예정*/
+            width: 100%;
+            height: auto;
+
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background-color: blueviolet; /*삭제예정*/
+            box-sizing: border-box;
+
+            width: 100%;
+            height: 450px; /*수정예정*/
+
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pic_box {
+            background-color: aquamarine; /*삭제예정*/
+
+            width: 100%;
+            height: 60%; /*수정예정*/
+            overflow: hidden;
+        }
+
+        .tabpanel-pic {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            box-sizing: border-box;
+        }
+
+        .info_box {
+            background-color: antiquewhite; /*삭제예정*/
+
+            width: 100%;
+            height: 40%; /*수정예정*/
+
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            padding: 10px;
+        }
+
+        .page {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .page-info {
+            flex: 0 0 auto;
+            background-color: #F4F4F4;
+        }
+
+        .page-controls {
+            display: flex;
+            gap: 5px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .spacer {
+            flex: 0 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header></header>
+
+    <div class="slider-container">
+        <div class="slider-wrapper">
+            <div class="slide">
+                <img src="Resources/store/store_banner1.jpg" alt="배너 이미지 1">
+                <div class="slide-content">
+                    <p>상품 구매는 오프라인 매장에서만 가능합니다.<br>고객님의 너른 양해 부탁드립니다.</p>
+                    <h2>숨박물관<br>오프라인 매장 영업중</h2>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="Resources/store/store_banner2.jpg" alt="배너 이미지 2">
+                <div class="slide-content">
+                    <p>박물관의 20년 이야기,<br>유물과 사람 그리고 뮷즈와 함께</p>
+                    <h2>박물관 개관 20주년<br>기념 뮷즈 출시</h2>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="Resources/store/store_banner3.jpg" alt="배너 이미지 3">
+                <div class="slide-content">
+                    <p>신라의 문화유산과 함께 하는<br>APEC 2025 KOREA</p>
+                    <h2>천년의 미소<br>세계를 맞이하다</h2>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="Resources/store/store_banner4.jpg" alt="배너 이미지 4">
+                <div class="slide-content">
+                    <p>고객님들의 성원에 감사드립니다.<br>3차 판매 일정은 12월 재공지 예정입니다.</p>
+                    <h2>곤룡포 비치타월<br>오프라인 2차 판매중</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- 인디케이터 -->
+        <div class="indicators">
+            <span class="indicator active" data-slide="0"></span>
+            <span class="indicator" data-slide="1"></span>
+            <span class="indicator" data-slide="2"></span>
+            <span class="indicator" data-slide="3"></span>
+        </div>
+    </div>
+
+    <main>
+        <div style="padding: 50px 100px;">
+            <div>
+                <a href="index.html" style="text-decoration: none;">
+                    <img src="Resources/store/home.png" alt="홈 아이콘" style="width:20px; height:20px;">
+                </a>
+                <img src="Resources/store/arrow_forward_ios.png" alt="화살표 아이콘" style="width:15px; height:15px;">
+                <a href="store.html" style="text-decoration: none; color: #8C8C8C;">
+                    <span>기념품</span>
+                </a>
+            </div>
+            <span>이유있는 <strong>베스트 아이템 →</strong></span>
+            <ul>
+                <li class="tabmenu">
+                    <input type="radio" name="tab" checked>
+                    <label for="tabmenu1">전체</label>
+                </li>
+                <li class="tabmenu">
+                    <input type="radio" name="tab">
+                    <label for="tabmenu2">문구/사무</label>
+                </li>
+                <li class="tabmenu">
+                    <input type="radio" name="tab">
+                    <label for="tabmenu3">패션/생활</label>
+                </li>
+                <li class="tabmenu">
+                    <input type="radio" name="tab">
+                    <label for="tabmenu3">주방/식기</label>
+                </li>
+                <li class="tabmenu">
+                    <input type="radio" name="tab">
+                    <label for="tabmenu3">공예품</label>
+                </li>
+                <li class="tabmenu">
+                    <input type="radio" name="tab">
+                    <label for="tabmenu3">도서</label>
+                </li>
+            </ul>
+            <div class="tabpanel">
+                <div class="tabpanel-container">
+                    <div class="card">
+                        <div class="pic_box">
+                            <img src="/Resources/store/store_fashion1.jpg" class="tabpanel-pic" alt="상품 이미지">
+                        </div>
+                        <div class="info_box">
+                            <span class="info">기타</span>
+                            <span class="info">나전 핸드워시 핸드크림 세트(단독구매)</span>
+                            <span class="info">개관 20주년 기념 상품(뮷즈 x 아모레퍼시픽)</span>
+                            <span class="info">47,000</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="pic_box">
+                            <img src="/Resources/store/store_fashion1.jpg" class="tabpanel-pic" alt="상품 이미지">
+                        </div>
+                        <div class="info_box">
+                            <span class="info">기타</span>
+                            <span class="info">나전 핸드워시 핸드크림 세트(단독구매)</span>
+                            <span class="info">개관 20주년 기념 상품(뮷즈 x 아모레퍼시픽)</span>
+                            <span class="info">47,000</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="pic_box">
+                            <img src="/Resources/store/store_fashion1.jpg" class="tabpanel-pic" alt="상품 이미지">
+                        </div>
+                        <div class="info_box">
+                            <span class="info">기타</span>
+                            <span class="info">나전 핸드워시 핸드크림 세트(단독구매)</span>
+                            <span class="info">개관 20주년 기념 상품(뮷즈 x 아모레퍼시픽)</span>
+                            <span class="info">47,000</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="pic_box">
+                            <img src="/Resources/store/store_fashion1.jpg" class="tabpanel-pic" alt="상품 이미지">
+                        </div>
+                        <div class="info_box">
+                            <span class="info">기타</span>
+                            <span class="info">나전 핸드워시 핸드크림 세트(단독구매)</span>
+                            <span class="info">개관 20주년 기념 상품(뮷즈 x 아모레퍼시픽)</span>
+                            <span class="info">47,000</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="pic_box">
+                            <img src="/Resources/store/store_fashion1.jpg" class="tabpanel-pic" alt="상품 이미지">
+                        </div>
+                        <div class="info_box">
+                            <span class="info">기타</span>
+                            <span class="info">나전 핸드워시 핸드크림 세트(단독구매)</span>
+                            <span class="info">개관 20주년 기념 상품(뮷즈 x 아모레퍼시픽)</span>
+                            <span class="info">47,000</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="pic_box">
+                            <img src="/Resources/store/store_fashion1.jpg" class="tabpanel-pic" alt="상품 이미지">
+                        </div>
+                        <div class="info_box">
+                            <span class="info">기타</span>
+                            <span class="info">나전 핸드워시 핸드크림 세트(단독구매)</span>
+                            <span class="info">개관 20주년 기념 상품(뮷즈 x 아모레퍼시픽)</span>
+                            <span class="info">47,000</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="pic_box">
+                            <img src="/Resources/store/store_fashion1.jpg" class="tabpanel-pic" alt="상품 이미지">
+                        </div>
+                        <div class="info_box">
+                            <span class="info">기타</span>
+                            <span class="info">나전 핸드워시 핸드크림 세트(단독구매)</span>
+                            <span class="info">개관 20주년 기념 상품(뮷즈 x 아모레퍼시픽)</span>
+                            <span class="info">47,000</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="pic_box">
+                            <img src="/Resources/store/store_fashion1.jpg" class="tabpanel-pic" alt="상품 이미지">
+                        </div>
+                        <div class="info_box">
+                            <span class="info">기타</span>
+                            <span class="info">나전 핸드워시 핸드크림 세트(단독구매)</span>
+                            <span class="info">개관 20주년 기념 상품(뮷즈 x 아모레퍼시픽)</span>
+                            <span class="info">47,000</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="pic_box">
+                            <img src="/Resources/store/store_fashion1.jpg" class="tabpanel-pic" alt="상품 이미지">
+                        </div>
+                        <div class="info_box">
+                            <span class="info">기타</span>
+                            <span class="info">나전 핸드워시 핸드크림 세트(단독구매)</span>
+                            <span class="info">개관 20주년 기념 상품(뮷즈 x 아모레퍼시픽)</span>
+                            <span class="info">47,000</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="pic_box">
+                            <img src="/Resources/store/store_fashion1.jpg" class="tabpanel-pic" alt="상품 이미지">
+                        </div>
+                        <div class="info_box">
+                            <span class="info">기타</span>
+                            <span class="info">나전 핸드워시 핸드크림 세트(단독구매)</span>
+                            <span class="info">개관 20주년 기념 상품(뮷즈 x 아모레퍼시픽)</span>
+                            <span class="info">47,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer></footer>
+
+    <script>
+        // 슬라이드 요소들
+        const sliderWrapper = document.querySelector('.slider-wrapper');
+        const slides = document.querySelectorAll('.slide');
+        const indicators = document.querySelectorAll('.indicator');
+
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+        let autoSlideInterval;
+
+        // 슬라이드 이동 함수
+        function goToSlide(index) {
+            // 인덱스 범위 체크
+            if (index < 0) {
+                currentSlide = totalSlides - 1;
+            } else if (index >= totalSlides) {
+                currentSlide = 0;
+            } else {
+                currentSlide = index;
+            }
+
+            // 슬라이드 이동
+            sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            // 인디케이터 업데이트
+            updateIndicators();
+        }
+
+        // 인디케이터 업데이트
+        function updateIndicators() {
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+
+        // 다음 슬라이드
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+
+        // 이전 슬라이드
+        function prevSlide() {
+            goToSlide(currentSlide - 1);
+        }
+
+        // 자동 슬라이드 시작
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, 3000); // 3초마다 자동 전환
+        }
+
+        // 자동 슬라이드 정지
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        // 인디케이터 클릭 이벤트
+        indicators.forEach((indicator) => {
+            indicator.addEventListener('click', () => {
+                const slideIndex = parseInt(indicator.getAttribute('data-slide'));
+                goToSlide(slideIndex);
+                stopAutoSlide();
+                startAutoSlide(); // 자동 슬라이드 재시작
+            });
+        });
+
+        // 초기 자동 슬라이드 시작
+        startAutoSlide();
+    </script>
+</body>
+</html>
