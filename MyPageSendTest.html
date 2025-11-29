@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<body>
+    <script>
+        //디버깅용 페이지
+        //마이페이지에다 이거 코드 갖다 쓰시면 됩니당
+        const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+        console.log('장바구니 목록:', cart);
+
+
+        const wishlist = JSON.parse(sessionStorage.getItem('wishlist')) || [];
+        console.log('관심상품 목록:', wishlist);
+    </script>
+</body>
+</html>

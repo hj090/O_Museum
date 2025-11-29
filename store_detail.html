@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <meta name="2415347 윤서영" content="기념품 상세 페이지">
+    <title>기념품 상세페이지</title>
+    <link rel="stylesheet" href="store_detail.css">
+</head>
+
+<body>
+    <header></header>
+
+    <main>
+        <div class="breadcrumb">
+            <a href="index.html">
+                <img src="Resources/store/home.png" alt="홈 아이콘" style="width:30px; height:30px;">
+            </a>
+            <img src="Resources/store/arrow_forward_ios.png" alt="화살표 아이콘" style="width:24px; height:24px;">
+            <a href="store.html">
+                <p>기념품</p>
+            </a>
+            <img src="Resources/store/arrow_forward_ios.png" alt="화살표 아이콘" style="width:24px; height:24px;">
+            <p>기념품 상세설명</p>
+        </div>
+
+        <div class="section-header">
+            <h2 class="section-title">기념품 상세설명</h2>
+        </div>
+
+        <section class="detail-panel">
+            <div class="detail-media">
+                <div class="detail-image-frame">
+                    <div class="img-zoom-container">
+                        <img id="detailImage" src="" alt="상품 이미지">
+                    </div>
+                </div>
+                <p class="zoom-note">*이미지에 마우스를 올려 확대해 보세요.</p>
+            </div>
+
+            <!-- 오른쪽: 정보 -->
+            <aside class="detail-info">
+                <div class="product-tags" id="detailTags"></div>
+                <h3 class="product-name" id="detailTitle"></h3>
+                <h4 class="product-description" id="detailSubtitle"></h4>
+                <h3 class="product-price" id="detailPrice"></h3>
+
+                <button id="addCartBtn">장바구니에 담기</button>
+                <a href="MyPageSendTest.html">edwd</a>  <!-- 다른 페이지에 데이터 전송 확인용 -->
+            </aside>
+        </section>
+
+        <p class="description" id="detailDescription">상세설명</p>
+    </main>
+
+<footer></footer>
+
+<script src="card.js"></script>
+<script src="store_detail.js"></script>
+</body>
+</html>
