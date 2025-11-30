@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
     <style>
-        /* CSS 스타일은 기존과 동일하므로 생략하거나 그대로 두셔도 됩니다 */
         :root {
             --font-h1: 28px; 
             --font-h2: 48px;
@@ -164,7 +163,6 @@
     </main>
 
     <script>
-        // 1. 페이지 로드 시 초기 데이터 세팅
         async function initUserDB() {
             if (localStorage.getItem('userDB')) return;
 
@@ -180,7 +178,6 @@
         initUserDB();
 
 
-        // 2. 로그인 폼 제출 시 실행
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault(); 
 
@@ -189,11 +186,9 @@
 
             const userDB = JSON.parse(localStorage.getItem('userDB')) || [];
 
-            // 1단계: 아이디 찾기
             const targetUser = userDB.find(user => user.id === inputId);
 
             if (targetUser) {
-                // 2단계: 비밀번호 확인
                 if (targetUser.pw === inputPw) {
                     alert(`${targetUser.name}님 환영합니다!`);
                     sessionStorage.setItem('currentUser', JSON.stringify(targetUser));
@@ -202,7 +197,6 @@
                     alert("비밀번호가 일치하지 않습니다.");
                 }
             } else {
-                // 3단계: 아이디 없음
                 alert("입력하신 정보가 없습니다. 회원가입이 필요합니다!");
             }
         });
