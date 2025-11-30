@@ -1,0 +1,16 @@
+[
+    {
+        "name": "관리자",
+        "id": "admin",
+        "pw": "12345678",
+        "phone": "01012345678",
+        "email": "admin@museum.com"
+    },
+    {
+        "name": "테스트유저",
+        "id": "testuser",
+        "pw": "password123",
+        "phone": "01099998888",
+        "email": "test@test.com"
+    }
+]

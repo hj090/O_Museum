@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <style>
+        /* CSS 스타일은 기존과 동일하므로 생략하거나 그대로 두셔도 됩니다 */
+        :root {
+            --font-h1: 28px; 
+            --font-h2: 48px;
+            --font-h3: 32px;
+            --font-h4: 28px;
+            --font-h5: 18px;
+            --font-p1: 24px;
+            --font-p2: 12px;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 40px;
+        }
+        .breadcrumb a {
+            text-decoration: none;
+            color: #888;
+        }
+        .breadcrumb .current a {
+            color: #333;
+            font-weight: bold;
+        }
+
+        .page-title {
+            font-size: var(--font-h2);
+            font-weight: bold;
+            margin: 0 0 20px 0;
+        }
+
+        hr {
+            border: 0;
+            height: 2px;
+            background: #ddd;
+            margin-bottom: 60px;
+        }
+
+        .login-wrapper {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center;
+            padding-bottom: 100px;
+        }
+
+        .google-icon-user {
+            font-size: 100px !important; 
+            color: #009688; 
+            margin-bottom: 10px;
+            user-select: none; 
+        }
+
+        .login-header-en {
+            font-size: var(--font-h4);
+            font-weight: 500;
+            margin: 10px 0;
+            color: #000;
+        }
+        
+        .login-desc {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 30px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        
+        input::placeholder {
+            color: #aaa;
+        }
+
+        .signup-link {
+            margin-top: 20px;
+            font-size: var(--font-p2);
+            color: #666;
+        }
+        .signup-link a {
+            text-decoration: none;
+            color: #666;
+            margin-left: 5px;
+        }
+
+        .najeon-button {
+            width: 100%;
+            padding: 15px 0;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            background-color: #009688; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="index.html">홈</a>
+            <span> &gt; </span>
+            <span class="current"><a href="mypage.html">마이페이지</a></span>
+            <span> &gt; </span>
+            <span class="current">로그인</span>
+        </nav>
+
+        <h2 class="page-title">로그인</h2>
+        <hr>
+
+        <div class="login-wrapper">
+            <span class="material-symbols-outlined google-icon-user">
+                account_circle
+            </span>
+            
+            <h4 class="login-header-en">LOGIN</h4>
+            <p class="login-desc">로그인 정보를 입력해주세요</p>
+
+            <form action="" id="loginForm">
+                <input type="text" id="loginId" placeholder="아이디를 입력해주세요" required>
+                <input type="password" id="loginPw" placeholder="비밀번호를 입력해주세요" required>
+                
+                <button type="submit" class="najeon-button">로그인</button>
+            </form>
+
+            <p class="signup-link">계정이 없으신가요? <a href="signup.html">가입하기</a></p>
+        </div>
+    </main>
+
+    <script>
+        // 1. 페이지 로드 시 초기 데이터 세팅
+        async function initUserDB() {
+            if (localStorage.getItem('userDB')) return;
+
+            try {
+                const response = await fetch('./data.json');
+                const initialData = await response.json();
+                localStorage.setItem('userDB', JSON.stringify(initialData));
+            } catch (error) {
+                console.error("초기 데이터 로드 실패", error);
+                localStorage.setItem('userDB', JSON.stringify([]));
+            }
+        }
+        initUserDB();
+
+
+        // 2. 로그인 폼 제출 시 실행
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+
+            const inputId = document.getElementById('loginId').value;
+            const inputPw = document.getElementById('loginPw').value;
+
+            const userDB = JSON.parse(localStorage.getItem('userDB')) || [];
+
+            // 1단계: 아이디 찾기
+            const targetUser = userDB.find(user => user.id === inputId);
+
+            if (targetUser) {
+                // 2단계: 비밀번호 확인
+                if (targetUser.pw === inputPw) {
+                    alert(`${targetUser.name}님 환영합니다!`);
+                    sessionStorage.setItem('currentUser', JSON.stringify(targetUser));
+                    location.href = 'index.html'; 
+                } else {
+                    alert("비밀번호가 일치하지 않습니다.");
+                }
+            } else {
+                // 3단계: 아이디 없음
+                alert("입력하신 정보가 없습니다. 회원가입이 필요합니다!");
+            }
+        });
+    </script>
+
+</body>
+</html>
