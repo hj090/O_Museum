@@ -6,7 +6,6 @@
     <title>회원가입</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* 기존 스타일 유지 */
         :root {
             --font-gov: "대한민국 정부 상징 서체", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
             --font-noto: "Noto Sans KR", sans-serif;
@@ -19,10 +18,15 @@
 
         body {
             font-family: var(--font-noto);
-            max-width: 1600px;
-            margin: 0 auto;
+            margin: 0;
             padding: 20px;
             box-sizing: border-box;
+        }
+
+        .content-align {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
         }
 
         h1 {
@@ -30,19 +34,27 @@
             font-size: 28px;
             font-weight: 700;
             margin-bottom: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
+
         hr {
             border: 0;
-            height: 3px; 
+            height: 2px;
             background-color: #333; 
             width: 100%;
-            margin: 20px 0 40px 0;
+            max-width: 1200px;
+            margin: 20px auto 0 auto;
         }
 
         .breadcrumb {
             font-size: 14px;
             color: var(--color-dark-gray);
             margin-bottom: 10px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .breadcrumb a {
@@ -56,10 +68,12 @@
 
         .main-container {
             background-color: var(--color-light-gray);
-            padding: 40px;
-            border-radius: 8px;
-            max-width: 800px;
-            margin: 0 auto;
+            padding: 60px 40px;
+            border-radius: 0;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto; 
+            box-sizing: border-box; 
         }
 
         .signup-form {
@@ -67,6 +81,8 @@
             grid-template-columns: 120px 1fr; 
             gap: 15px 30px;
             align-items: start;
+            max-width: 800px; 
+            margin: 0 auto;
         }
 
         .signup-form label {
@@ -86,7 +102,7 @@
         .signup-form input[type="password"],
         .signup-form input[type="email"],
         .signup-form input[type="number"],
-        .signup-form input[type="tel"] { /* type="tel" 스타일 추가 */
+        .signup-form input[type="tel"] {
             width: 100%;
             padding: 10px;
             border: 1px solid var(--color-gray);
@@ -112,7 +128,7 @@
 
         .contact-inputs input {
             flex: 1;
-            text-align: center; /* 전화번호는 가운데 정렬이 이쁨 */
+            text-align: center;
         }
         
         .mailing-service {
@@ -149,7 +165,7 @@
             border: none;
             cursor: pointer;
             border-radius: 4px;
-            background-color: #009688; 
+            background-color: #008573;
             display: block; 
             margin-left: auto; 
             margin-top: 20px;
@@ -167,7 +183,6 @@
             accent-color: var(--color-green);
         }
 
-        /* Chrome, Safari, Edge, Opera 등에서 number input 화살표 제거 */
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
             -webkit-appearance: none;
@@ -184,8 +199,11 @@
             <span> > </span>
             <span class="current">회원가입</span>
         </nav>
+        
         <h1>회원가입</h1>
+        
         <hr>
+        
         <div class="main-container">
             <form class="signup-form" id="signupForm">
                 <label for="name"><span class="required">*</span>이름</label>
@@ -239,7 +257,7 @@
         </div>
     </main>
 
-<script>
+    <script>
         const idInput = document.getElementById('id');
         const pwInput = document.getElementById('password');
         const pwConfirmInput = document.getElementById('password-confirm');
@@ -253,29 +271,21 @@
         const pwMsg = document.getElementById('pwMsg');
         const pwConfirmMsg = document.getElementById('pwConfirmMsg');
 
-        // 정규식
         const allowedCharRegex = /^[a-z0-9\-_]+$/;
         const startEndAlphanumericRegex = /^[a-z0-9].*[a-z0-9]$/;
 
-        // [중요 1] 전역 변수에 유저 목록을 담아둡니다.
         let userDB = [];
 
-        // [중요 2] 페이지 열리자마자 데이터 불러오기 (AJAX/Fetch + Web Storage)
         async function loadUserDB() {
-            // 1. 로컬 스토리지 확인
             const localData = localStorage.getItem('userDB');
             
             if (localData) {
                 userDB = JSON.parse(localData);
-                console.log("로컬 스토리지 데이터 로드 완료:", userDB);
             } else {
-                // 2. 없으면 JSON 파일에서 가져오기 (초기화)
                 try {
                     const response = await fetch('./data.json');
                     userDB = await response.json();
-                    // 가져온 김에 저장해두기
                     localStorage.setItem('userDB', JSON.stringify(userDB));
-                    console.log("JSON 파일 데이터 로드 완료:", userDB);
                 } catch (error) {
                     console.error("데이터 로드 실패:", error);
                     userDB = [];
@@ -283,15 +293,12 @@
             }
         }
         
-        // 함수 실행!
         loadUserDB();
 
-        // 숫자만 입력받기
         function onlyNumbers(e) {
             e.target.value = e.target.value.replace(/[^0-9]/g, '');
         }
 
-        // 1. 아이디 검사 함수 (중복 체크 추가됨!)
         function validateId() {
             const value = idInput.value;
             
@@ -300,44 +307,37 @@
                 return false;
             }
 
-            // A. 길이 체크
             if (value.length < 5 || value.length > 20) {
                 idMsg.textContent = "5~20자여야 합니다.";
                 idMsg.className = "validation-msg msg-error";
                 return false;
             }
 
-            // B. 문자 체크
             if (!allowedCharRegex.test(value)) {
                 idMsg.textContent = "영문 소문자, 숫자, 특수기호(_, -)만 가능합니다.";
                 idMsg.className = "validation-msg msg-error";
                 return false;
             }
 
-            // C. 시작/끝 체크
             if (!startEndAlphanumericRegex.test(value) && value.length >= 2) {
                 idMsg.textContent = "시작과 끝은 특수기호를 쓸 수 없습니다.";
                 idMsg.className = "validation-msg msg-error";
                 return false;
             }
 
-            // [추가된 부분] D. 중복 아이디 체크
-            // userDB 배열 안에 지금 입력한 value와 똑같은 id가 있는지 확인
             const isDuplicate = userDB.some(user => user.id === value);
             
             if (isDuplicate) {
-                idMsg.textContent = "이미 사용 중인 아이디입니다."; // 안내 메세지
-                idMsg.className = "validation-msg msg-error";    // 빨간색 스타일
-                return false; // 유효하지 않음 처리
+                idMsg.textContent = "이미 사용 중인 아이디입니다.";
+                idMsg.className = "validation-msg msg-error";
+                return false;
             }
 
-            // 통과
             idMsg.textContent = "사용 가능한 아이디입니다.";
             idMsg.className = "validation-msg msg-success";
             return true;
         }
 
-        // 2. 비밀번호 검사
         function validatePw() {
             const value = pwInput.value;
             if (pwConfirmInput.value.length > 0) validatePwConfirm();
@@ -352,7 +352,6 @@
             return true;
         }
 
-        // 3. 비밀번호 확인
         function validatePwConfirm() {
             const pwValue = pwInput.value;
             const confirmValue = pwConfirmInput.value;
@@ -368,7 +367,6 @@
             }
         }
 
-        // 4. 연락처 검사
         function validatePhone() {
             const t1 = tel1.value;
             const t2 = tel2.value;
@@ -399,7 +397,6 @@
             return true;
         }
 
-        // 이벤트 리스너 등록
         idInput.addEventListener('input', validateId);
         pwInput.addEventListener('input', validatePw);
         pwConfirmInput.addEventListener('input', validatePwConfirm);
@@ -410,18 +407,15 @@
             });
         });
 
-        // 폼 제출 (회원가입 버튼 클릭)
         document.getElementById('signupForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // 최종 유효성 검사 (함수들이 true/false를 반환하므로 재사용)
             const isIdValid = validateId();
             const isPwValid = validatePw();
             const isPwConfirmValid = validatePwConfirm();
             const isPhoneValid = validatePhone();
 
             if (isIdValid && isPwValid && isPwConfirmValid && isPhoneValid) {
-                // 데이터 저장 로직
                 const newUser = {
                     name: document.getElementById('name').value,
                     id: idInput.value,
@@ -430,7 +424,6 @@
                     email: document.getElementById('email').value
                 };
 
-                // userDB 배열에 추가하고 저장
                 userDB.push(newUser);
                 localStorage.setItem('userDB', JSON.stringify(userDB));
 
