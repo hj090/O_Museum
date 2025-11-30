@@ -11,13 +11,13 @@
             margin: 0;
             background-color: black;
             text-decoration: white;
-            color: white; /* 기본 글자색 흰색 지정 */
+            color: white;
         }
         
         .homecover img{
-            width: 100%; /* 화면 꽉 차게 */
+            width: 100%;
             height: 500px;
-            object-fit: cover; /* 이미지 비율 유지하며 채우기 */
+            object-fit: cover;
             display: flex;
         }
         .main_container {
@@ -37,7 +37,6 @@
         #info {
             font-size: 24px
         }
-        /* 탭키 */
         .tab-nav {
             display: flex;
             gap: 80px;
@@ -117,7 +116,6 @@
             align-items: center;
             gap: 16px;
         }
-        /* 지도 아이콘 커서 설정 */
         .map-trigger {
             position: relative;
             cursor: pointer;
@@ -189,7 +187,6 @@
             margin: 0;
         }
         
-        /* 갤러리 컨테이너 */
         .sayu-gallery {
             position: relative;
             max-width: 1200px;
@@ -306,31 +303,26 @@
             scroll-margin-top: 100px;
         }
 
-        /* 스크롤 애니메이션 초기 상태 */
         .exhibiton-item {
             opacity: 0;
             transform: translateY(50px);
             transition: all 0.8s ease-out;
         }
 
-        /* 자바스크립트가 붙여줄 클래스 */
         .exhibiton-item.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* 아이콘 안의 원본 지도는 숨김 */
         .map-trigger .map {
             display: none;
         }
 
-        /* [수정됨] 모달 배경 애니메이션 처리 */
         .modal-overlay {
-            display: flex; /* none 대신 flex 사용 */
-            visibility: hidden; /* 보이지만 않게 함 */
-            opacity: 0; /* 투명하게 */
-            pointer-events: none; /* 클릭 안 되게 */
-            
+            display: flex; 
+            visibility: hidden; 
+            opacity: 0; 
+            pointer-events: none;
             position: fixed;
             z-index: 10000;
             left: 0;
@@ -340,15 +332,13 @@
             background-color: rgba(0, 0, 0, 0.85);
             justify-content: center;
             align-items: center;
-            
-            /* 서서히 뜨게 하는 핵심 코드 */
             transition: opacity 0.5s ease, visibility 0.5s ease;
         }
 
         .modal-overlay.active {
-            visibility: visible; /* 보이게 */
-            opacity: 1; /* 불투명하게 */
-            pointer-events: auto; /* 클릭 가능하게 */
+            visibility: visible;
+            opacity: 1; 
+            pointer-events: auto; 
         }
 
         .modal-content {
@@ -356,12 +346,12 @@
             max-height: 90%;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
             border-radius: 8px;
-            transform: scale(0.9); /* 약간 작게 시작 */
-            transition: transform 0.5s ease; /* 이미지도 부드럽게 커짐 */
+            transform: scale(0.9); 
+            transition: transform 0.5s ease
         }
 
         .modal-overlay.active .modal-content {
-            transform: scale(1); /* 원래 크기로 */
+            transform: scale(1); 
         }
 
         .close-btn {
@@ -633,11 +623,9 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             
-            // 1. 탭 동작 및 스크롤 스파이
             const tabs = document.querySelectorAll('.tab-link');
             const sections = document.querySelectorAll('.tab-sec');
 
-            // 탭 클릭 이벤트
             tabs.forEach(tab => {
                 tab.addEventListener('click', function (e) {
                     tabs.forEach(t => t.classList.remove('active'));
@@ -645,7 +633,6 @@
                 });
             });
 
-            // 스크롤 스파이
             const observerOptions = {
                 root: null,
                 rootMargin: '-100px 0px -50% 0px', 
@@ -668,7 +655,6 @@
             });
 
 
-            // 2. 전시품 카드 애니메이션
             const itemObserver = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -683,14 +669,11 @@
                 itemObserver.observe(item);
             });
 
-
-            // 3. 지도 모달 기능
             const modal = document.getElementById('mapModal');
             const modalImg = document.getElementById('modalImg');
             const closeBtn = document.querySelector('.close-btn');
             const mapTriggers = document.querySelectorAll('.map-trigger');
 
-            // 지도 아이콘 클릭
             mapTriggers.forEach(trigger => {
                 trigger.addEventListener('click', function() {
                     const hiddenImg = this.querySelector('img');
@@ -701,12 +684,10 @@
                 });
             });
 
-            // 닫기 버튼 클릭
             closeBtn.addEventListener('click', function() {
                 modal.classList.remove('active');
             });
 
-            // 배경 클릭 시 닫기
             modal.addEventListener('click', function(e) {
                 if (e.target === modal) {
                     modal.classList.remove('active');
