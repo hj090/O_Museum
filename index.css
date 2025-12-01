@@ -208,32 +208,36 @@
 /* ------------------ My Page Button Styles (#mypage-btn) ------------------ */
 
 #mypage-btn {
-    /* 요청하신 스타일 반영 */
-    border: 0.05px solid #333; /* 요청된 테두리 스타일 */
-    transition: border-color .15s, background-color .3s, color .3s; 
-
-    /* 기존 예매 버튼의 크기/형태와 맞춤 */
-    padding: 10px 20px; 
-    border-radius: 20px; 
-    font-weight: 700;
-    font-size: 0.95rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none; 
-    gap: 6px; /* 아이콘과 텍스트 간격 */
-    
-    /* 기본 색상: 투명 배경에 밝은 텍스트로 대비 */
+    /* 모든 버튼 스타일 초기화 */
+    border: none; /* 테두리 제거 */
+    padding: 10; /* 패딩 제거 */
+    border-radius: 0; /* 둥근 모서리 제거 */
+    font-weight: 700; /* 폰트 두께 유지 (텍스트 강조) */
+    font-size: 0.80rem; /* 폰트 크기 유지 */
+    display: inline-block; /* 텍스트 크기에 맞춰 폭 조정 */
+    text-decoration: none; /* 기본 밑줄 제거 */
+    margin-left: 5px; /* 왼쪽 마진 유지 */
+    margin-right: 10px; /* 오른쪽 마진 제거 */
+    /* 기존 색상: 투명 배경에 밝은 텍스트로 대비 */
     background-color: transparent; 
-    color: var(--color-white);
-    border-color: var(--color-white); /* 흰색 테두리로 설정 */
+    color: var(--color-white); /* 흰색 텍스트 유지 */
+    
+    /* [수정] 아이콘과 텍스트 간격 제거 (아이콘이 없다는 가정 하에) */
+    gap: 0; 
+    
+    /* 부드러운 전환 효과 유지 */
+    transition: color 0.3s, text-decoration 0.3s; 
 }
 
 #mypage-btn:hover {
-    /* 호버 시 테두리 색상 유지 또는 배경색 변화 */
-    background-color: #333; /* 어두운 회색 배경으로 호버 */
-    color: var(--color-white); /* 강조색 텍스트 */
-    border-color: var(--color-white); /* 테두리 색상 유지 */}
+    /* 호버 시: 배경색 및 테두리 변경 없음 */
+    background-color: transparent; 
+    border-color: transparent;
+    color: var(--color-white); 
+    
+    /* [핵심] 텍스트에만 밑줄 추가 */
+    text-decoration: underline;
+}
         
         #ticket-btn {
             background-color: var(--color-primary);
@@ -509,6 +513,7 @@
             padding-bottom: 0; 
             padding-left: 0; 
             padding-right: 0; 
+            
         }
 
         /* 태블릿 이상 (md:px-8) - 제거 */
@@ -609,7 +614,12 @@
 .artifact-section {
     /* 변수명은 :root에 정의된 것을 따릅니다. */
     background-color: var(--color-background-dark); 
-    padding: 60px 0;
+    padding: 60px 0 0 0;
+    /* NEW: 이 섹션의 경계를 넘어가는 모든 자식 요소(사진)를 잘라냅니다. */
+    overflow: hidden; 
+    
+    /* 겹치는 요소 위에 깔끔하게 잘리도록 기본 position을 설정해주는 것이 좋습니다. */
+    position: relative;
 }
 
 .artifact-grid {
@@ -732,6 +742,24 @@
         margin-top: 100px;
         margin-bottom: -10px;
     }
+    .artifact-grid > :nth-child(7) { 
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+        margin-top: 50px;
+        margin-bottom: 80px;
+    }
+    .artifact-grid > :nth-child(8) { 
+        grid-column: 2 / 3;
+        grid-row: 3 / 4;
+        margin-top: 50px;
+        margin-bottom: 80px;
+    }
+    .artifact-grid > :nth-child(9) { 
+        grid-column: 3 / 4;
+        grid-row: 3 / 4;
+        margin-top: 50px;
+        margin-bottom: 80px;
+    }
 }
 
 /* ------------------ More Text Button Style ------------------ */
@@ -846,7 +874,63 @@
             transition: transform 0.4s;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         }
-        
+ /* ------------------ Section Fade-out / Text Overlay Area (수정됨) ------------------ */
+
+/* 1. 텍스트와 오버레이를 감싸는 컨테이너 (기준점) */
+.fade-out-container {
+    position: relative; 
+    width: 100%;
+    height: 250px; 
+    z-index: 5; 
+    margin: 0;
+    box-sizing: border-box;
+    
+    /* 핵심 수정: 이전 섹션 위로 250px 끌어올려 이미지를 덮습니다. */
+    margin-top: -250px; 
+}
+
+/* 2. 이미지를 페이드 아웃 시키는 오버레이 */
+.fade-to-black-overlay {
+    /* 부모 컨테이너에 맞춰 전체를 덮도록 absolute 설정 */
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    
+    /* Z-index를 줍니다. 텍스트(Z-index: 10)보다는 낮아야 합니다. */
+    z-index: 5; 
+    
+    /* 사용자 요청 그라데이션: 아래(0deg)에서 검은색(#000)으로 시작 */
+    background: linear-gradient(0deg, #000, #0000008c 40%, #0000); 
+}
+
+/* 3. "소장품 더보기" 텍스트 스타일 */
+.more-items-link {
+    /* 텍스트를 오버레이 위에 겹치도록 absolute 설정 */
+    position: absolute;
+    /* 텍스트가 아래쪽 중앙에 오도록 배치 */
+    bottom: 40px; 
+    left: 50%;
+    transform: translateX(-50%); /* 중앙 정렬 */
+    
+    /* Z-index를 오버레이(Z-index: 5)보다 높게 설정하여 항상 보이게 합니다. */
+    z-index: 10; 
+
+    /* 텍스트 스타일 */
+    color: var(--color-white); /* 흰색 */
+    font-size: 1.0rem; 
+    font-weight: 700;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.more-items-link:hover {
+    background-color: #ffffff1a; /* 살짝 투명한 배경 */
+}
+
         /* ------------------ NEW FOOTER STYLES ------------------ */
         .footer {
             background-color: #1a1a1a;
