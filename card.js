@@ -1,3 +1,5 @@
+/*JSON fetch 오류로 인해 JS 변수로 대체함.*/
+
 const cardData = {
     "tabmenu1": [
         {
