@@ -13,6 +13,42 @@
     /* --color-primary: #008573; */ 
 }
 
+.breadcrumb{
+    font-size: 1.25rem;
+    color: #8c8c8c;
+    display: flex; /* 요소들을 한 줄에 정렬 */
+    align-items: center;
+}
+.breadcrumb a {
+    color: #8c8c8c;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: #8c8c8c;
+    text-decoration: none;
+}
+.breadcrumb img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #8c8c8c;
+}
+
+.breadcrumb span {
+    color: #8c8c8c;
+    font-size: 1.25rem;
+}
+
+.breadcrumb .current {
+    font-weight: 400;
+    color: #8c8c8c;
+}
+ 
 
 /* ------------------ 마이페이지 BODY (화이트 콘텐츠 오버라이드) ------------------ */
 
@@ -380,6 +416,41 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
+/* 🌟 사용자 요청: 장바구니 체크박스 기본 스타일 추가 🌟 */
+.cart-item-card input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    appearance: none; /* 기본 브라우저 스타일 제거 */
+    border: 2px solid var(--color-border-light-white);
+    border-radius: 4px;
+    position: relative;
+    outline: none;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.cart-item-card input[type="checkbox"]:checked {
+    background-color: var(--color-primary, #008573);
+    border-color: var(--color-primary, #008573);
+}
+
+.cart-item-card input[type="checkbox"]:checked::after {
+    /* 체크 마크 (V) 아이콘 */
+    content: '\2713'; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+/* 🌟 새로 추가: 장바구니 전체 액션 버튼 (선택 항목 삭제) 컨테이너 우측 정렬 */
+.cart-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end; /* 버튼을 컨테이너의 오른쪽 끝으로 정렬 */
+}
 /* 이미지 래퍼 및 이미지 스타일 */
 .item-image-wrapper {
     width: 80px;
@@ -415,6 +486,7 @@
     font-weight: bold;
     color: var(--color-primary, #008573); /* 가격 강조 */
 }
+
 /* ------------------ 관심 상품 (Favorites) 스타일 (새로 추가) ------------------ */
 
 .favorite-item-card {

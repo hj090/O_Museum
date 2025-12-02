@@ -18,6 +18,32 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 202511271064, date: '2025-11-27 (목) / 14:00', people: '성인 2', price: '0원', paymentDate: '2025-11-21 05:50' },
         { id: 202511281065, date: '2025-11-28 (금) / 11:30', people: '성인 3', price: '0원', paymentDate: '2025-11-22 09:00' },
     ];
+
+
+    // 💡 (새로 추가) 초기 로딩 시, 장바구니/관심상품 데이터를 sessionStorage에 미리 저장
+    // (window.cardData가 없다는 가정 하에 임시 ID를 사용)
+    const initialWishlistIds = [101, 102]; // 임의의 ID
+    const initialCartIds = [201, 202];     // 임의의 ID
+
+    // sessionStorage에 데이터가 없을 경우에만 초기 데이터 설정
+    if (!sessionStorage.getItem('wishlist')) {
+        sessionStorage.setItem('wishlist', JSON.stringify(initialWishlistIds));
+    }
+    if (!sessionStorage.getItem('cart')) {
+        sessionStorage.setItem('cart', JSON.stringify(initialCartIds));
+    }
+    
+    // 💡 (새로 추가) window.cardData가 정의되어 있지 않은 경우를 대비한 더미 데이터
+    if (!window.cardData) {
+        window.cardData = {
+            tabmenu1: [
+                { id: 101, name: '한국화 굿즈 세트', price: 25000, image: '관심상품사진1.png' },
+                { id: 102, name: '고려청자 머그컵', price: 32000, image: '관심상품사진1.png' },
+                { id: 201, name: 'SUM 박물관 에코백', price: 18000, image: '장바구니사진1.png' },
+                { id: 202, name: '특별 전시회 도록', price: 45000, image: '장바구니사진1.png' },
+            ]
+        };
+    }
     
     // =============================================================
     // =========== 2. 예약 내역 렌더링 및 취소 로직 (새로 추가) ===================
@@ -98,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 4. 완료 메시지
         alert('취소가 완료되었습니다. ✅');
     }
+    
     
     // =============================================================
     // =========== 3. 장바구니/관심상품 렌더링 로직 (기존 코드 유지) ==================
@@ -204,11 +231,13 @@ function deleteSelectedItems(storageKey) {
     // =============================================================
 
     function setActiveContent(contentId) {
-        // 모든 메뉴 비활성화 및 콘텐츠 숨김
-        navLinks.forEach(l => l.classList.remove('active'));
+        // 💡 1. 모든 메뉴에서 active 클래스 제거
+        navLinks.forEach(l => l.classList.remove('active')); // 👈 추가된 로직
+
+        // 2. 모든 콘텐츠 숨김
         contentDetails.forEach(c => c.style.display = 'none');
 
-        // 해당 콘텐츠 활성화
+        // 3. 해당 콘텐츠 활성화
         const targetContent = document.getElementById(contentId + '-content');
         if (targetContent) {
             targetContent.style.display = 'block';
@@ -226,12 +255,12 @@ function deleteSelectedItems(storageKey) {
 
     // 좌측 메뉴 클릭 이벤트
     navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault(); 
-            const contentId = link.dataset.contentLink;
-            
-            setActiveContent(contentId);
-            link.classList.add('active'); 
+    link.addEventListener('click', (e) => {
+        e.preventDefault(); 
+        const contentId = link.dataset.contentLink;
+        
+        setActiveContent(contentId);
+        link.classList.add('active'); // setActiveContent에서 모두 제거했으므로, 현재 클릭된 요소에만 추가
         });
     });
 
@@ -240,6 +269,7 @@ function deleteSelectedItems(storageKey) {
     if (initialLink) {
         const initialContentId = initialLink.dataset.contentLink;
         document.getElementById(initialContentId + '-content').style.display = 'block';
+        initialLink.classList.add('active');
         setActiveContent(initialContentId); 
     }
     
