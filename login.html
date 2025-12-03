@@ -164,17 +164,19 @@
 
     <script>
         async function initUserDB() {
-            if (localStorage.getItem('userDB')) return;
 
-            try {
-                const response = await fetch('./data.json');
-                const initialData = await response.json();
-                localStorage.setItem('userDB', JSON.stringify(initialData));
-            } catch (error) {
-                console.error("초기 데이터 로드 실패", error);
-                localStorage.setItem('userDB', JSON.stringify([]));
-            }
+    try {
+        const response = await fetch('./data.json');
+        const initialData = await response.json();
+        localStorage.setItem('userDB', JSON.stringify(initialData));
+        console.log("데이터가 새로 로드되었습니다:", initialData);
+    } catch (error) {
+        console.error("초기 데이터 로드 실패", error);
+        if (!localStorage.getItem('userDB')) {
+        localStorage.setItem('userDB', JSON.stringify([]));
         }
+    }
+}
         initUserDB();
 
 
