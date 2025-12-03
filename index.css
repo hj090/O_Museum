@@ -634,28 +634,26 @@
     border-radius: 0px;
     background-color: var(--section-bg);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    
-    /* [핵심] 스크롤 애니메이션 초기 상태 정의 */
-    opacity: 0; /* 투명하게 숨김 */
-    transform: translateY(30px); /* 아래로 30px 이동 */
-    
-    /* [핵심] 애니메이션 전환 및 호버 효과 전환 속도 정의 */
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 2s ease-out, transform 2s ease-out;  
 }
 
-/* 활성화 상태: JavaScript가 is-visible 클래스를 추가하면 애니메이션 실행 */
 .artifact-item.is-visible {
-    opacity: 1; /* 보이게 */
-    transform: translateY(0); /* 원래 위치로 복귀 (위로 올라오는 효과) */
+    opacity: 1;
+    transform: translateY(0);
 }
 
-/* 아이템별 애니메이션 딜레이 (순차적으로 나타나게 함) */
 .artifact-item:nth-child(1) { transition-delay: 0s; }
-.artifact-item:nth-child(2) { transition-delay: 0.1s; }
-.artifact-item:nth-child(3) { transition-delay: 0.2s; }
-.artifact-item:nth-child(4) { transition-delay: 0.3s; }
-.artifact-item:nth-child(5) { transition-delay: 0.4s; }
-.artifact-item:nth-child(6) { transition-delay: 0.5s; }
+.artifact-item:nth-child(2) { transition-delay: 0.25s; }
+.artifact-item:nth-child(3) { transition-delay: 0.5s; }
+.artifact-item:nth-child(4) { transition-delay: 0.75s; }
+.artifact-item:nth-child(5) { transition-delay: 1s; }
+.artifact-item:nth-child(6) { transition-delay: 1.25s; }
+.artifact-item:nth-child(7) { transition-delay: 1.5s; }
+.artifact-item:nth-child(8) { transition-delay: 1.75s; }
+.artifact-item:nth-child(9) { transition-delay: 2s; }
+
 
 
 /* 호버 효과 (애니메이션과 별개로 즉시 적용) */
@@ -731,7 +729,7 @@
     .artifact-grid > :nth-child(5) { 
         grid-column: 3 / 4;
         grid-row: 2 / 3;
-        margin-top: 34px;
+        margin-top: 24px;
         margin-bottom: 24px;
     }
     
@@ -745,19 +743,19 @@
     .artifact-grid > :nth-child(7) { 
         grid-column: 1 / 2;
         grid-row: 3 / 4;
-        margin-top: 50px;
+        margin-top: -80px;
         margin-bottom: 80px;
     }
     .artifact-grid > :nth-child(8) { 
         grid-column: 2 / 3;
         grid-row: 3 / 4;
-        margin-top: 50px;
+        margin-top: 10px;
         margin-bottom: 80px;
     }
     .artifact-grid > :nth-child(9) { 
         grid-column: 3 / 4;
         grid-row: 3 / 4;
-        margin-top: 50px;
+        margin-top: -20px;
         margin-bottom: 80px;
     }
 }
@@ -880,13 +878,14 @@
 .fade-out-container {
     position: relative; 
     width: 100%;
+    /* [수정] 높이를 350px로 늘려 아래쪽 이미지를 충분히 덮고, "더보기" 버튼 공간을 확보합니다. */
     height: 250px; 
     z-index: 5; 
     margin: 0;
     box-sizing: border-box;
     
     /* 핵심 수정: 이전 섹션 위로 250px 끌어올려 이미지를 덮습니다. */
-    margin-top: -250px; 
+    margin-top: -350px; 
 }
 
 /* 2. 이미지를 페이드 아웃 시키는 오버레이 */
@@ -904,6 +903,9 @@
     /* 사용자 요청 그라데이션: 아래(0deg)에서 검은색(#000)으로 시작 */
     background: linear-gradient(0deg, #000, #0000008c 40%, #0000); 
 }
+
+
+
 
 /* 3. "소장품 더보기" 텍스트 스타일 */
 .more-items-link {
@@ -929,15 +931,23 @@
 
 .more-items-link:hover {
     background-color: #ffffff1a; /* 살짝 투명한 배경 */
+    color: var(--color-white); /* 흰색 */
+
 }
 
         /* ------------------ NEW FOOTER STYLES ------------------ */
-        .footer {
+        footer {
+            /* 기존 스타일 유지 */
             background-color: #1a1a1a;
             color: var(--color-text-light);
-            padding: 40px 0 10px;
+            padding: 40px 0 10px; 
             font-size: 0.9rem;
             border-top: 1px solid var(--color-primary);
+
+            /* ★ 기존에 추가된 스타일: z-index가 낮아서 가려질 수 있음 */
+            position: relative;
+            /* [수정] z-index를 더 높게 설정하여 모든 오버레이 위에 오도록 합니다. */
+            z-index: 100; 
         }
 
         .footer-main {

@@ -97,48 +97,47 @@
         // =========================================================
 // ------------------ 4. Artifact Scroll Reveal Logic ------------------
 // =========================================================
-
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. 모든 아티팩트 아이템을 선택
     const artifactItems = document.querySelectorAll('.artifact-item');
 
-    // Intersection Observer가 지원되는지 확인
+    // 오직 첫번째 줄만 trigger로 사용
+    const firstRowItems = [
+        artifactItems[0], 
+        artifactItems[1], 
+        artifactItems[2]
+    ];
+
     if ('IntersectionObserver' in window) {
-        
-        // 2. Observer 설정 정의
+
         const observerOptions = {
-            root: null, // 뷰포트를 기준으로 감지
-            rootMargin: '0px 0px -100px 0px', // 뷰포트 하단에서 100px 정도 여유를 두고 나타나게 설정
-            threshold: 0.1 // 요소가 10% 이상 보일 때 감지
+            root: null,
+            rootMargin: '0px 0px -100px 0px',
+            threshold: 0.1
         };
 
-        // 3. Observer 인스턴스 생성
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
-                // 요소가 뷰포트 안에 들어왔을 때
                 if (entry.isIntersecting) {
-                    // is-visible 클래스를 추가하여 애니메이션 실행
-                    entry.target.classList.add('is-visible');
-                    
-                    // 애니메이션이 한 번 실행된 후에는 관찰 중지 (리소스 절약)
-                    observer.unobserve(entry.target);
+
+                    // ★ 핵심: 첫 줄이 보이는 순간 아래 모든 아이템에 is-visible 추가
+                    artifactItems.forEach(img => img.classList.add('is-visible'));
+
+                    observer.disconnect(); // 관찰 종료 (트리거 1회만 실행)
                 }
             });
         }, observerOptions);
 
-        // 4. 모든 아티팩트 아이템을 관찰 시작
-        artifactItems.forEach(item => {
-            observer.observe(item);
-        });
+        // 첫줄 3개만 관찰 시작
+        firstRowItems.forEach(item => observer.observe(item));
 
     } else {
-        // Intersection Observer를 지원하지 않는 구형 브라우저를 위한 대체 로직
-        // (간단히 모든 항목을 바로 보이게 합니다.)
+        // 구형 브라우저 fallback
         artifactItems.forEach(item => {
             item.classList.add('is-visible');
         });
     }
 });
+
 // ------------------ Hero Video Play/Pause Logic ------------------
 // =========================================================
 
