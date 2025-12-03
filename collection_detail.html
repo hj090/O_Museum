@@ -1,108 +1,103 @@
 <!DOCTYPE html>
 <html lang="kor">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="2311692 송유민", content="소장품 상세 페이지">
-        <title>소장품 상세</title>
-        <style>
-            .detail-panel{
-                display: grid;
-                grid-template-columns: 2fr 1.2fr;
-                gap: 40px;
-                padding: 40px 60px;
-                background: #f7f7f7;
-            }
-            .detail-image-frame{
-                width: 100%;
-                aspect-ratio: 4/3;
-                background: #eee;
-                display: flex;
-                align-items:center;
-                justify-content: center;
-                overflow: hidden;
-            }
-            .detail-image{
-                max-width: 100%;
-                max-height: 100%;
-                object-fit: contain;
-            }
-            .object-meta{
-                display: grid;
-                grid-template-columns: max-content 1fr;
-                column-gap: 24px;
-                row-gap: 8px;
-            }
-            .object-meta dt,
-            .object-meta dd{
-                margin:0;
-            }
-            .object-meta dt{
-                font-weight: 600px;
-            }
-            .object-meta dd{
-                margin: 0;
-                color:#666;
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta name="2311692 송유민" content="소장품 상세 페이지">
+    <title>소장품 상세</title>
+    <link rel="stylesheet" href="collection.css">
+</head>
+<body>
+    <header>
+        <!-- 전체 통일 nav 바 들어가는 부분 -->
+    </header>
 
-        </style>
-    </head>
-    <body>
-        <header>
-            <!--전체 통일 nav 바 들어가는 부분-->
-        </header>
-        <main>
+    <main>
+        <div class="layout">
+
+            <!-- 브래드크럼 -->
             <nav class="breadcrumb">
-                <a href="index.html">홈</a>
-                <span>&gt;</span>
+                <a href="index.html"><img src="home.png" alt="홈"></a>
+                <img src="arrow_forward_ios.png" alt="화살표">
                 <a href="collection.html">소장품</a>
-                <span>&gt;</span>
-                <span class="current">소장품 상세설명</span>
+                <img src="arrow_forward_ios.png" alt="화살표">
+                <span id="breadcrumbTitle">소장품 상세</span>
             </nav>
-            <h1 class="page-title">소장품 검색</h1>
+
+            <span class="page-title">소장품 검색</span>
+
+            <!-- 상세 패널 -->
             <section class="detail-panel">
+                <!-- 왼쪽: 이미지 + 확대 -->
                 <div class="detail-media">
                     <div class="detail-image-frame">
-                        <img src="백자 청화 풀꽃무늬 조롱박모양 병.jpg" alt="백자 청화 풀꽃무늬 조롱박모양 병" class="detail-image">
+                        <div class="img-zoom-container">
+                            <!-- JSON + JS로 src, alt 채움 -->
+                            <img
+                                src=""
+                                alt=""
+                                class="detail-image"
+                                id="mainImg"
+                            >
+                            <!-- 돋보기 렌즈 -->
+                            <div id="lens"></div>
+                        </div>
                     </div>
-                    <p class="zoom-note">*이미지에 마우스를 올려 확대해 보세요.</p>
+                    <p class="zoom-note">
+                        *이미지에 마우스를 올려 확대해 보세요.
+                    </p>
                 </div>
+
+                <!-- 오른쪽: 정보 -->
                 <aside class="detail-info">
-                    <h1 class="object-title">백자 청화 풀꽃무늬 조롱박모양 병</h1>
+                    <!-- 작품 제목 -->
+                    <h1 class="object-title" id="detailTitle"></h1>
+
+                    <!-- 메타 정보 -->
                     <dl class="object-meta">
                         <dt>다른명칭</dt>
-                        <dd>보물 백자 청화칠보난초문 병(1991), 白磁 靑畵七寶蘭草文 甁), 白磁 靑畵 草花文 瓢形甁, 백자 청화 초화문 표형 병</dd>
-                        
+                        <dd id="detailOtherNames"></dd>
+
                         <dt>전시명칭</dt>
-                        <dd>백자 청화 난초무늬 조롱박모양 병</dd>
+                        <dd id="detailExhibitionName"></dd>
 
                         <dt>국적/시대</dt>
-                        <dd>조선 - 한국</dd>
+                        <dd id="detailNationEra"></dd>
 
                         <dt>재질</dt>
-                        <dd>도자기 - 백자</dd>
+                        <dd id="detailMaterial"></dd>
 
                         <dt>분류</dt>
-                        <dd>식생활 - 음식기 - 저장운반 - 병</dd>
+                        <dd id="detailClassification"></dd>
 
                         <dt>크기</dt>
-                        <dd>높이 21.1cm, 입지름 3.7cm, 바닥지름 7.8cm</dd>
+                        <dd id="detailSize"></dd>
 
                         <dt>지정문화유산</dt>
-                        <dd>보물</dd>
+                        <dd id="detailHeritage"></dd>
 
                         <dt>소장품번호</dt>
-                        <dd>수정111</dd>
+                        <dd id="detailInventoryNo"></dd>
 
                         <dt>전시위치</dt>
-                        <dd>기증2</dd>
+                        <dd id="detailLocation"></dd>
                     </dl>
                 </aside>
             </section>
+
             <hr>
-            <p class="description">둥근 항아리를 8모로 깎아 면面을 만들고 그 위로 목이 긴 병을 얹은 단정한 모양의 호리병으로 조선 백자에서는 보기 드문 형태를 갖추고 있다. 순백색 여백의 미를 살리면서 무늬를 적절히 배치하였는데 위쪽에는 길상도안吉祥圖案의 한 종류인 전보錢寶와 방승보方勝寶를 그려 넣었고, 아래의 각진 면에는 난초와 패랭이꽃을 담백하고 정갈하게 표현하여 한국적인 정취를 한껏 살렸다. 경기도 광주 금사리의 조선 후기 가마에서 만든 것으로 여겨진다.</p>
-        </main>
-        <footer>
-            <!--전체 통일 footer 들어가는 부분-->
-        </footer>
-    </body>
+
+            <!-- 아래 설명문 -->
+            <p class="description" id="detailDescription"></p>
+
+        </div>
+    </main>
+
+    <footer>
+        <!-- 전체 통일 footer 들어가는 부분 -->
+    </footer>
+
+    <!-- 디테일 데이터/확대 기능 JS -->
+    <script src="collection_detail.js"></script>
+</body>
 </html>
+
