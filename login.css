@@ -1,0 +1,119 @@
+:root {
+            --font-h1: 28px; 
+            --font-h2: 48px;
+            --font-h3: 32px;
+            --font-h4: 28px;
+            --font-h5: 18px;
+            --font-p1: 24px;
+            --font-p2: 12px;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 40px;
+        }
+        .breadcrumb a {
+            text-decoration: none;
+            color: #888;
+        }
+        .breadcrumb .current a {
+            color: #333;
+            font-weight: bold;
+        }
+
+        .page-title {
+            font-size: var(--font-h2);
+            font-weight: bold;
+            margin: 0 0 20px 0;
+        }
+
+        hr {
+            border: 0;
+            height: 2px;
+            background: #ddd;
+            margin-bottom: 60px;
+        }
+
+        .login-wrapper {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center;
+            padding-bottom: 100px;
+        }
+
+        .google-icon-user {
+            font-size: 100px !important; 
+            color: #009688; 
+            margin-bottom: 10px;
+            user-select: none; 
+        }
+
+        .login-header-en {
+            font-size: var(--font-h4);
+            font-weight: 500;
+            margin: 10px 0;
+            color: #000;
+        }
+        
+        .login-desc {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 30px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        
+        input::placeholder {
+            color: #aaa;
+        }
+
+        .signup-link {
+            margin-top: 20px;
+            font-size: var(--font-p2);
+            color: #666;
+        }
+        .signup-link a {
+            text-decoration: none;
+            color: #666;
+            margin-left: 5px;
+        }
+
+        .najeon-button {
+            width: 100%;
+            padding: 15px 0;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            background-color: #009688; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
