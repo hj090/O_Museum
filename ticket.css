@@ -1,0 +1,389 @@
+/*HTML 기본 스타일링*/
+.tit a:hover {
+    text-decoration: underline;
+}
+
+.main_content {
+    max-width: 1200px;
+    min-width: 1000px;
+    margin: 50px auto 100px;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+    height: auto;
+}
+
+.float-cont {
+    display: flex;
+    width: 300px;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    top: 0;
+    transition: margin-top 0.5s ease-out;
+}
+
+.receipt {
+    display: flex;
+    min-width: 260px;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: center;
+
+    background: #fff;
+    box-shadow: -4px 0 24px 0 #d9d9d9, 4px 0 24px 0 #d9d9d9, 0 -4px 24px 0 #d9d9d9, 0 4px 24px 0 #d9d9d9;
+}
+
+.receipt_info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-self: stretch;
+    border-bottom: 1px dashed #000000;
+    padding-bottom: 20px;
+}
+
+.total_price_cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0 20px;
+    gap: 20px;
+}
+
+.next_btn {
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    align-self: stretch;
+    border: none;
+    border-radius: 4px;
+    background: #8abebb;
+
+    color: #fff;
+}
+
+.next_btn .nav-arrow {
+    color: white;
+}
+
+.accordion_wrap {
+    display: flex;
+    width: 850px;
+    max-width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 0 auto;
+}
+
+.stepchk {
+    width: 100%;
+}
+
+/*accordion_wrap 요소*/
+.accordion_wrap li .tit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    cursor: pointer;
+    border-bottom: 1px solid #d9d9d9;
+
+    width: 100%;
+}
+
+.accordion_wrap li .tit:hover {
+    background: #fafafa;
+}
+
+.accordion_wrap li .tit::after {
+    font-family: "Material Icons";
+    content: "keyboard_arrow_down";
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+.open .tit::after {
+    transform: rotate(180deg);
+}
+
+/*닫힌 토글 애니메이션*/
+.accordion_cont {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease, padding 0.3s ease, background-color 0.3s ease;
+    overflow: hidden;
+    padding: 0 30px;
+    background: transparent;
+}
+
+/* 내부 컨텐츠를 감싸는 wrapper */
+.accordion_cont > * {
+    min-height: 0;
+    width: 100%;
+}
+
+/*열린 토글 전체 스타일링*/
+.open .accordion_cont {
+    grid-template-rows: 1fr;
+    padding: 50px 30px;
+    background: #f8f8f8;
+}
+
+/*step별 토글 스타일링*/
+
+/*가이드 란*/
+.guide {
+    display: flex;
+    padding: 20px 30px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+
+    border: 1px dashed #d9d9d9;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.guide p {
+    margin: 0;
+}
+
+.guide_list ul {
+    display: flex;
+}
+
+.guide_list li {
+    color: #8c8c8c;
+    border-bottom: 1px solid #d9d9d9;
+    padding: 10px 0 10px 0;
+}
+
+.guide_list li:last-child {
+    border-bottom: none;
+}
+
+.guide_list .li-tit {
+    font-weight: bold;
+    color: black;
+    border-bottom: none;
+    list-style: square;
+    list-style-position: inside;
+}
+
+/*날짜 선택 step*/
+#step0-body {
+    display: grid;
+    column-gap: 30px;
+    flex: 1 0 0;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+}
+
+.calender_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.calendar_info_cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+/*캘린더 디자인*/
+.calendar_wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.calendar_top {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    align-self: stretch;
+}
+
+.month_choice li {
+    display: inline-block;
+    position: relative;
+    margin-left: 16px;
+}
+
+.month_choice li::before {
+    height: 15px;
+    content: "";
+    border-left: 1px solid #d9d9d9;
+}
+
+.month_choice li:first-child::before {
+    display: none;
+}
+
+/*시간 선택 토글*/
+#step1-body {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 40px;
+}
+
+.time_wrap ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+.v-line {
+    border-left: 1px solid #d9d9d9;
+    height: auto;
+}
+
+.select_time {
+    display: flex;
+    height: 70px;
+    min-height: 70px;
+
+    border-radius: 4px;
+    border: 1px solid #d9d9d9;
+    background-color: white;
+}
+
+.select_time a {
+    display: flex;
+    padding: 10px 20px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.select_time .date {
+    display: flex;
+    align-items: center;
+}
+
+.select_time span {
+    font-weight: 500;
+}
+
+.select_time .time_quantity {
+    color: #8c8c8c;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+/*매진된 시간대*/
+.select_time.sold_out {
+    background-color: #d9d9d9;
+}
+.select_time.sold_out .date {
+    text-decoration: line-through;
+}
+/*선택한 시간대*/
+.select_time.pick {
+    background-color: #008573;
+    color: white;
+}
+.select_time.pick .time_quantity {
+    background-color: #008573;
+    color: white;
+}
+
+/*인원 선택 토글*/
+
+#step2-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+/*인원 선택 영역*/
+
+.num_check {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.choice_box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 8px 0;
+    padding: 20px 0 20px;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.choice_box dl {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin: 0;
+    padding-right: 50px;
+    font-weight: 500;
+}
+
+.choice_box dt,
+.choice_box dd {
+    float: none;
+}
+
+.choice_box dd {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+}
+
+/* 오른쪽 카운터 */
+.choice_box .counter {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.choice_box .counter button {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    border: 2px solid #1a1a1a;
+    background: #fff;
+    font-size: 20px;
+}
+
+.choice_box .counter button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.choice_box .counter span {
+    min-width: 20px;
+    text-align: center;
+}

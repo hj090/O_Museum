@@ -1,11 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="2410552 임유미" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="layout.css" />
+        <link rel="stylesheet" href="ticket.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@700&family=Noto+Sans:wght@300;400;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <title>온라인 예매</title>
+    </head>
+    <body>
+        <header class="header" aria-label="Site header"></header>
+
+        <div class="main">
+            <div class="main_content">
+                <div class="pageheader">
+                    <!--breadcrumb 요소-->
+                    <div class="nav_location" aria-label="breadcrumb">
+                        <a href="index.html">
+                            <span class="material-icons home" aria-hidden="true">home</span>
+                        </a>
+                        <span class="material-icons nav-arrow" aria-hidden="true">arrow_forward_ios</span>
+                        <a href="info.html">
+                            <span class="nav-text">관람정보</span>
+                        </a>
+                        <span class="material-icons nav-arrow" aria-hidden="true">arrow_forward_ios</span>
+                        <a href="ticket.html">
+                            <span class="nav-text">온라인 예매</span>
+                        </a>
+                    </div>
+                    <h2>온라인 예매</h2>
+                    <p>
+                        미예약자는 로비 안내데스크에서 티켓 발권 후 관람이 가능합니다. 다만 전시장 내부가 혼잡할 경우 입장 대기시간이 발생하거나 길어질 수 있습니다.<br />
+                        주차장이 협소하여 만차 시 주차가 불가하오니 가급적 대중교통을 이용하여 주시기 바랍니다.
+                    </p>
+                </div>
+                <div class="container">
+                    <div class="accordion_wrap">
+                        <!--토글 영역-->
+                        <ul class="stepchk">
+                            <!--날짜 선택 토글-->
+                            <li class="" id="step0">
+                                <!--토글 제목-->
+                                <a href="#" class="tit" title="예약 가능일" id="step0-head">
+                                    <h3 class="g-title">날짜 선택</h3>
+                                </a>
+                                <!--토글 내용-->
+                                <div class="accordion_cont">
+                                    <!--2분할 Grid-->
+                                    <div id="step0-body">
+                                        <!--좌측 달력 영역-->
+                                        <div class="calendar_wrap">
+                                            <div class="calendar_top">
+                                                <!-- 개인 연/월 -->
+                                                <select id="calendar_date" onchange="changeCalendarSelectView(this)" style="width: 110px" title="년월 선택">
+                                                    <option value="202512" selected="">2025년 12월</option>
+                                                    <option value="202601">2026년 01월</option>
+                                                </select>
+                                                <ul class="month_choice">
+                                                    <li>
+                                                        <a href="javascript:prevCalender()" class="p_month" id="calendar_previousBtn" title="이전달">
+                                                            <span class="material-icons nav-arrow" aria-hidden="true">arrow_back_ios</span>
+                                                            이전달
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:nextCalender();" class="n_month" id="calendar_nextBtn" title="다음달">
+                                                            다음달
+                                                            <span class="material-icons nav-arrow" aria-hidden="true">arrow_forward_ios</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="calendar_cont clickDay">
+                                                <table>
+                                                    <caption>
+                                                        예매달력
+                                                    </caption>
+                                                    <colgroup>
+                                                        <col sytle="width:auto" />
+                                                        <col sytle="width:auto" />
+                                                        <col sytle="width:auto" />
+                                                        <col sytle="width:auto" />
+                                                        <col sytle="width:auto" />
+                                                        <col sytle="width:auto" />
+                                                        <col sytle="width:auto" />
+                                                    </colgroup>
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">SUN</th>
+                                                            <th scope="col">MON</th>
+                                                            <th scope="col">TUE</th>
+                                                            <th scope="col">WED</th>
+                                                            <th scope="col">THU</th>
+                                                            <th scope="col">FRI</th>
+                                                            <th scope="col">SAT</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="calendar_body">
+                                                        <!--JS 캘린더 생성-->
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <!--우측 예약 정보 영역-->
+                                        <div class="calendar_info_cont">
+                                            <ul class="day_type">
+                                                <li>
+                                                    <span class="day_type_box available"></span>
+                                                    <span class="day_type_text">예약 가능일</span>
+                                                </li>
+                                                <li>
+                                                    <span class="day_type_box selected"></span>
+                                                    <span class="day_type_text">예약 선택일</span>
+                                                </li>
+                                            </ul>
+
+                                            <!--예매 및 관람 안내-->
+                                            <div class="guide">
+                                                <ul class="guide_list">
+                                                    <li class="li-tit"><strong>예매 및 관람 안내</strong></li>
+                                                    <li>온라인 개인예매는 관람일 14일 전부터 가능하며, 개인별 예매 가능한 인원은 최대 4명입니다.</li>
+                                                    <li>안전하고 쾌적한 관람을 위하여 반드시 예매 사항을 지켜주시기 바라며, 방문이 어려우시면 다른 관람객을 위해 반드시 예매를 취소해 주시기 바랍니다.</li>
+                                                    <li>선택하신 관람 시간부터 다음 관람 시간 전까지 입장 가능하며, 전시 관람은 18시까지 가능합니다.</li>
+                                                    <li>주차장이 협소하여 만차 시 주차가 불가하오니 가급적 대중교통을 이용하여 주시기 바랍니다.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <!--시간 선택 토글-->
+                            <li class="" id="step1">
+                                <a href="#" class="tit" title="예약 가능일" id="step1-head">
+                                    <h3 class="g-title">시간 선택</h3>
+                                </a>
+                                <div class="accordion_cont">
+                                    <div class="time_wrap clickTime" id="step1-body">
+                                        <ul class="clickTime_left">
+                                            <li class="select_time sold_out">
+                                                <a href="#" title="">
+                                                    <span class="date">10:00
+                                                        <span class="time_quantity"> 남은 수량<span id="time1_quantity"> 0</span> </span>
+                                                    </span>
+                                                    <span>마감</span>
+                                                    <input type="hidden" name="possibleCnt" value="98" />
+                                                </a>
+                                            </li>
+                                            <li class="select_time sold_out">
+                                                <a href="#" title="">
+                                                    <span class="date">11:00
+                                                        <span class="time_quantity"> 남은 수량<span id="time2_quantity"> 0</span> </span>
+                                                    </span>
+                                                    <span>마감</span>
+                                                    <input type="hidden" name="possibleCnt" value="87" />
+                                                </a>
+                                            </li>
+                                            <li class="select_time sold_out">
+                                                <a href="#" title="">
+                                                    <span class="date">12:00
+                                                    <span class="time_quantity">남은 수량
+                                                        <span id="time3_quantity"> 0</span></span>
+                                                    </span>
+                                                    <span>마감</span>
+                                                    <input type="hidden" name="possibleCnt" value="93" />
+                                                </a>
+                                            </li>
+                                            <li class="select_time pick">
+                                                <a href="#" title="시간 선택됨">
+                                                    <span class="date">13:00
+                                                    <span class="time_quantity">남은 수량<span id="time4_quantity"> 0</span> </span>
+                                                    </span>
+                                                    <span>예약 가능</span>
+                                                    <input type="hidden" name="possibleCnt" value="93" />
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="v-line"></div>
+                                        <ul class="clickTime_right">
+                                            <li class="select_time">
+                                                <a href="#" title="">
+                                                    <span class="date">14:00
+                                                    <span class="time_quantity">남은 수량<span id="time5_quantity"> 0</span> </span>
+                                                    </span>
+                                                    <span>예약 가능</span>
+                                                    <input type="hidden" name="possibleCnt" value="78" />
+                                                </a>
+                                            </li>
+                                            <li class="select_time">
+                                                <a href="#" title="">
+                                                    <span class="date">15:00
+                                                    <span class="time_quantity">남은 수량<span id="time6_quantity"> 0</span> </span>
+                                                    </span>
+                                                    <span>예약 가능</span>
+                                                    <input type="hidden" name="possibleCnt" value="33" />
+                                                </a>
+                                            </li>
+                                            <li class="select_time">
+                                                <a href="#" title="">
+                                                    <span class="date">16:00
+                                                    <span class="time_quantity">남은 수량<span id="time7_quantity"> 0</span> </span>
+                                                    </span>
+                                                    <span>예약 가능</span>
+                                                    <input type="hidden" name="possibleCnt" value="94" />
+                                                </a>
+                                            </li>
+                                            <li class="select_time">
+                                                <a href="#" title="">
+                                                    <span class="date">17:00
+                                                    <span class="time_quantity">남은 수량<span id="time8_quantity"> 0</span> </span>
+                                                    </span>
+                                                    <span>예약 가능</span>
+                                                    <input type="hidden" name="possibleCnt" value="97" />
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <!--시간 선택 토글 끝-->
+
+                            <!--인원 선택 토글-->
+                            <li class="" id="step2">
+                                <a href="#" class="tit" title="예약 가능일" id="step2-head">
+                                    <h3 class="g-title">인원 선택</h3>
+                                </a>
+                                <div class="accordion_cont">
+                                    <div class="people_wrap clickPeople" id="step2-body">
+                                        <div class="num_check">
+                                            <div class="choice_box">
+                                                <dl>
+                                                    <dt>성인 <span> (만 25~64세)</span></dt>
+                                                    <dd><strong>20,000</strong> <span>원</span></dd>
+                                                </dl>
+                                                <div class="counter" id="peopleType01">
+                                                    <button type="button" class="decrease" onclick="decrease('peopleType01')">-</button>
+                                                    <span id="adult-count">0</span>
+                                                    <button type="button" class="increase" onclick="increase('peopleType01')">+</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="choice_box">
+                                                <dl>
+                                                    <dt>청년 <span>(만 19~24세) 및 대학(원)생</span></dt>
+                                                    <dd><strong>12,000</strong> <span>원</span></dd>
+                                                </dl>
+                                                <div class="counter" id="peopleType02">
+                                                    <button type="button" class="decrease" onclick="decrease('peopleType02')">-</button>
+                                                    <span id="adult-count">0</span>
+                                                    <button type="button" class="increase" onclick="increase('peopleType02')">+</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="choice_box">
+                                                <dl>
+                                                    <dt>청소년 <span> (만 7~18세)</span></dt>
+                                                    <dd><strong>10,000</strong> <span>원</span></dd>
+                                                </dl>
+                                                <div class="counter" id="peopleType03">
+                                                    <button type="button" class="decrease" onclick="decrease('peopleType03')">-</button>
+                                                    <span id="adult-count">0</span>
+                                                    <button type="button" class="increase" onclick="increase('peopleType03')">+</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="choice_box">
+                                                <dl>
+                                                    <dt>시니어 <span> (만 25~64세)</span></dt>
+                                                    <dd><strong>10,000</strong> <span>원</span></dd>
+                                                </dl>
+                                                <div class="counter" id="peopleType04">
+                                                    <button type="button" class="decrease" onclick="decrease('peopleType04')">-</button>
+                                                    <span id="adult-count">0</span>
+                                                    <button type="button" class="increase" onclick="increase('peopleType04')">+</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="choice_box">
+                                                <dl>
+                                                    <dt>지역 주민</dt>
+                                                    <dd><strong>16,000</strong> <span>원</span></dd>
+                                                </dl>
+                                                <div class="counter" id="peopleType05">
+                                                    <button type="button" class="decrease" onclick="decrease('peopleType05')">-</button>
+                                                    <span id="adult-count">0</span>
+                                                    <button type="button" class="increase" onclick="increase('peopleType05')">+</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="choice_box">
+                                                <dl>
+                                                    <dt>미취학 아동 <span> (~만 6세)</span></dt>
+                                                    <dd><strong>무료</strong></dd>
+                                                </dl>
+                                                <div class="counter" id="peopleType06">
+                                                    <button type="button" class="decrease" onclick="decrease('peopleType06')">-</button>
+                                                    <span id="adult-count">0</span>
+                                                    <button type="button" class="increase" onclick="increase('peopleType06')">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="guide">
+                                            <ul class="guide_list">
+                                                <li class="li-tit"><strong>GUIDE</strong></li>
+                                                <li>예매완료 후 모바일티켓(QR)을 이용하시면 더욱 편리한 전시관람이 가능합니다.<br>
+                                                    (각 전시장 입구에 준비된 QR 리더기에 모바일 티켓을 스캔해주시기 바랍니다.)</li>
+                                                <li>유료 전시의 경우 무료 및 할인 대상자는 모바일 티켓(QR)이 전송되지 않으며, 로비 안내데스크에서 해당 증빙 확인 및 종이티켓 발권 후 전시관람이 가능합니다. 증빙 미지참 시 현장에서 차액을 지불하셔야 함을 유의해주시기 바랍니다.</li>
+                                                <li>숨 멤버십 회원은 별도의 예매 없이 상시 관람이 가능합니다. (멤버십 전용데스크 운영)<br>
+                                                    매월 마지막주 수요일 ‘문화가 있는 날’에는 50% 할인된 가격에 관람이 가능합니다. (중복할인 없음)
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--토글영역 끝-->
+                    <!--영수증-->
+                    <div class="float-cont">
+                        <h3>결제</h3>
+                        <div class="receipt">
+                            <ul class="receipt_info">
+                                <li id="receipt_date">날짜 - <span>11월 28일 (금)</span></li>
+                                <li id="receipt_time">시간 - <span>13:00</li>
+                                <li id="receipt_people">인원 - <span>성인 1</span></li>
+                            </ul>
+
+                            <div class="total_price_cont">
+                                <span class="total_price_text">총 금액</span>
+                                <span class="price_area">
+                                    <span id="total_price">0</span>
+                                    <span class="total_price_text">원</span>
+                                </span>
+                            </div>
+                            <button type="button" class="next_btn" onclick="goToPayment()">
+                                <span id="next_btn_text"><h5>다음</h5></span>
+                                <span class="material-icons nav-arrow" aria-hidden="true">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer id="footer" class="site-footer" aria-label="Site footer"></footer>
+
+        <script src="ticket.js"></script>
+        <script src="calendar.js"></script>
+    </body>
 </html>

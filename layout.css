@@ -1,0 +1,99 @@
+/* 기본 레이아웃*/
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: "Noto Sans", Arial, sans-serif;
+    background: #ffffff;
+    color: #222;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/*전체 폰트 사이즈*/
+h2 {
+    font-size: 48px;
+    margin: 0;
+}
+h3 {
+    font-size: 32px;
+    margin: 0;
+}
+h4 {
+    font-size: 24px;
+    margin: 0;
+}
+h5 {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    margin: 0;
+}
+p {
+    font-size: 16px;
+    margin: 5;
+}
+
+/*HTML 기본 스타일링*/
+figure {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/*page nav 요소*/
+.nav-arrow {
+    font-size: 16px;
+    color: #b4b4b4;
+    margin: 0 6px;
+}
+.map-arrow {
+    font-size: 18px;
+    vertical-align: middle;
+    margin-left: 6px;
+}
+.nav-text {
+    color: #8c8c8c;
+}
+.nav_location {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #8c8c8c;
+    font-size: 16px;
+}
+
+.nav_location a:hover {
+    text-decoration: underline;
+}
+
+/*pageheader*/
+.pageheader {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Material icons styling */
+.material-icons {
+    font-family: "Material Icons";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    vertical-align: middle;
+}
