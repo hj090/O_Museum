@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta name="2311692 송유민" content="소장품 상세 페이지">
+    <title>소장품 상세</title>
+    <link rel="stylesheet" href="collection.css">
+</head>
+<body>
+    <header>
+        <!-- 전체 통일 nav 바 들어가는 부분 -->
+    </header>
+
+    <main>
+        <div class="layout">
+
+            <!-- 브래드크럼 -->
+            <nav class="breadcrumb">
+                <a href="index.html"><img src="home.png" alt="홈"></a>
+                <img src="arrow_forward_ios.png" alt="화살표">
+                <a href="collection.html">소장품</a>
+                <img src="arrow_forward_ios.png" alt="화살표">
+                <span id="breadcrumbTitle">소장품 상세</span>
+            </nav>
+
+            <span class="page-title">소장품 검색</span>
+
+            <!-- 상세 패널 -->
+            <section class="detail-panel">
+                <!-- 왼쪽: 이미지 + 확대 -->
+                <div class="detail-media">
+                    <div class="detail-image-frame">
+                        <div class="img-zoom-container">
+                            <!-- JSON + JS로 src, alt 채움 -->
+                            <img
+                                src=""
+                                alt=""
+                                class="detail-image"
+                                id="mainImg"
+                            >
+                            <!-- 돋보기 렌즈 -->
+                            <div id="lens"></div>
+                        </div>
+                    </div>
+                    <p class="zoom-note">
+                        *이미지에 마우스를 올려 확대해 보세요.
+                    </p>
+                </div>
+
+                <!-- 오른쪽: 정보 -->
+                <aside class="detail-info">
+                    <!-- 작품 제목 -->
+                    <h1 class="object-title" id="detailTitle"></h1>
+
+                    <!-- 메타 정보 -->
+                    <dl class="object-meta">
+                        <dt>다른명칭</dt>
+                        <dd id="detailOtherNames"></dd>
+
+                        <dt>전시명칭</dt>
+                        <dd id="detailExhibitionName"></dd>
+
+                        <dt>국적/시대</dt>
+                        <dd id="detailNationEra"></dd>
+
+                        <dt>재질</dt>
+                        <dd id="detailMaterial"></dd>
+
+                        <dt>분류</dt>
+                        <dd id="detailClassification"></dd>
+
+                        <dt>크기</dt>
+                        <dd id="detailSize"></dd>
+
+                        <dt>지정문화유산</dt>
+                        <dd id="detailHeritage"></dd>
+
+                        <dt>소장품번호</dt>
+                        <dd id="detailInventoryNo"></dd>
+
+                        <dt>전시위치</dt>
+                        <dd id="detailLocation"></dd>
+                    </dl>
+                </aside>
+            </section>
+
+            <hr>
+
+            <!-- 아래 설명문 -->
+            <p class="description" id="detailDescription"></p>
+
+        </div>
+    </main>
+
+    <footer>
+        <!-- 전체 통일 footer 들어가는 부분 -->
+    </footer>
+
+    <!-- 디테일 데이터/확대 기능 JS -->
+    <script src="collection_detail.js"></script>
+</body>
+</html>
+
