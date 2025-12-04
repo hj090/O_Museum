@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="index.html">홈</a>
+            <span> &gt; </span>
+            <span class="current"><a href="mypage.html">마이페이지</a></span>
+            <span> &gt; </span>
+            <span class="current">로그인</span>
+        </nav>
+
+        <h2 class="page-title">로그인</h2>
+        <hr>
+
+        <div class="login-wrapper">
+            <span class="material-symbols-outlined google-icon-user">
+                account_circle
+            </span>
+            
+            <h4 class="login-header-en">LOGIN</h4>
+            <p class="login-desc">로그인 정보를 입력해주세요</p>
+
+            <form action="" id="loginForm">
+                <input type="text" id="loginId" placeholder="아이디를 입력해주세요" required>
+                <input type="password" id="loginPw" placeholder="비밀번호를 입력해주세요" required>
+                
+                <button type="submit" class="najeon-button">로그인</button>
+            </form>
+
+            <p class="signup-link">계정이 없으신가요? <a href="signup.html">가입하기</a></p>
+        </div>
+    </main>
+
+    <script src="login.js"></script>
+
+</body>
+</html>
