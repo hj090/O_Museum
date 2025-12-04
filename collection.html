@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="kor">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="소장품 페이지">
+        <title>소장품</title>
+        <link rel="stylesheet" href="collection.css">
+    </head>
+    <body>
+        <header>
+            <!--전체 통일 nav 바 들어가는 부분-->
+        </header>
+        <main>
+            <span id="banner"><img src="소장품 배너 이미지.png" alt="소장품 배너 이미지"></span>
+            <div class="layout">
+                
+            <nav class="breadcrumb">
+                <a href="index.html">
+                    <img src="home.png" alt="홈">
+                </a>
+                <img src="arrow_forward_ios.png" alt="화살표">
+                <span class="current">소장품</span>
+            </nav>
+
+            <h1 class="page-title">숨 박물관 소장품</h1>
+            <p class="description">5천만년의 시간속<br>한국의 아름다움을 품은 소장품을 만나보세요</p>
+            <section class="search-area">
+    <div class="search-bar">
+        <input
+            type="text"
+            class="search-input"
+            id="searchInput"
+            placeholder="소장품을 검색하세요.">
+        <button type="button" class="search-btn" id="searchBtn">
+            <img src="search.png" alt="돋보기">
+        </button>
+    </div>
+
+    <div class="search-filters">
+        <label class="filter-item">
+            <input type="checkbox" class="filter-checkbox" value="청자"> 청자
+        </label>
+        <label class="filter-item">
+            <input type="checkbox" class="filter-checkbox" value="백자"> 백자
+        </label>
+        <label class="filter-item">
+            <input type="checkbox" class="filter-checkbox" value="분청사기"> 분청사기
+        </label>
+        <label class="filter-item">
+            <input type="checkbox" class="filter-checkbox" value="금공"> 금공
+        </label>
+        <label class="filter-item">
+            <input type="checkbox" class="filter-checkbox" value="서화·문헌"> 서화·문헌
+        </label>
+        <label class="filter-item">
+            <input type="checkbox" class="filter-checkbox" value="석조"> 석조
+        </label>
+    </div>
+</section>
+
+            <hr>
+
+<p class="result-count" id="resultCount">총 0건이 검색되었습니다.</p>
+
+<section class="item-list">
+    <div class="item-grid" id="itemGrid">
+        <!-- 자바스크립트로 카드 12개씩 채워 넣을 자리 -->
+    </div>
+</section>
+
+<p class="page-info" id="pageInfo">
+    <span class="current-page">페이지 1</span>
+    <span class="slash">/</span>
+    <span class="total-page">7</span>
+</p>
+
+<nav class="pagination" id="pagination">
+    <!-- JS가 « ‹ 1 2 3 ... › » 를 생성 -->
+</nav>
+
+            </div>
+        </main>
+        <footer>
+            <!--전체 통일 footer 들어가는 부분-->
+        </footer>
+        <script src="collections.js"></script>
+    </body>
+</html>
