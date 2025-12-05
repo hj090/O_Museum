@@ -1,9 +1,19 @@
+header { /*2415347 윤서영 css추가*/
+    position: static;
+}
+
+#main-nav {
+    position: static;
+}
+
+
 
         body {
             margin: 0;
             background-color: black;
             text-decoration: white;
             color: white;
+            padding-top: 0;
         }
         
         .homecover img{
@@ -15,7 +25,6 @@
         .main_container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 100px;
         }
         .breadcrumb {
             margin: 40px 0;
@@ -25,6 +34,11 @@
             margin: 80px 0;
             color: white;
             font-size: 32px;
+        }
+        h1 {  /*2415347 윤서영*/
+            margin: 20px 0;
+            color: white;
+            font-size: 48px;
         }
         #info {
             font-size: 24px
@@ -110,8 +124,9 @@
         }
         .map-trigger {
             position: relative;
+            transform: translateY(+20px); /*2415347 윤서영 css추가*/
             cursor: pointer;
-            font-size: 28px;
+            font-size: 38px; /*2415347 윤서영 css수정*/
         }
 
         hr {

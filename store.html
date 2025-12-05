@@ -5,30 +5,73 @@
     <meta name="viewport" content="width=device-width initial-scale=1.0">
     <meta name="2415347 윤서영", content="기념품 페이지">
     <title>기념품 페이지</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="store.css">
 </head>
 
 <body>
-    <header></header>
+    <header>
+        <div id="header-main">
+            <div id="icon-menu">
+                <button id="search-toggle-btn" title="검색">
+                    <i class="fas fa-search"></i>
+                </button>
+            
+            
+            </div>
+            
+            <div class="logo">
+                <a href="index.html">ㅅㅜㅁ 박물관</a>
+            </div>
+            
+            <div id="header-cta-buttons">
+                <a href="mypage.html" id="mypage-btn" title="로그인">
+                    <span>로그인</span>
+                </a>
+                <a href="mypage.html" id="mypage-btn" title="회원가입">
+                    <span>회원가입</span>
+                </a>
+
+                <a href="ticket.html" id="ticket-btn" title="티켓 예매하기">
+                    <svg viewBox="0 0 16 16" width="1em" height="1em" focusable="false" aria-hidden="true" fill="currentColor"><path d="M9.13.5a.9.9 0 0 1 1.28 0l1.17 1.18c.2.2.3.5.25.79a1.48 1.48 0 0 0 1.7 1.7c.3-.04.59.05.79.25l1.17 1.17a.9.9 0 0 1 0 1.28L6.87 15.5a.9.9 0 0 1-1.28 0L.51 10.41a.9.9 0 0 1 0-1.28zm.64.78L1.28 9.77l4.95 4.95 8.49-8.49-1.1-1.1c-.74.15-1.52-.1-2.08-.67s-.82-1.34-.7-2.14L9.77 1.28zm.53 5.13c.1-.1.25-.1.35 0l.35.35c.1.1.1.26 0 .36l-4.59 4.6a.27.27 0 0 1-.36 0l-.35-.36a.25.25 0 0 1 0-.36l4.6-4.59zm-2.24-.59c.1-.1.26-.1.35 0l.36.35c.1.1.1.26 0 .36L5 10.3c-.1.1-.26.1-.36 0l-.35-.35a.25.25 0 0 1 0-.36l3.77-3.77z"></path></svg>
+                    <span>예매</span>
+                </a>
+            </div>
+
+        </div>
+
+        <div id="search-bar">
+            <input type="text" placeholder="작품명, 작가, 전시회 검색">
+        </div>
+
+        <nav id="main-nav">
+            <a href="info.html">관람정보</a>
+            <a href="exhibition.html">전시·행사</a>
+            <a href="store.html" class="active">기념품</a>
+            <a href="collection.html">소장품</a>
+        </nav>
+        
+    </header>
 
     <div class="slider-container">
         <div class="slider-wrapper">
             <div class="slide">
-                <img src="Resources/store/store_banner1.jpg" alt="배너 이미지 1">
+                <img src="Resources/store_banner1.jpg" alt="배너 이미지 1">
                 <div class="slide-content">
                     <h4>상품 구매는 오프라인 매장에서만 가능합니다.<br>고객님의 너른 양해 부탁드립니다.</h4>
                     <h2>숨박물관<br>오프라인 매장 영업중</h2>
                 </div>
             </div>
             <div class="slide">
-                <img src="Resources/store/store_banner3.jpg" alt="배너 이미지 3">
+                <img src="Resources/store_banner3.jpg" alt="배너 이미지 3">
                 <div class="slide-content">
                     <h4>신라의 문화유산과 함께 하는<br>APEC 2025 KOREA</h4>
                     <h2>천년의 미소<br>세계를 맞이하다</h2>
                 </div>
             </div>
             <div class="slide">
-                <img src="Resources/store/store_banner4.jpg" alt="배너 이미지 4">
+                <img src="Resources/store_banner4.jpg" alt="배너 이미지 4">
                 <div class="slide-content">
                     <h4>고객님들의 성원에 감사드립니다.<br>3차 판매 일정은 12월 재공지 예정입니다.</h4>
                     <h2>곤룡포 비치타월<br>오프라인 2차 판매중</h2>
@@ -48,9 +91,9 @@
     <main>
         <div class="breadcrumb">
             <a href="index.html">
-                <img src="Resources/store/home.png" alt="홈 아이콘" style="width:30px; height:30px;">
+                <img src="Resources/all_홈아이콘.png" alt="홈 아이콘" style="width:30px; height:30px;">
             </a>
-            <img src="Resources/store/arrow_forward_ios.png" alt="화살표 아이콘" style="width:24px; height:24px;">
+            <img src="Resources/all_화살표아이콘.png" alt="화살표 아이콘" style="width:24px; height:24px;">
             <a href="store.html">
                 <p>기념품</p>
             </a>
@@ -90,8 +133,51 @@
         </div>
     </main>
 
-    <footer></footer>
+    <footer>        
+        <div class="content-wrapper">
+            <div class="footer-main">
+                <div style="display: flex; flex-wrap: wrap;">
+                    <div class="footer-links">
+                        <a href="#">유휴공간표준관리시스템</a>
+                        <a href="#">소속박물관 바로가기</a>
+                        <a href="#">안내(PDF) 내려받기</a>
+                        <a href="#">소속박물관 뉴스레터</a>
+                    </div>
+                    <div class="footer-links">
+                        <a href="#">사이트 바로가기</a>
+                        <a href="#">개인정보처리방침</a>
+                        <a href="#">이용약관</a>
+                        <a href="#">저작권정책</a>
+                    </div>
+                    <div class="footer-links">
+                        <a href="#">정보공개</a>
+                        <a href="#">국민신문고</a>
+                        <a href="#">오시는길</a>
+                        <a href="#">기관별 연락처</a>
+                    </div>
+                </div>
+                <div class="footer-info">
+                    <p>04383 서울시 용산구 서빙고로 137</p>
+                    <p>(대표전화) 1688-0000</p>
+                    <p>ⓒ National Museum of Korea.</p>
+                    <div style="margin-top: 10px;">
+                        <span><i class="fab fa-x-twitter"></i></span>
+                        <span><i class="fab fa-facebook-f"></i></span>
+                        <span><i class="fab fa-instagram"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="p2">ㅅㅜㅁ 박물관</p>
+            </div>
+        </div>
+    </footer>
 
+    <button class="scroll-to-top" id="scrollToTopBtn" title="맨 위로">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="index.js"></script>
     <script src="card.js"></script>
     <script src="store_banner.js"></script>
     <script src="store_tabpanel.js"></script>
