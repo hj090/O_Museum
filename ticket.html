@@ -53,19 +53,18 @@
                                         <div class="calendar_wrap">
                                             <div class="calendar_top">
                                                 <!-- 개인 연/월 -->
-                                                <select id="calendar_date" onchange="changeCalendarSelectView(this)" style="width: 110px" title="년월 선택">
-                                                    <option value="202512" selected="">2025년 12월</option>
-                                                    <option value="202601">2026년 01월</option>
+                                                <select id="calendar_date" onchange="changeCalendarView()" title="년월 선택">
+                                                    <!--JS로 option 추가-->
                                                 </select>
                                                 <ul class="month_choice">
                                                     <li>
-                                                        <a href="javascript:prevCalender()" class="p_month" id="calendar_previousBtn" title="이전달">
+                                                        <a href="javascript:prevCalendar()" class="p_month" id="calendar_previousBtn" title="이전달">
                                                             <span class="material-icons nav-arrow" aria-hidden="true">arrow_back_ios</span>
                                                             이전달
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="javascript:nextCalender();" class="n_month" id="calendar_nextBtn" title="다음달">
+                                                        <a href="javascript:nextCalendar();" class="n_month" id="calendar_nextBtn" title="다음달">
                                                             다음달
                                                             <span class="material-icons nav-arrow" aria-hidden="true">arrow_forward_ios</span>
                                                         </a>
@@ -101,7 +100,7 @@
                                                     <tbody id="calendar_body">
                                                         <!--JS 캘린더 생성-->
                                                     </tbody>
-                                                </table>
+                                                    </table>
                                             </div>
                                         </div>
 
@@ -142,7 +141,7 @@
                                     <div class="time_wrap clickTime" id="step1-body">
                                         <ul class="clickTime_left">
                                             <li class="select_time sold_out">
-                                                <a href="#" title="">
+                                                <a href="#" onclick="selectTime('10:00', event)" title="">
                                                     <span class="date">10:00
                                                         <span class="time_quantity"> 남은 수량<span id="time1_quantity"> 0</span> </span>
                                                     </span>
@@ -151,7 +150,7 @@
                                                 </a>
                                             </li>
                                             <li class="select_time sold_out">
-                                                <a href="#" title="">
+                                                <a href="#" onclick="selectTime('11:00', event)" title="">
                                                     <span class="date">11:00
                                                         <span class="time_quantity"> 남은 수량<span id="time2_quantity"> 0</span> </span>
                                                     </span>
@@ -160,7 +159,7 @@
                                                 </a>
                                             </li>
                                             <li class="select_time sold_out">
-                                                <a href="#" title="">
+                                                <a href="#" onclick="selectTime('12:00', event)" title="">
                                                     <span class="date">12:00
                                                     <span class="time_quantity">남은 수량
                                                         <span id="time3_quantity"> 0</span></span>
@@ -170,7 +169,7 @@
                                                 </a>
                                             </li>
                                             <li class="select_time pick">
-                                                <a href="#" title="시간 선택됨">
+                                                <a href="#" onclick="selectTime('13:00', event)" title="시간 선택됨">
                                                     <span class="date">13:00
                                                     <span class="time_quantity">남은 수량<span id="time4_quantity"> 0</span> </span>
                                                     </span>
@@ -182,7 +181,7 @@
                                         <div class="v-line"></div>
                                         <ul class="clickTime_right">
                                             <li class="select_time">
-                                                <a href="#" title="">
+                                                <a href="#" onclick="selectTime('14:00', event)" title="">
                                                     <span class="date">14:00
                                                     <span class="time_quantity">남은 수량<span id="time5_quantity"> 0</span> </span>
                                                     </span>
@@ -191,7 +190,7 @@
                                                 </a>
                                             </li>
                                             <li class="select_time">
-                                                <a href="#" title="">
+                                                <a href="#" onclick="selectTime('15:00', event)" title="">
                                                     <span class="date">15:00
                                                     <span class="time_quantity">남은 수량<span id="time6_quantity"> 0</span> </span>
                                                     </span>
@@ -200,7 +199,7 @@
                                                 </a>
                                             </li>
                                             <li class="select_time">
-                                                <a href="#" title="">
+                                                <a href="#" onclick="selectTime('16:00', event)" title="">
                                                     <span class="date">16:00
                                                     <span class="time_quantity">남은 수량<span id="time7_quantity"> 0</span> </span>
                                                     </span>
@@ -209,7 +208,7 @@
                                                 </a>
                                             </li>
                                             <li class="select_time">
-                                                <a href="#" title="">
+                                                <a href="#" onclick="selectTime('17:00', event)" title="">
                                                     <span class="date">17:00
                                                     <span class="time_quantity">남은 수량<span id="time8_quantity"> 0</span> </span>
                                                     </span>
@@ -327,17 +326,17 @@
                         <h3>결제</h3>
                         <div class="receipt">
                             <ul class="receipt_info">
-                                <li id="receipt_date">날짜 - <span>11월 28일 (금)</span></li>
-                                <li id="receipt_time">시간 - <span>13:00</li>
-                                <li id="receipt_people">인원 - <span>성인 1</span></li>
+                                <li>날짜 - <span id="receipt_date"></span></li>
+                                <li>시간 - <span id="receipt_time"></li>
+                                <li>인원 - <span id="receipt_people">성인 1</span></li>
                             </ul>
 
                             <div class="total_price_cont">
-                                <span class="total_price_text">총 금액</span>
-                                <span class="price_area">
-                                    <span id="total_price">0</span>
-                                    <span class="total_price_text">원</span>
-                                </span>
+                                <h5 class="total_price_text">총 금액</h5>
+                                <div class="price_area">
+                                    <h3 id="total_price">0</h3>
+                                    <h5 class="total_price_text">원</h5>
+                                </div>
                             </div>
                             <button type="button" class="next_btn" onclick="goToPayment()">
                                 <span id="next_btn_text"><h5>다음</h5></span>
