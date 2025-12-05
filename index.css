@@ -6,7 +6,7 @@
             font-style: normal;
         }
 
-       :root {
+        :root {
             /* 다크 테마 색상 적용 - 사용자 요청 #008573 반영 */
             --color-primary: #008573; 
             --color-primary-hover: #00695B; /* #008573의 어두운 버전 */

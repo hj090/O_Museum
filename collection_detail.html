@@ -4,11 +4,51 @@
     <meta charset="UTF-8">
     <meta name="2311692 송유민" content="소장품 상세 페이지">
     <title>소장품 상세</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="collection.css">
 </head>
 <body>
     <header>
-        <!-- 전체 통일 nav 바 들어가는 부분 -->
+        <div id="header-main">
+            <div id="icon-menu">
+                <button id="search-toggle-btn" title="검색">
+                    <i class="fas fa-search"></i>
+                </button>
+            
+            
+            </div>
+            
+            <div class="logo">
+                <a href="index.html">ㅅㅜㅁ 박물관</a>
+            </div>
+            
+            <div id="header-cta-buttons">
+                <a href="mypage.html" id="mypage-btn" title="로그인">
+                    <span>로그인</span>
+                </a>
+                <a href="mypage.html" id="mypage-btn" title="회원가입">
+                    <span>회원가입</span>
+                </a>
+
+                <a href="ticket.html" id="ticket-btn" title="티켓 예매하기">
+                    <svg viewBox="0 0 16 16" width="1em" height="1em" focusable="false" aria-hidden="true" fill="currentColor"><path d="M9.13.5a.9.9 0 0 1 1.28 0l1.17 1.18c.2.2.3.5.25.79a1.48 1.48 0 0 0 1.7 1.7c.3-.04.59.05.79.25l1.17 1.17a.9.9 0 0 1 0 1.28L6.87 15.5a.9.9 0 0 1-1.28 0L.51 10.41a.9.9 0 0 1 0-1.28zm.64.78L1.28 9.77l4.95 4.95 8.49-8.49-1.1-1.1c-.74.15-1.52-.1-2.08-.67s-.82-1.34-.7-2.14L9.77 1.28zm.53 5.13c.1-.1.25-.1.35 0l.35.35c.1.1.1.26 0 .36l-4.59 4.6a.27.27 0 0 1-.36 0l-.35-.36a.25.25 0 0 1 0-.36l4.6-4.59zm-2.24-.59c.1-.1.26-.1.35 0l.36.35c.1.1.1.26 0 .36L5 10.3c-.1.1-.26.1-.36 0l-.35-.35a.25.25 0 0 1 0-.36l3.77-3.77z"></path></svg>
+                    <span>예매</span>
+                </a>
+            </div>
+
+        </div>
+
+        <div id="search-bar">
+            <input type="text" placeholder="작품명, 작가, 전시회 검색">
+        </div>
+
+        <nav id="main-nav">
+            <a href="info.html">관람정보</a>
+            <a href="exhibition.html">전시·행사</a>
+            <a href="store.html">기념품</a>
+            <a href="collection.html" class="active">소장품</a>
+        </nav>
     </header>
 
     <main>
@@ -92,10 +132,51 @@
         </div>
     </main>
 
-    <footer>
-        <!-- 전체 통일 footer 들어가는 부분 -->
+    <footer>        
+        <div class="content-wrapper">
+            <div class="footer-main">
+                <div style="display: flex; flex-wrap: wrap;">
+                    <div class="footer-links">
+                        <a href="#">유휴공간표준관리시스템</a>
+                        <a href="#">소속박물관 바로가기</a>
+                        <a href="#">안내(PDF) 내려받기</a>
+                        <a href="#">소속박물관 뉴스레터</a>
+                    </div>
+                    <div class="footer-links">
+                        <a href="#">사이트 바로가기</a>
+                        <a href="#">개인정보처리방침</a>
+                        <a href="#">이용약관</a>
+                        <a href="#">저작권정책</a>
+                    </div>
+                    <div class="footer-links">
+                        <a href="#">정보공개</a>
+                        <a href="#">국민신문고</a>
+                        <a href="#">오시는길</a>
+                        <a href="#">기관별 연락처</a>
+                    </div>
+                </div>
+                <div class="footer-info">
+                    <p>04383 서울시 용산구 서빙고로 137</p>
+                    <p>(대표전화) 1688-0000</p>
+                    <p>ⓒ National Museum of Korea.</p>
+                    <div style="margin-top: 10px;">
+                        <span><i class="fab fa-x-twitter"></i></span>
+                        <span><i class="fab fa-facebook-f"></i></span>
+                        <span><i class="fab fa-instagram"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="p2">ㅅㅜㅁ 박물관</p>
+            </div>
+        </div>
     </footer>
 
+    <button class="scroll-to-top" id="scrollToTopBtn" title="맨 위로">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="index.js"></script>
     <!-- 디테일 데이터/확대 기능 JS -->
     <script src="collection_detail.js"></script>
 </body>
