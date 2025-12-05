@@ -87,7 +87,7 @@
     align-self: stretch;
     border: none;
     border-radius: 4px;
-    background: #8abebb;
+    background: #008573;
 
     color: #fff;
 }
@@ -260,16 +260,6 @@
     margin-left: 16px;
 }
 
-.month_choice li::before {
-    height: 15px;
-    content: "";
-    border-left: 1px solid #d9d9d9;
-}
-
-.month_choice li:first-child::before {
-    display: none;
-}
-
 /*일 선택*/
 .calendar_cont table {
     width: 100%;
@@ -393,7 +383,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 50px;
 }
 
 /*인원 선택 영역*/

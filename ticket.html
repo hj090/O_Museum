@@ -53,7 +53,7 @@
                                         <div class="calendar_wrap">
                                             <div class="calendar_top">
                                                 <!-- 개인 연/월 -->
-                                                <select id="calendar_date" onchange="changeCalendarView()" title="년월 선택">
+                                                <select id="calendar_date" onchange="changeCalendarSelectView(this)" title="년월 선택">
                                                     <!--JS로 option 추가-->
                                                 </select>
                                                 <ul class="month_choice">
@@ -139,85 +139,11 @@
                                 </a>
                                 <div class="accordion_cont">
                                     <div class="time_wrap clickTime" id="step1-body">
-                                        <ul class="clickTime_left">
-                                            <li class="select_time sold_out">
-                                                <a href="#" onclick="selectTime('10:00', event)" title="">
-                                                    <span class="date">10:00
-                                                        <span class="time_quantity"> 남은 수량<span id="time1_quantity"> 0</span> </span>
-                                                    </span>
-                                                    <span>마감</span>
-                                                    <input type="hidden" name="possibleCnt" value="98" />
-                                                </a>
-                                            </li>
-                                            <li class="select_time sold_out">
-                                                <a href="#" onclick="selectTime('11:00', event)" title="">
-                                                    <span class="date">11:00
-                                                        <span class="time_quantity"> 남은 수량<span id="time2_quantity"> 0</span> </span>
-                                                    </span>
-                                                    <span>마감</span>
-                                                    <input type="hidden" name="possibleCnt" value="87" />
-                                                </a>
-                                            </li>
-                                            <li class="select_time sold_out">
-                                                <a href="#" onclick="selectTime('12:00', event)" title="">
-                                                    <span class="date">12:00
-                                                    <span class="time_quantity">남은 수량
-                                                        <span id="time3_quantity"> 0</span></span>
-                                                    </span>
-                                                    <span>마감</span>
-                                                    <input type="hidden" name="possibleCnt" value="93" />
-                                                </a>
-                                            </li>
-                                            <li class="select_time pick">
-                                                <a href="#" onclick="selectTime('13:00', event)" title="시간 선택됨">
-                                                    <span class="date">13:00
-                                                    <span class="time_quantity">남은 수량<span id="time4_quantity"> 0</span> </span>
-                                                    </span>
-                                                    <span>예약 가능</span>
-                                                    <input type="hidden" name="possibleCnt" value="93" />
-                                                </a>
-                                            </li>
-                                        </ul>
+                                        <ul class="clickTime_left" id="time-left"></ul>
                                         <div class="v-line"></div>
-                                        <ul class="clickTime_right">
-                                            <li class="select_time">
-                                                <a href="#" onclick="selectTime('14:00', event)" title="">
-                                                    <span class="date">14:00
-                                                    <span class="time_quantity">남은 수량<span id="time5_quantity"> 0</span> </span>
-                                                    </span>
-                                                    <span>예약 가능</span>
-                                                    <input type="hidden" name="possibleCnt" value="78" />
-                                                </a>
-                                            </li>
-                                            <li class="select_time">
-                                                <a href="#" onclick="selectTime('15:00', event)" title="">
-                                                    <span class="date">15:00
-                                                    <span class="time_quantity">남은 수량<span id="time6_quantity"> 0</span> </span>
-                                                    </span>
-                                                    <span>예약 가능</span>
-                                                    <input type="hidden" name="possibleCnt" value="33" />
-                                                </a>
-                                            </li>
-                                            <li class="select_time">
-                                                <a href="#" onclick="selectTime('16:00', event)" title="">
-                                                    <span class="date">16:00
-                                                    <span class="time_quantity">남은 수량<span id="time7_quantity"> 0</span> </span>
-                                                    </span>
-                                                    <span>예약 가능</span>
-                                                    <input type="hidden" name="possibleCnt" value="94" />
-                                                </a>
-                                            </li>
-                                            <li class="select_time">
-                                                <a href="#" onclick="selectTime('17:00', event)" title="">
-                                                    <span class="date">17:00
-                                                    <span class="time_quantity">남은 수량<span id="time8_quantity"> 0</span> </span>
-                                                    </span>
-                                                    <span>예약 가능</span>
-                                                    <input type="hidden" name="possibleCnt" value="97" />
-                                                </a>
-                                            </li>
-                                        </ul>
+                                        <ul class="clickTime_right" id="time-right"></ul>
                                     </div>
+
                                 </div>
                             </li>
                             <!--시간 선택 토글 끝-->
@@ -229,79 +155,7 @@
                                 </a>
                                 <div class="accordion_cont">
                                     <div class="people_wrap clickPeople" id="step2-body">
-                                        <div class="num_check">
-                                            <div class="choice_box">
-                                                <dl>
-                                                    <dt>성인 <span> (만 25~64세)</span></dt>
-                                                    <dd><strong>20,000</strong> <span>원</span></dd>
-                                                </dl>
-                                                <div class="counter" id="peopleType01">
-                                                    <button type="button" class="decrease" onclick="decrease('peopleType01')">-</button>
-                                                    <span id="adult-count">0</span>
-                                                    <button type="button" class="increase" onclick="increase('peopleType01')">+</button>
-                                                </div>
-                                            </div>
-
-                                            <div class="choice_box">
-                                                <dl>
-                                                    <dt>청년 <span>(만 19~24세) 및 대학(원)생</span></dt>
-                                                    <dd><strong>12,000</strong> <span>원</span></dd>
-                                                </dl>
-                                                <div class="counter" id="peopleType02">
-                                                    <button type="button" class="decrease" onclick="decrease('peopleType02')">-</button>
-                                                    <span id="adult-count">0</span>
-                                                    <button type="button" class="increase" onclick="increase('peopleType02')">+</button>
-                                                </div>
-                                            </div>
-
-                                            <div class="choice_box">
-                                                <dl>
-                                                    <dt>청소년 <span> (만 7~18세)</span></dt>
-                                                    <dd><strong>10,000</strong> <span>원</span></dd>
-                                                </dl>
-                                                <div class="counter" id="peopleType03">
-                                                    <button type="button" class="decrease" onclick="decrease('peopleType03')">-</button>
-                                                    <span id="adult-count">0</span>
-                                                    <button type="button" class="increase" onclick="increase('peopleType03')">+</button>
-                                                </div>
-                                            </div>
-
-                                            <div class="choice_box">
-                                                <dl>
-                                                    <dt>시니어 <span> (만 25~64세)</span></dt>
-                                                    <dd><strong>10,000</strong> <span>원</span></dd>
-                                                </dl>
-                                                <div class="counter" id="peopleType04">
-                                                    <button type="button" class="decrease" onclick="decrease('peopleType04')">-</button>
-                                                    <span id="adult-count">0</span>
-                                                    <button type="button" class="increase" onclick="increase('peopleType04')">+</button>
-                                                </div>
-                                            </div>
-
-                                            <div class="choice_box">
-                                                <dl>
-                                                    <dt>지역 주민</dt>
-                                                    <dd><strong>16,000</strong> <span>원</span></dd>
-                                                </dl>
-                                                <div class="counter" id="peopleType05">
-                                                    <button type="button" class="decrease" onclick="decrease('peopleType05')">-</button>
-                                                    <span id="adult-count">0</span>
-                                                    <button type="button" class="increase" onclick="increase('peopleType05')">+</button>
-                                                </div>
-                                            </div>
-
-                                            <div class="choice_box">
-                                                <dl>
-                                                    <dt>미취학 아동 <span> (~만 6세)</span></dt>
-                                                    <dd><strong>무료</strong></dd>
-                                                </dl>
-                                                <div class="counter" id="peopleType06">
-                                                    <button type="button" class="decrease" onclick="decrease('peopleType06')">-</button>
-                                                    <span id="adult-count">0</span>
-                                                    <button type="button" class="increase" onclick="increase('peopleType06')">+</button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <div class="num_check" id="ticket-container"></div>
 
                                         <div class="guide">
                                             <ul class="guide_list">
@@ -328,7 +182,7 @@
                             <ul class="receipt_info">
                                 <li>날짜 - <span id="receipt_date"></span></li>
                                 <li>시간 - <span id="receipt_time"></li>
-                                <li>인원 - <span id="receipt_people">성인 1</span></li>
+                                <li>인원 - <span id="receipt_people"></span></li>
                             </ul>
 
                             <div class="total_price_cont">
