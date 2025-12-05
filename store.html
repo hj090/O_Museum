@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <meta name="2415347 윤서영", content="기념품 페이지">
+    <title>기념품 페이지</title>
+    <link rel="stylesheet" href="store.css">
+</head>
+
+<body>
+    <header></header>
+
+    <div class="slider-container">
+        <div class="slider-wrapper">
+            <div class="slide">
+                <img src="Resources/store/store_banner1.jpg" alt="배너 이미지 1">
+                <div class="slide-content">
+                    <h4>상품 구매는 오프라인 매장에서만 가능합니다.<br>고객님의 너른 양해 부탁드립니다.</h4>
+                    <h2>숨박물관<br>오프라인 매장 영업중</h2>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="Resources/store/store_banner3.jpg" alt="배너 이미지 3">
+                <div class="slide-content">
+                    <h4>신라의 문화유산과 함께 하는<br>APEC 2025 KOREA</h4>
+                    <h2>천년의 미소<br>세계를 맞이하다</h2>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="Resources/store/store_banner4.jpg" alt="배너 이미지 4">
+                <div class="slide-content">
+                    <h4>고객님들의 성원에 감사드립니다.<br>3차 판매 일정은 12월 재공지 예정입니다.</h4>
+                    <h2>곤룡포 비치타월<br>오프라인 2차 판매중</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- 인디케이터 -->
+        <div class="indicators">
+            <span class="indicator active" data-slide="0"></span>
+            <span class="indicator" data-slide="1"></span>
+            <span class="indicator" data-slide="2"></span>
+        </div>
+    </div>
+
+
+    <main>
+        <div class="breadcrumb">
+            <a href="index.html">
+                <img src="Resources/store/home.png" alt="홈 아이콘" style="width:30px; height:30px;">
+            </a>
+            <img src="Resources/store/arrow_forward_ios.png" alt="화살표 아이콘" style="width:24px; height:24px;">
+            <a href="store.html">
+                <p>기념품</p>
+            </a>
+        </div>
+
+        <div class="section-header">
+            <h2 class="section-title">
+                이유있는 <strong>베스트 아이템 →</strong>
+            </h2>
+
+            <div class="tab-menu">
+                <input id="tabmenu1" type="radio" name="tab" checked>
+                <label for="tabmenu1">전체</label>
+                <input id="tabmenu2" type="radio" name="tab">
+                <label for="tabmenu2">문구/사무</label>
+                <input id="tabmenu3" type="radio" name="tab">
+                <label for="tabmenu3">패션/생활</label>
+            </div>
+        </div>
+
+        <!-- 전체 탭 -->
+        <div class="tabpanel active" data-tab="tabmenu1">
+            <div class="tabpanel-container">
+            </div>
+        </div>
+
+        <!-- 문구/사무 탭 -->
+        <div class="tabpanel" data-tab="tabmenu2">
+            <div class="tabpanel-container">
+            </div>
+        </div>
+
+        <!-- 패션/생활 탭 -->
+        <div class="tabpanel" data-tab="tabmenu3">
+            <div class="tabpanel-container">
+            </div>
+        </div>
+    </main>
+
+    <footer></footer>
+
+    <script src="card.js"></script>
+    <script src="store_banner.js"></script>
+    <script src="store_tabpanel.js"></script>
+</body>
+</html>
