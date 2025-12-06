@@ -6,18 +6,21 @@
     font-style: normal;
 }
 
+
 /*배너*/
 #banner {
     width: 100%;
-    height: 50vh;
+    /*height: 50vh;  2415347 윤서영 css수정*/
     overflow: hidden;
     position: relative;
     display: block; 
     padding: 0;  
 }
 body {
-    margin: 0;
-    padding: 0;
+    background-color: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    padding-top: 150px !important;
 }
 #banner img {
     width: 100%;
@@ -29,8 +32,8 @@ body {
 /*전체 레이아웃*/
 .layout {
     padding-top: 3.125rem;
-    padding-left: 6.25rem;
-    padding-right: 6.25rem;
+    /*padding-left: 6.25rem;  2415347 윤서영 css 수정
+    padding-right: 6.25rem;*/ 
     padding-bottom: 6.25rem;
     display: flex;
     flex-direction: column;
@@ -48,6 +51,7 @@ body {
 }
 /*제목 서체 설정*/
 .page-title {
+    color: #000000;
     font-family: '대한민국정부상징체', sans-serif;
     font-size: 3rem;
     font-weight: 700;
@@ -89,6 +93,7 @@ body {
 }
 
 .description{
+    color: #000000;
     font-size: 1.25rem;
 }
 .result-count{
@@ -179,10 +184,12 @@ body {
     grid-template-columns: repeat(4, 1fr);
     column-gap: 3.125rem;
     row-gap: 2rem;
+    justify-items: center
 }
 
 .item-card{
-    width: 260px;
+    width: 100%;
+    max-width: 260px
 }
 .item-link{
     text-decoration: none;
@@ -204,6 +211,7 @@ body {
     object-fit: contain;
 }
 .item-title{
+    color: #000000;
     margin-top: 8px;
     font-size: 1.75rem;
     font-weight: 500;
@@ -235,6 +243,7 @@ body {
 
 
 .pagination{
+    color: #000000;
     font-size: 1.75rem;
     display: flex;
     gap: 1.5625rem;   /* 좌우 간격 */
@@ -284,6 +293,7 @@ body {
     padding-top: 1.25rem;
 }
 .object-meta {
+    color: #000000;
     display: grid;
     grid-template-columns: max-content 1fr;
     column-gap: 24px;
@@ -295,6 +305,7 @@ body {
     margin: 0;
 }
 .object-title{
+    color: #000000;
     font-size: 3rem;
     font-weight: 700;
 }
