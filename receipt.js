@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 let targetMarginTop = 0;
 let currentMarginTop = 0;
 const lerpSpeed = 0.5;
+const offsetTop = 180;
 
 function lerp(start, end, speed) {
     return start + (end - start) * speed;
@@ -56,8 +57,9 @@ window.addEventListener(
         const container = floatCont.parentElement;
         const containerRect = container.getBoundingClientRect();
 
-        if (containerRect.top < 0) {
-            targetMarginTop = Math.abs(containerRect.top);
+        if (containerRect.top < offsetTop) {
+            // 수정: offsetTop에서 현재 top 값을 빼기
+            targetMarginTop = offsetTop - containerRect.top;
         } else {
             targetMarginTop = 0;
         }

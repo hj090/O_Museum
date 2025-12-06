@@ -5,6 +5,7 @@ ul {
     padding: 0;
     margin: 0;
     gap: 15px;
+    color: black !important;
 }
 li {
     display: flex;
@@ -34,7 +35,7 @@ li {
 .main_content {
     max-width: 1200px;
     min-width: 1000px;
-    margin: 50px auto 100px;
+    margin: 50px auto 100px !important;
     padding: 0;
 }
 
@@ -54,8 +55,12 @@ li {
 .map-text {
     display: flex;
     justify-content: space-between;
-    color: #b4b4b4;
-    font-size: 20px;
+    color: #b4b4b4 !important;
+    font-size: 20px !important;
+}
+
+.map-text .address {
+    color: #b4b4b4 !important;
 }
 
 .map-link {
