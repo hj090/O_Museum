@@ -2,7 +2,9 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="2410552 임유미" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="2410552 임유미" />
+        
         <link rel="stylesheet" href="layout.css" />
         <link rel="stylesheet" href="ticket.css" />
         <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@700&family=Noto+Sans:wght@300;400;700&display=swap" rel="stylesheet" />
@@ -15,7 +17,6 @@
         <div class="main">
             <div class="main_content">
                 <div class="pageheader">
-                    <!--breadcrumb 요소-->
                     <div class="nav_location" aria-label="breadcrumb">
                         <a href="index.html">
                             <span class="material-icons home" aria-hidden="true">home</span>
@@ -37,25 +38,17 @@
                 </div>
                 <div class="container">
                     <div class="accordion_wrap">
-                        <!--토글 영역-->
                         <ul class="stepchk">
-                            <!--날짜 선택 토글-->
                             <li class="" id="step0">
-                                <!--토글 제목-->
                                 <a href="#" class="tit" title="예약 가능일" id="step0-head">
                                     <h3 class="g-title">날짜 선택</h3>
                                 </a>
-                                <!--토글 내용-->
                                 <div class="accordion_cont">
-                                    <!--2분할 Grid-->
                                     <div id="step0-body">
-                                        <!--좌측 달력 영역-->
                                         <div class="calendar_wrap">
                                             <div class="calendar_top">
-                                                <!-- 개인 연/월 -->
                                                 <select id="calendar_date" onchange="changeCalendarSelectView(this)" title="년월 선택">
-                                                    <!--JS로 option 추가-->
-                                                </select>
+                                                    </select>
                                                 <ul class="month_choice">
                                                     <li>
                                                         <a href="javascript:prevCalendar()" class="p_month" id="calendar_previousBtn" title="이전달">
@@ -78,13 +71,13 @@
                                                         예매달력
                                                     </caption>
                                                     <colgroup>
-                                                        <col sytle="width:auto" />
-                                                        <col sytle="width:auto" />
-                                                        <col sytle="width:auto" />
-                                                        <col sytle="width:auto" />
-                                                        <col sytle="width:auto" />
-                                                        <col sytle="width:auto" />
-                                                        <col sytle="width:auto" />
+                                                        <col style="width:auto" />
+                                                        <col style="width:auto" />
+                                                        <col style="width:auto" />
+                                                        <col style="width:auto" />
+                                                        <col style="width:auto" />
+                                                        <col style="width:auto" />
+                                                        <col style="width:auto" />
                                                     </colgroup>
                                                     <thead>
                                                         <tr>
@@ -98,13 +91,11 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody id="calendar_body">
-                                                        <!--JS 캘린더 생성-->
-                                                    </tbody>
-                                                    </table>
+                                                        </tbody>
+                                                </table>
                                             </div>
                                         </div>
 
-                                        <!--우측 예약 정보 영역-->
                                         <div class="calendar_info_cont">
                                             <ul class="day_type">
                                                 <li>
@@ -117,7 +108,6 @@
                                                 </li>
                                             </ul>
 
-                                            <!--예매 및 관람 안내-->
                                             <div class="guide">
                                                 <ul class="guide_list">
                                                     <li class="li-tit"><strong>예매 및 관람 안내</strong></li>
@@ -132,7 +122,6 @@
                                 </div>
                             </li>
 
-                            <!--시간 선택 토글-->
                             <li class="" id="step1">
                                 <a href="#" class="tit" title="예약 가능일" id="step1-head">
                                     <h3 class="g-title">시간 선택</h3>
@@ -146,9 +135,6 @@
 
                                 </div>
                             </li>
-                            <!--시간 선택 토글 끝-->
-
-                            <!--인원 선택 토글-->
                             <li class="" id="step2">
                                 <a href="#" class="tit" title="예약 가능일" id="step2-head">
                                     <h3 class="g-title">인원 선택</h3>
@@ -174,14 +160,12 @@
                             </li>
                         </ul>
                     </div>
-                    <!--토글영역 끝-->
-                    <!--영수증-->
                     <div class="float-cont">
                         <h3>결제</h3>
                         <div class="receipt">
                             <ul class="receipt_info">
                                 <li>날짜 - <span id="receipt_date"></span></li>
-                                <li>시간 - <span id="receipt_time"></li>
+                                <li>시간 - <span id="receipt_time"></span></li>
                                 <li>인원 - <span id="receipt_people"></span></li>
                             </ul>
 
@@ -206,5 +190,6 @@
 
         <script src="ticket.js"></script>
         <script src="calendar.js"></script>
+        <script src="common.js"></script>
     </body>
 </html>
