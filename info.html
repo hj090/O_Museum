@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="2410552 임유미" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="info.css" />
+        <link rel="stylesheet" href="layout.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@700&family=Noto+Sans:wght@300;400;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <title>방문 안내</title>
+    </head>
+    <body>
+        <header class="header" aria-label="Site header"></header>
+
+        <div class="main">
+            <div class="homecover">
+                <img src="resource\info_cover.jpg" alt="숨 박물관 방문 안내 커버 이미지" />
+            </div>
+
+            <div class="main_content">
+                <div class="pageheader">
+                    <div class="nav_location" aria-label="breadcrumb">
+                        <a href="index.html">
+                            <span class="material-icons home" aria-hidden="true">home</span>
+                        </a>
+                        <span class="material-icons nav-arrow" aria-hidden="true">arrow_forward_ios</span>
+                        <a href="info.html">
+                            <span class="nav-text">관람정보</span>
+                        </a>
+                    </div>
+                    <h2>방문 안내</h2>
+                    <section>
+                        <h3>찾아오시는 길·운영시간</h3>
+                        <p>입장 마감은 폐관 30분전까지, 옥외 전시장은 오전 7시부터 오후 10시까지 관람 가능합니다.</p>
+                    </section>
+                </div>
+
+                <div class="info_grid">
+                    <figure class="media">
+                        <div class="image-box">
+                            <img id="image-thumbnail" src="resource\outside.png" alt="숨 박물관의 외경" />
+                        </div>
+                        <figcaption class="map-text">
+                            <p class="address">서울특별시 용산구 청파로47길 100 (청파동2가) 숨 박물관</p>
+                            <a href="https://maps.app.goo.gl/S2aDa7f3Hv3XXGQ78" target="_blank">
+                                <p class="map-link">지도에서 보기 <span class="material-icons map-arrow" aria-hidden="true">call_made</span></p>
+                            </a>
+                        </figcaption>
+                    </figure>
+
+                    <div class="admission">
+                        <h3>입장료</h3>
+                        <ul class="admission_detail">
+                            <li><span>성인 (만 25~64세)</span><span>20,000 원</span></li>
+                            <li><span>청년 (만 19~24세) 및 대학(원)생</span><span>12,000 원</span></li>
+                            <li><span>청소년 (만 7~18세)</span><span>10,000 원</span></li>
+                            <li><span>시니어 (만 65세 이상)</span><span>10,000 원</span></li>
+                            <li><span>지역 주민</span><span>16,000 원</span></li>
+                            <li><span>미취학 아동 (~만 6세)</span><span>무료</span></li>
+                        </ul>
+                        <button id="goto_ticket_button" onclick="location.href='ticket.html'" aria-label="예매하기 버튼">
+                            <div id="ticket_button_content">
+                                <span class="material-icons ticket" aria-hidden="true">confirmation_number</span>
+                                <span>예매하기</span>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div class="openhour">
+                        <div id="today_openhour">
+                            <span class="material-icons clock" aria-hidden="true">browse_gallery</span>
+                            <span>오늘 관람 시간</span>
+                            <span id="today_open_time"> - </span>
+                        </div>
+                        <ul class="week_openhour">
+                            <li><span>월요일</span><span>휴관</span></li>
+                            <li><span>화요일</span><span>10:00 - 18:00</span></li>
+                            <li><span>수요일</span><span>10:00 - 21:00</span></li>
+                            <li><span>목요일</span><span>10:00 - 18:00</span></li>
+                            <li><span>금요일</span><span>10:00 - 18:00</span></li>
+                            <li><span>토요일</span><span>10:00 - 21:00</span></li>
+                            <li><span>일요일</span><span>10:00 - 21:00</span></li>
+                        </ul>
+                        <div class="holiday">
+                            <p><strong>공휴일 안내</strong></p>
+                            <p>
+                                12/25 크리스마스, 1/1 신정<br />
+                                매주 월요일 휴관
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <ul class="caution">
+                            <p><strong>예매 시 주의사항</strong></p>
+                            <li>온라인 예매 시 이메일로 온라인 티켓이 발송됩니다. 입장 시 현장 직원에게 QR코드를 제시해주시기 바랍니다.</li>
+                            <li>현장 발권이 가능합니다.</li>
+                            <li>전시실 입장 전에, 휴대전화는 전원을 꺼주시거나 진동으로 전환하여 주십시오.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer id="footer" class="site-footer" aria-label="Site footer"></footer>
+
+        <script src="info.js"></script>
+    </body>
+</html>
