@@ -2,14 +2,16 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="2410552 임유미" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="2410552 임유미" />
+
         <link rel="stylesheet" href="layout.css" />
         <link rel="stylesheet" href="ticket.css" />
         <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@700&family=Noto+Sans:wght@300;400;700&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
         <link rel="stylesheet" href="index.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-        
+
         <title>온라인 예매</title>
     </head>
     <body>
@@ -55,7 +57,6 @@
         <div class="main">
             <div class="main_content">
                 <div class="pageheader">
-                    <!--breadcrumb 요소-->
                     <div class="nav_location" aria-label="breadcrumb">
                         <a href="index.html">
                             <span class="material-icons home" aria-hidden="true">home</span>
@@ -77,25 +78,16 @@
                 </div>
                 <div class="container">
                     <div class="accordion_wrap">
-                        <!--토글 영역-->
                         <ul class="stepchk">
-                            <!--날짜 선택 토글-->
                             <li class="" id="step0">
-                                <!--토글 제목-->
                                 <a href="#" class="tit" title="예약 가능일" id="step0-head">
                                     <h3 class="g-title">날짜 선택</h3>
                                 </a>
-                                <!--토글 내용-->
                                 <div class="accordion_cont">
-                                    <!--2분할 Grid-->
                                     <div id="step0-body">
-                                        <!--좌측 달력 영역-->
                                         <div class="calendar_wrap">
                                             <div class="calendar_top">
-                                                <!-- 개인 연/월 -->
-                                                <select id="calendar_date" onchange="changeCalendarSelectView(this)" title="년월 선택">
-                                                    <!--JS로 option 추가-->
-                                                </select>
+                                                <select id="calendar_date" onchange="changeCalendarSelectView(this)" title="년월 선택"></select>
                                                 <ul class="month_choice">
                                                     <li>
                                                         <a href="javascript:prevCalendar()" class="p_month" id="calendar_previousBtn" title="이전달">
@@ -118,13 +110,13 @@
                                                         예매달력
                                                     </caption>
                                                     <colgroup>
-                                                        <col sytle="width:auto" />
-                                                        <col sytle="width:auto" />
-                                                        <col sytle="width:auto" />
-                                                        <col sytle="width:auto" />
-                                                        <col sytle="width:auto" />
-                                                        <col sytle="width:auto" />
-                                                        <col sytle="width:auto" />
+                                                        <col style="width: auto" />
+                                                        <col style="width: auto" />
+                                                        <col style="width: auto" />
+                                                        <col style="width: auto" />
+                                                        <col style="width: auto" />
+                                                        <col style="width: auto" />
+                                                        <col style="width: auto" />
                                                     </colgroup>
                                                     <thead>
                                                         <tr>
@@ -137,14 +129,11 @@
                                                             <th scope="col">SAT</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody id="calendar_body">
-                                                        <!--JS 캘린더 생성-->
-                                                    </tbody>
-                                                    </table>
+                                                    <tbody id="calendar_body"></tbody>
+                                                </table>
                                             </div>
                                         </div>
 
-                                        <!--우측 예약 정보 영역-->
                                         <div class="calendar_info_cont">
                                             <ul class="day_type">
                                                 <li>
@@ -157,7 +146,6 @@
                                                 </li>
                                             </ul>
 
-                                            <!--예매 및 관람 안내-->
                                             <div class="guide">
                                                 <ul class="guide_list">
                                                     <li class="li-tit"><strong>예매 및 관람 안내</strong></li>
@@ -172,7 +160,6 @@
                                 </div>
                             </li>
 
-                            <!--시간 선택 토글-->
                             <li class="" id="step1">
                                 <a href="#" class="tit" title="예약 가능일" id="step1-head">
                                     <h3 class="g-title">시간 선택</h3>
@@ -183,12 +170,8 @@
                                         <div class="v-line"></div>
                                         <ul class="clickTime_right" id="time-right"></ul>
                                     </div>
-
                                 </div>
                             </li>
-                            <!--시간 선택 토글 끝-->
-
-                            <!--인원 선택 토글-->
                             <li class="" id="step2">
                                 <a href="#" class="tit" title="예약 가능일" id="step2-head">
                                     <h3 class="g-title">인원 선택</h3>
@@ -200,28 +183,28 @@
                                         <div class="guide">
                                             <ul class="guide_list">
                                                 <li class="li-tit"><strong>GUIDE</strong></li>
-                                                <li>예매완료 후 모바일티켓(QR)을 이용하시면 더욱 편리한 전시관람이 가능합니다.<br>
-                                                    (각 전시장 입구에 준비된 QR 리더기에 모바일 티켓을 스캔해주시기 바랍니다.)</li>
+                                                <li>
+                                                    예매완료 후 모바일티켓(QR)을 이용하시면 더욱 편리한 전시관람이 가능합니다.<br />
+                                                    (각 전시장 입구에 준비된 QR 리더기에 모바일 티켓을 스캔해주시기 바랍니다.)
+                                                </li>
                                                 <li>유료 전시의 경우 무료 및 할인 대상자는 모바일 티켓(QR)이 전송되지 않으며, 로비 안내데스크에서 해당 증빙 확인 및 종이티켓 발권 후 전시관람이 가능합니다. 증빙 미지참 시 현장에서 차액을 지불하셔야 함을 유의해주시기 바랍니다.</li>
-                                                <li>숨 멤버십 회원은 별도의 예매 없이 상시 관람이 가능합니다. (멤버십 전용데스크 운영)<br>
+                                                <li>
+                                                    숨 멤버십 회원은 별도의 예매 없이 상시 관람이 가능합니다. (멤버십 전용데스크 운영)<br />
                                                     매월 마지막주 수요일 ‘문화가 있는 날’에는 50% 할인된 가격에 관람이 가능합니다. (중복할인 없음)
                                                 </li>
                                             </ul>
                                         </div>
-
                                     </div>
                                 </div>
                             </li>
                         </ul>
                     </div>
-                    <!--토글영역 끝-->
-                    <!--영수증-->
                     <div class="float-cont">
                         <h3>결제</h3>
                         <div class="receipt">
                             <ul class="receipt_info">
                                 <li>날짜 - <span id="receipt_date"></span></li>
-                                <li>시간 - <span id="receipt_time"></li>
+                                <li>시간 - <span id="receipt_time"></span></li>
                                 <li>인원 - <span id="receipt_people"></span></li>
                             </ul>
 
@@ -285,5 +268,6 @@
         <script src="receipt.js"></script>
         <script src="tickets.js"></script>
         <script src="index.js"></script>
+        <script src="common.js"></script>
     </body>
 </html>

@@ -664,11 +664,9 @@ body.search-active #main-nav {
     transition-delay: 2s;
 }
 
-/* 호버 효과 (애니메이션과 별개로 즉시 적용) */
 .artifact-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
-    /* 호버 시에도 애니메이션 transition 속성이 적용되도록 딜레이는 제거 */
     transition: transform 0.3s ease;
 }
 
@@ -680,9 +678,6 @@ body.search-active #main-nav {
     transition: opacity 0.3s;
 }
 
-/* ------------------ Responsive Grid & Masonry Layout ------------------ */
-
-/* 모바일 (max-width: 768px): 1열 배치 */
 @media (max-width: 768px) {
     .artifact-grid > * {
         grid-column: auto;
@@ -691,7 +686,6 @@ body.search-active #main-nav {
     }
 }
 
-/* 데스크톱 (min-width: 769px): 3열 Masonry 구현 및 오프셋 */
 @media (min-width: 769px) {
     .artifact-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -768,7 +762,6 @@ body.search-active #main-nav {
     }
 }
 
-/* ------------------ More Text Button Style ------------------ */
 .more-text {
     display: block;
     text-align: center;
@@ -781,25 +774,23 @@ body.search-active #main-nav {
 .more-text:hover {
     color: var(--color-primary-hover);
 }
-/* ------------------ FULL WIDTH IMAGE SECTION STYLES ------------------ */
 .full-width-image-section {
     width: 100%;
     overflow: hidden;
     margin: 0;
     padding: 0;
-    /* 이미지 위아래에 여백이 필요하다면 여기에 padding을 추가하세요. */
 }
 
 .full-width-image {
-    width: 100%; /* 화면 너비 전체를 차지 */
-    height: auto; /* [중요] 원본 이미지의 비율을 유지 */
+    width: 100%;
+    height: auto;
     display: block;
 }
 
 .Parallax_container {
     position: relative;
     width: 100%;
-    height: 500px; /* Parallax 섹션의 높이를 지정 */
+    height: 500px;
     overflow: hidden;
     margin: 0;
     padding: 0;
@@ -810,12 +801,10 @@ body.search-active #main-nav {
     top: 0;
     left: 0;
     width: 100%;
-    /* [수정] 이미지 높이를 200%로 설정하여 움직일 수 있는 공간을 컨테이너 높이만큼 확보 */
     height: 200%;
     object-fit: cover;
 }
 
-/* ------------------ NEW VIDEO GALLERY STYLES ------------------ */
 .video-gallery-section {
     background-color: var(--color-background-dark);
     padding: 60px 0;
@@ -828,23 +817,16 @@ body.search-active #main-nav {
     gap: 20px;
 }
 
-.video-item {
-    cursor: pointer;
-    overflow: hidden;
-    border-radius: 0px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s;
-    position: relative;
-}
-.video-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
 }
 
 .video-item-placeholder {
     background-color: #2a2a2a;
     color: var(--color-white);
-    height: 400px; /* Video thumbnail height */
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -880,52 +862,36 @@ body.search-active #main-nav {
     transition: transform 0.4s;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
-/* ------------------ Section Fade-out / Text Overlay Area (수정됨) ------------------ */
 
-/* 1. 텍스트와 오버레이를 감싸는 컨테이너 (기준점) */
 .fade-out-container {
     position: relative;
     width: 100%;
-    /* [수정] 높이를 350px로 늘려 아래쪽 이미지를 충분히 덮고, "더보기" 버튼 공간을 확보합니다. */
     height: 250px;
     z-index: 5;
     margin: 0;
     box-sizing: border-box;
-
-    /* 핵심 수정: 이전 섹션 위로 250px 끌어올려 이미지를 덮습니다. */
     margin-top: -350px;
 }
 
-/* 2. 이미지를 페이드 아웃 시키는 오버레이 */
 .fade-to-black-overlay {
-    /* 부모 컨테이너에 맞춰 전체를 덮도록 absolute 설정 */
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-
-    /* Z-index를 줍니다. 텍스트(Z-index: 10)보다는 낮아야 합니다. */
     z-index: 5;
-
-    /* 사용자 요청 그라데이션: 아래(0deg)에서 검은색(#000)으로 시작 */
     background: linear-gradient(0deg, #000, #0000008c 40%, #0000);
 }
 
-/* 3. "소장품 더보기" 텍스트 스타일 */
 .more-items-link {
-    /* 텍스트를 오버레이 위에 겹치도록 absolute 설정 */
     position: absolute;
-    /* 텍스트가 아래쪽 중앙에 오도록 배치 */
     bottom: 40px;
     left: 50%;
-    transform: translateX(-50%); /* 중앙 정렬 */
+    transform: translateX(-50%);
 
-    /* Z-index를 오버레이(Z-index: 5)보다 높게 설정하여 항상 보이게 합니다. */
     z-index: 10;
 
-    /* 텍스트 스타일 */
-    color: var(--color-white); /* 흰색 */
+    color: var(--color-white);
     font-size: 1rem;
     font-weight: 700;
     text-decoration: none;
@@ -935,22 +901,18 @@ body.search-active #main-nav {
 }
 
 .more-items-link:hover {
-    background-color: #ffffff1a; /* 살짝 투명한 배경 */
-    color: var(--color-white); /* 흰색 */
+    background-color: #ffffff1a;
+    color: var(--color-white);
 }
 
-/* ------------------ NEW FOOTER STYLES ------------------ */
 footer {
-    /* 기존 스타일 유지 */
     background-color: #1a1a1a;
     color: var(--color-text-light);
     padding: 40px 0 10px;
     font-size: 0.9rem;
     border-top: 1px solid var(--color-primary);
 
-    /* ★ 기존에 추가된 스타일: z-index가 낮아서 가려질 수 있음 */
     position: relative;
-    /* [수정] z-index를 더 높게 설정하여 모든 오버레이 위에 오도록 합니다. */
     z-index: 100;
 }
 
@@ -997,7 +959,6 @@ footer {
     margin-top: 10px;
 }
 
-/* Mobile Adjustments for Footer */
 @media (max-width: 768px) {
     .footer-main {
         flex-direction: column;
@@ -1037,10 +998,38 @@ footer {
     justify-content: center;
 }
 
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fff;
+    color: var(--color-black);
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    display: none;
+    z-index: 100;
+    transition: background-color 0.3s, transform 0.1s;
+    display: flex; /* Flexbox for centering icon */
+    align-items: center;
+    justify-content: center;
+}
+
 .scroll-to-top:hover {
     background-color: #c5c5c5;
     color: #000000;
     transform: scale(1.05);
+}
+
+.scroll-to-top i {
+    color: var(--color-black);
+}
+.scroll-to-top:hover i {
+    color: var(--color-black);
 }
 
 .scroll-to-top i {
