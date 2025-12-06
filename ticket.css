@@ -114,6 +114,14 @@
     width: 100%;
 }
 
+.stepchk li {
+    scroll-margin-top: 170px;
+}
+
+.stepchk li#step0 {
+    scroll-margin-top: 500px;
+}
+
 /*accordion_wrap 요소*/
 .accordion_wrap li .tit {
     display: flex;
@@ -240,6 +248,27 @@
     justify-content: flex-end;
     align-items: flex-start;
     gap: 10px;
+}
+
+.day_type_box {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.day_type_box.available {
+    background-color: #8abebb;
+}
+
+.day_type_box.selected {
+    background-color: #008573;
+}
+
+.day_type li {
+    display: flex;
+    align-items: center;
 }
 
 /*캘린더 디자인*/
