@@ -1,119 +1,131 @@
-:root {
-            --font-h1: 28px; 
-            --font-h2: 48px;
-            --font-h3: 32px;
-            --font-h4: 28px;
-            --font-h5: 18px;
-            --font-p1: 24px;
-            --font-p2: 12px;
-        }
+body {
+    background-color: #ffffff; 
+    color: #333333; 
+}
 
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            display: flex;
-            justify-content: center;
-        }
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 60vh; 
+}
 
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            padding: 20px;
-        }
+.container h2,
+.container h4,
+.container p,
+.container span,
+.container a {
+    color: #1a1a1a; 
+}
 
-        .breadcrumb {
-            font-size: 14px;
-            color: #888;
-            margin-bottom: 40px;
-        }
-        .breadcrumb a {
-            text-decoration: none;
-            color: #888;
-        }
-        .breadcrumb .current a {
-            color: #333;
-            font-weight: bold;
-        }
+.breadcrumb {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
 
-        .page-title {
-            font-size: var(--font-h2);
-            font-weight: bold;
-            margin: 0 0 20px 0;
-        }
+.breadcrumb a {
+    text-decoration: none;
+    color: #8C8C8C;
+}
 
-        hr {
-            border: 0;
-            height: 2px;
-            background: #ddd;
-            margin-bottom: 60px;
-        }
+.breadcrumb p {
+    font-size: 24px;
+    color: #8C8C8C;
+}
 
-        .login-wrapper {
-            max-width: 400px;
-            margin: 0 auto;
-            text-align: center;
-            padding-bottom: 100px;
-        }
+.page-title {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 0 0 20px 0;
+    color: #000;
+}
 
-        .google-icon-user {
-            font-size: 100px !important; 
-            color: #009688; 
-            margin-bottom: 10px;
-            user-select: none; 
-        }
+hr {
+    border: 0;
+    height: 2px;
+    background: #333; 
+    margin-bottom: 60px;
+}
 
-        .login-header-en {
-            font-size: var(--font-h4);
-            font-weight: 500;
-            margin: 10px 0;
-            color: #000;
-        }
-        
-        .login-desc {
-            font-size: 14px;
-            color: #999;
-            margin-bottom: 30px;
-        }
+.login-wrapper {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 100px;
+    background-color: #ffffff; 
+}
 
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            background-color: #f8f8f8;
-            font-size: 14px;
-            box-sizing: border-box;
-        }
-        
-        input::placeholder {
-            color: #aaa;
-        }
+.google-icon-user {
+    font-size: 100px !important; 
+    color: #008573 !important; 
+    margin-bottom: 10px;
+    user-select: none; 
+}
 
-        .signup-link {
-            margin-top: 20px;
-            font-size: var(--font-p2);
-            color: #666;
-        }
-        .signup-link a {
-            text-decoration: none;
-            color: #666;
-            margin-left: 5px;
-        }
+.login-header-en {
+    font-size: 28px;
+    font-weight: 500;
+    margin: 10px 0;
+    color: #000;
+}
 
-        .najeon-button {
-            width: 100%;
-            padding: 15px 0;
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            border-radius: 8px;
-            background-color: #009688; 
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
+.login-desc {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff; 
+    font-size: 14px;
+    box-sizing: border-box;
+    color: #000;
+}
+
+input::placeholder {
+    color: #aaa;
+}
+
+.signup-link {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #666;
+}
+.signup-link a {
+    text-decoration: underline;
+    color: #008573; 
+    margin-left: 5px;
+}
+
+/* 버튼 스타일 */
+.najeon-button {
+    width: 100%;
+    padding: 15px 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fff; 
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: #008573; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease;
+}
+
+.najeon-button:hover {
+    background-color: #00695B;
+}
