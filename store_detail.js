@@ -79,10 +79,19 @@ document.getElementById('addCartBtn').addEventListener('click', function() {
     const productId = getProductIdFromURL();
     const product = findProductById(productId);
     
-    // 배열로 여러 개 저장
-    let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
-    cart.push(product);
-    sessionStorage.setItem('cart', JSON.stringify(cart));
+    // 로그인 확인 - 2410552 임유미 코드
+    const currentUser = sessionStorage.getItem("currentUser");
+
+    if (!currentUser) {
+        // 로그인되어 있지 않은 경우
+        alert("로그인 후 사용 가능합니다.");
+        window.location.href = "login.html";
+    } else {
+        // 로그인되어 있는 경우
+        let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+        cart.push(product);
+        sessionStorage.setItem('cart', JSON.stringify(cart));
     
-    alert('장바구니에 상품이 추가되었습니다.');
+        alert('장바구니에 상품이 추가되었습니다.');
+    }
 });

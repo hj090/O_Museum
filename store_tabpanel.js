@@ -31,39 +31,47 @@ document.addEventListener('click', (e) => {
         const productLink = card.querySelector('a');
         const productId = new URLSearchParams(productLink.href.split('?')[1]).get('id');
                 
-        // 상품 데이터 찾기
-        const allProducts = [];
-        for (let tabKey in cardData) {
-            allProducts.push(...cardData[tabKey]);
-        }
-        const product = allProducts.find(p => p.id === parseInt(productId));
+        // 로그인 확인 - 2410552 임유미 코드
+        const currentUser = sessionStorage.getItem("currentUser");
+
+        if (!currentUser) {
+            // 로그인되어 있지 않은 경우
+            alert("로그인 후 사용 가능합니다.");
+            window.location.href = "login.html";
+        } else {
+            // 로그인되어 있는 경우
+            // 상품 데이터 찾기
+            const allProducts = [];
+            for (let tabKey in cardData) {
+                allProducts.push(...cardData[tabKey]);
+            }
+            const product = allProducts.find(p => p.id === parseInt(productId));
         
-        // 관심상품 목록 가져오기
-        let wishlist = JSON.parse(sessionStorage.getItem('wishlist')) || [];
+            // 관심상품 목록 가져오기
+            let wishlist = JSON.parse(sessionStorage.getItem('wishlist')) || [];
 
 
-        // 관심상품 상태 토글
-        if (svg.style.fill === 'red') {
-            svg.style.fill = 'none';
-            svg.style.stroke = '#ffffff';
-            alert('관심상품에서 삭제되었습니다.');
+            // 관심상품 상태 토글
+            if (svg.style.fill === 'red') {
+                svg.style.fill = 'none';
+                svg.style.stroke = '#ffffff';
+                alert('관심상품에서 삭제되었습니다.');
 
-            wishlist = wishlist.filter(item => item.id !== product.id);
-            sessionStorage.setItem('wishlist', JSON.stringify(wishlist));
-        }
-        else {
-            svg.style.fill = 'red';
-            svg.style.stroke = 'red';
-            alert('관심상품에 추가되었습니다.');
-
-            const existingItem = wishlist.find(item => item.id === product.id);
-            if (!existingItem) {
-                wishlist.push(product);
+                wishlist = wishlist.filter(item => item.id !== product.id);
                 sessionStorage.setItem('wishlist', JSON.stringify(wishlist));
             }
-        }
+            else {
+                svg.style.fill = 'red';
+                svg.style.stroke = 'red';
+                alert('관심상품에 추가되었습니다.');
 
-        console.log('관심상품 목록', wishlist)
+                const existingItem = wishlist.find(item => item.id === product.id);
+                if (!existingItem) {
+                    wishlist.push(product);
+                    sessionStorage.setItem('wishlist', JSON.stringify(wishlist));
+                }
+            }
+        }
     }
 });
 
