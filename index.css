@@ -1035,14 +1035,27 @@ footer {
 .footer-bottom {
     border-top: 1px solid #2a2a2a;
     padding-top: 15px;
-    text-align: center;
+    text-align: center; /* 이 속성은 p2에 flex가 적용된 후에는 p2 자체의 중앙 정렬에는 영향을 주지 않습니다. */
 }
+
 .footer-bottom .p2 {
     font-family: "대한민국정부상징체", sans-serif;
     font-size: 1.5rem;
     color: var(--color-white);
     font-weight: 700;
     margin-top: 10px;
+    
+    /* **[추가/수정]** 로고와 텍스트를 위한 Flexbox 설정 */
+    display: flex;
+    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: center; /* **[핵심]** 로고 + 텍스트 덩어리를 수평 중앙에 정렬 */
+}
+
+/* **[추가]** 푸터 로고 이미지 스타일 */
+.footer-bottom .p2 img {
+    height: 40px; /* 로고 이미지 크기 */
+    width: auto; /* 비율 유지 */
+    margin-right: 4px; /* 로고와 "박물관" 텍스트 사이 간격 */
 }
 
 @media (max-width: 768px) {
