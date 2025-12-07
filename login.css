@@ -1,0 +1,131 @@
+body {
+    background-color: #ffffff; 
+    color: #333333; 
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 60vh; 
+}
+
+.container h2,
+.container h4,
+.container p,
+.container span,
+.container a {
+    color: #1a1a1a; 
+}
+
+.breadcrumb {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #8C8C8C;
+}
+
+.breadcrumb p {
+    font-size: 24px;
+    color: #8C8C8C;
+}
+
+.page-title {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 0 0 20px 0;
+    color: #000;
+}
+
+hr {
+    border: 0;
+    height: 2px;
+    background: #333; 
+    margin-bottom: 60px;
+}
+
+.login-wrapper {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 100px;
+    background-color: #ffffff; 
+}
+
+.google-icon-user {
+    font-size: 100px !important; 
+    color: #008573 !important; 
+    margin-bottom: 10px;
+    user-select: none; 
+}
+
+.login-header-en {
+    font-size: 28px;
+    font-weight: 500;
+    margin: 10px 0;
+    color: #000;
+}
+
+.login-desc {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff; 
+    font-size: 14px;
+    box-sizing: border-box;
+    color: #000;
+}
+
+input::placeholder {
+    color: #aaa;
+}
+
+.signup-link {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #666;
+}
+.signup-link a {
+    text-decoration: underline;
+    color: #008573; 
+    margin-left: 5px;
+}
+
+/* 버튼 스타일 */
+.najeon-button {
+    width: 100%;
+    padding: 15px 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fff; 
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: #008573; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease;
+}
+
+.najeon-button:hover {
+    background-color: #00695B;
+}

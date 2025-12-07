@@ -1,0 +1,201 @@
+:root {
+    --font-gov: "대한민국 정부 상징 서체", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+    --font-noto: "Noto Sans KR", sans-serif;
+    --color-dark-gray: #333333;
+    --color-gray: #cccccc;
+    --color-light-gray: #F0F0F0;
+    --color-green: #008573;
+    --color-red: #E74C3C;
+}
+
+
+body {
+    font-family: var(--font-noto);
+    margin: 0;
+    background-color: #ffffff; 
+    color: #333333;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    min-height: 60vh;
+    box-sizing: border-box;
+}
+
+.breadcrumb {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #8C8C8C;
+}
+
+.breadcrumb p {
+    font-size: 24px;
+    color: #8C8C8C;
+}
+
+h1 {
+    font-family: var(--font-gov);
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+hr {
+    border: 0;
+    height: 2px;
+    background-color: #333;
+    margin: 20px 0 0 0; 
+}
+.main-container {
+    background-color: var(--color-light-gray); 
+    padding: 60px 40px; 
+    width: 100%;
+    margin: 0 auto; 
+    box-sizing: border-box;
+    margin-top: 0; 
+}
+
+.signup-form {
+    display: grid;
+    grid-template-columns: 160px 1fr; 
+    gap: 20px 30px;
+    align-items: center;
+    max-width: 900px; 
+    margin: 0 auto;
+}
+
+.signup-form label {
+    font-size: 16px;
+    color: #1a1a1a;
+    font-weight: 700;
+    text-align: left;
+}
+
+.required {
+    color: var(--color-green);
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.signup-form input[type="text"],
+.signup-form input[type="password"],
+.signup-form input[type="email"],
+.signup-form input[type="number"],
+.signup-form input[type="tel"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd; 
+    border-radius: 0; 
+    background-color: #fff;
+    box-sizing: border-box;
+    font-family: var(--font-noto);
+    font-size: 15px;
+    color: #000;
+}
+
+.signup-form input:focus {
+    outline: none;
+    border-color: var(--color-green);
+}
+
+.validation-msg {
+    font-size: 13px;
+    margin-top: 5px;
+    min-height: 18px;
+}
+.msg-error { color: var(--color-red); }
+.msg-success { color: var(--color-green); }
+
+.contact-inputs {
+    display: flex;
+    gap: 10px;
+}
+.contact-inputs input {
+    flex: 1;
+    text-align: center;
+}
+
+.mailing-service {
+    display: flex;
+    align-items: center;
+    height: 40px; 
+}
+.mailing-service input[type="checkbox"] {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    accent-color: var(--color-green);
+    cursor: pointer;
+}
+.mailing-service label {
+    font-weight: 400;
+    cursor: pointer;
+    margin-top: 0;
+}
+
+.submit-button-container {
+    grid-column: 2 / -1; 
+    text-align: right; 
+    margin-top: 40px;
+}
+
+.submit-button {
+    width: 150px; 
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: var(--color-green);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    margin-left: auto;
+    display: block;
+}
+
+.submit-button:hover {
+    background-color: #00695B;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        padding: 30px 20px;
+    }
+    .signup-form {
+        grid-template-columns: 1fr; 
+        gap: 15px;
+    }
+    .submit-button-container {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+    .submit-button {
+        width: 100%;
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,51 @@
+[
+    {
+        "name": "관리자",
+        "id": "admin",
+        "pw": "12345678",
+        "phone": "01012345678",
+        "email": "admin@museum.com"
+    },
+    {
+        "name": "테스트유저",
+        "id": "testuser",
+        "pw": "password123",
+        "phone": "01099998888",
+        "email": "test@test.com"
+    },
+    {
+        "name": "송유민",
+        "id": "ymsong",
+        "pw": "ymsong1234",
+        "phone": "01012341234",
+        "email": "ippunsong2@sookmyung.ac.kr"
+    },
+    {
+        "name": "윤서영",
+        "id": "syyoon",
+        "pw": "syyoon1234",
+        "phone": "01012123434",
+        "email": "bella050325@sookmyung.ac.kr"
+    },
+    {
+        "name": "이예빈",
+        "id": "yblee",
+        "pw": "yblee1234",
+        "phone": "01012344321",
+        "email": "yeye0809@sookmyung.ac.kr"
+    },
+    {
+        "name": "임유미",
+        "id": "ymlim",
+        "pw": "ymlim0208",
+        "phone": "01012213443",
+        "email": "dladbal24@sookmyung.ac.kr"
+    },
+    {
+        "name": "임효주",
+        "id": "hjlim",
+        "pw": "hjlim1234",
+        "phone": "01011223344",
+        "email": "hyojuuu@sookmyung.ac.kr"
+    }
+]

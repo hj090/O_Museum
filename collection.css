@@ -1,0 +1,345 @@
+/*폰트 불러오기*/
+@font-face {
+    font-family: "대한민국정부상징체";
+    src: url("fonts/GovernmentSymbol.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*배너*/
+#banner {
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    position: relative;
+    display: block;
+    padding: 0;
+}
+body {
+    background-color: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    padding-top: 150px !important;
+}
+#banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+/*전체 레이아웃*/
+.layout {
+    padding-top: 3.125rem;
+    /*padding-left: 6.25rem;  2415347 윤서영 css 수정
+    padding-right: 6.25rem;*/
+    padding-bottom: 6.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* 3.125rem → 2rem 추천 */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+/* 기본 마진 제거 */
+.layout h1,
+.layout p,
+.layout nav,
+.layout section,
+.layout hr {
+    margin: 0;
+}
+/*제목 서체 설정*/
+.page-title {
+    color: #000000;
+    font-family: "대한민국정부상징체", sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.breadcrumb .current {
+    font-size: 16px;
+    color: #8c8c8c;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: #8c8c8c;
+    text-decoration: none;
+}
+.breadcrumb img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #8c8c8c;
+}
+
+.breadcrumb span {
+    color: #8c8c8c;
+    font-size: 1.25rem;
+}
+
+.breadcrumb .current {
+    font-weight: 400;
+    color: #8c8c8c;
+}
+
+.description {
+    color: #000000;
+    font-size: 1.25rem;
+}
+.result-count {
+    font-size: 1.25rem;
+    color: #1a1a1a;
+}
+
+/* 전체 검색영역 박스 */
+.search-area {
+    background: #f8f8f8;
+    padding: 4.5rem 6.25rem; /* 위아래 여백만 */
+}
+
+/* 가운데 고정 폭 */
+.search-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 검색 전체 */
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 3.125rem; /* 검색창과 체크박스 사이 간격 개선 */
+}
+
+/* 상단 검색바 */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: #fff;
+
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 0.75rem 1.25rem; /* 내부 여백 증가*/
+
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 검색 입력창 */
+.search-input {
+    flex: 1;
+    font-size: 1.25rem;
+    border: none;
+    outline: none;
+    padding: 0; /* 바깥에서 padding 다 처리 */
+}
+
+/* 돋보기 버튼 */
+.search-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.25rem;
+    padding: 0; /* 불필요한 여백 제거 */
+}
+.search-btn img {
+    width: 30px;
+}
+
+/* 체크박스 라인 */
+.search-filters {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    padding-top: 3.125rem; /* 위쪽 여백 추가 */
+    font-size: 1.25rem;
+}
+
+.filter-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #555;
+}
+
+.filter-item input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+}
+
+/*소장품 카드*/
+.item-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 3.125rem;
+    row-gap: 2rem;
+    justify-items: center;
+}
+
+.item-card {
+    width: 100%;
+    max-width: 260px;
+}
+.item-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.thumb-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.item-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.item-title {
+    color: #000000;
+    margin-top: 8px;
+    font-size: 1.75rem;
+    font-weight: 500;
+}
+.page-info {
+    display: inline-flex; /* 박스 + 안에서 가운데 정렬 */
+    justify-content: center;
+    align-items: center;
+    width: 12.5rem; /* 박스 너비 */
+    height: 6.25rem; /* 박스 높이 */
+    background-color: #f8f8f8; /* 박스 색깔 */
+    font-size: 1.25rem;
+    gap: 0.4rem; /* 요소들 사이 살짝 간격 */
+}
+.page-info .current-page {
+    font-weight: 700;
+    color: #000000;
+}
+
+.page-info .slash {
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.page-info .total-page {
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.pagination {
+    color: #000000;
+    font-size: 1.75rem;
+    display: flex;
+    gap: 1.5625rem; /* 좌우 간격 */
+    justify-content: center;
+    align-items: center;
+}
+.pagination a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.pagination a:first-child,
+.pagination a:nth-child(2),
+.pagination a:nth-last-child(2),
+.pagination a:last-child {
+    font-size: 2.5rem;
+}
+
+/*collection_detail*/
+.detail-panel {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr;
+    gap: 40px;
+    padding: 40px 60px;
+    background: #f8f8f8;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.detail-image-frame {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.detail-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.zoom-note {
+    font-size: 1.25rem;
+    color: #1a1a1a;
+    text-align: center;
+    padding-top: 1.25rem;
+}
+.object-meta {
+    color: #000000;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 24px;
+    row-gap: 8px;
+    font-size: 1.25rem;
+}
+.object-meta dt,
+.object-meta dd {
+    margin: 0;
+}
+.object-title {
+    color: #000000;
+    font-size: 3rem;
+    font-weight: 700;
+}
+.object-meta dt {
+    font-weight: 400; /* 원래 600px 이라 오류 나서 px 제거 */
+}
+.object-meta dd {
+    margin: 0;
+    color: #8c8c8c;
+}
+
+/* -------- 이미지 확대(돋보기) -------- */
+.detail-image-frame {
+    position: relative; /* 렌즈 위치 기준 박스 */
+}
+
+.img-zoom-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible; /* 렌즈가 살짝 나가도 보이게 */
+}
+
+#lens {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border: 2px solid #999;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    display: none;
+
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-color: #fff; /* 배경 없으면 렌즈 테두리 티남 방지 */
+    cursor: none;
+}
