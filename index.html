@@ -24,23 +24,25 @@
                 <button id="search-toggle-btn" title="검색">
                     <i class="fas fa-search"></i>
                 </button>
-              
-               
+            
+            
             </div>
             
             <div class="logo">
-                <a href="3_OMuseum_index.html">ㅅㅜㅁ 박물관</a>
+                <a href="index.html">
+                    <img src="Resources/sumlogo.png" alt="SUM 로고"> 박물관
+                </a>
             </div>
-            
+                        
             <div id="header-cta-buttons">
-                <a href="mypage.html" id="mypage-btn" title="로그인">
+                <a href="login.html" id="login-btn" title="로그인">
                     <span>로그인</span>
                 </a>
-                <a href="mypage.html" id="mypage-btn" title="회원가입">
+                <a href="signup.html" id="signup-btn" title="회원가입">
                     <span>회원가입</span>
                 </a>
 
-                <a href="#" id="ticket-btn" title="티켓 예매하기">
+                <a href="ticket.html" id="ticket-btn" title="티켓 예매하기">
                     <svg viewBox="0 0 16 16" width="1em" height="1em" focusable="false" aria-hidden="true" fill="currentColor"><path d="M9.13.5a.9.9 0 0 1 1.28 0l1.17 1.18c.2.2.3.5.25.79a1.48 1.48 0 0 0 1.7 1.7c.3-.04.59.05.79.25l1.17 1.17a.9.9 0 0 1 0 1.28L6.87 15.5a.9.9 0 0 1-1.28 0L.51 10.41a.9.9 0 0 1 0-1.28zm.64.78L1.28 9.77l4.95 4.95 8.49-8.49-1.1-1.1c-.74.15-1.52-.1-2.08-.67s-.82-1.34-.7-2.14L9.77 1.28zm.53 5.13c.1-.1.25-.1.35 0l.35.35c.1.1.1.26 0 .36l-4.59 4.6a.27.27 0 0 1-.36 0l-.35-.36a.25.25 0 0 1 0-.36l4.6-4.59zm-2.24-.59c.1-.1.26-.1.35 0l.36.35c.1.1.1.26 0 .36L5 10.3c-.1.1-.26.1-.36 0l-.35-.35a.25.25 0 0 1 0-.36l3.77-3.77z"></path></svg>
                     <span>예매</span>
                 </a>
@@ -53,19 +55,18 @@
         </div>
 
         <nav id="main-nav">
-            <a href="#" class="active">관람정보</a>
-            <a href="#">전시·행사</a>
-            <a href="#">기념품</a>
-            <a href="#">소장품</a>
+            <a href="info.html">관람정보</a>
+            <a href="exhibition.html">전시·행사</a>
+            <a href="collection.html">소장품</a>
+            <a href="store.html">기념품</a>
         </nav>
-        
     </header>
     
 
     <main>
         <section id="hero-video">
             <video class="hero-video" id="heroVideo" muted loop autoplay playsinline>
-                <source src="index_home_movie.mp4" type="video/mp4">
+                <source src="Resources/index_home_movie.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
 
@@ -79,24 +80,24 @@
                 <div class="encart-left">
                     <h3 class="encart-title">오늘 관람 시간</h3>
                     <p class="encart-horaires">
-                        <span>10:00 - 18:00</span>
+                        <span class="today_open_time">10:00 - 18:00</span>
                     </p>
                     <p class="encart-status">* 예매 마감은 폐관 30분 전까지</p>
                     
                 </div>
                 <div class="encart-separator"></div>
                 <div class="encart-right">
-                    <button class="book-button">
+                    <button class="book-button" onclick="window.location.href='ticket.html'">
                         <svg viewBox="0 0 16 16" width="1em" height="1em" focusable="false" aria-hidden="true" fill="currentColor"><path d="M9.13.5a.9.9 0 0 1 1.28 0l1.17 1.18c.2.2.3.5.25.79a1.48 1.48 0 0 0 1.7 1.7c.3-.04.59.05.79.25l1.17 1.17a.9.9 0 0 1 0 1.28L6.87 15.5a.9.9 0 0 1-1.28 0L.51 10.41a.9.9 0 0 1 0-1.28zm.64.78L1.28 9.77l4.95 4.95 8.49-8.49-1.1-1.1c-.74.15-1.52-.1-2.08-.67s-.82-1.34-.7-2.14L9.77 1.28zm.53 5.13c.1-.1.25-.1.35 0l.35.35c.1.1.1.26 0 .36l-4.59 4.6a.27.27 0 0 1-.36 0l-.35-.36a.25.25 0 0 1 0-.36l4.6-4.59zm-2.24-.59c.1-.1.26-.1.35 0l.36.35c.1.1.1.26 0 .36L5 10.3c-.1.1-.26.1-.36 0l-.35-.35a.25.25 0 0 1 0-.36l3.77-3.77z"></path></svg>
                         <span class="button-label">예매하기</span>
                     </button>
-                    <button class="visit-button">
+                    <button class="visit-button" onclick="window.location.href='info.html'">
                         <svg viewBox="0 0 16 16" width="1em" height="1em" focusable="false" aria-hidden="true" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 .97a6.03 6.03 0 1 0 0 12.06A6.03 6.03 0 0 0 8 1.97zm0 2.14c.32 0 .58.26.58.58v4.28a.58.58 0 1 1-1.16 0V4.7c0-.32.26-.58.58-.58zm0 7.78a.78.78 0 1 0 0-1.56.78.78 0 0 0 0 1.56z"></path></svg>
                         <span class="button-label">방문 안내</span>
                     </button>
                 </div>
             </div>
-      
+
         </section>
     
         <section class="ExhibitionContainer">
@@ -106,8 +107,13 @@
                 <div class="exhibition-grid mt-8">
 
                     <div class="rounded-xl overflow-hidden card-shadow highlight-card">
-                        <div class="relative h-64 md:h-80 lg:h-full">
-                            <img src="https://placehold.co/1200x900/008573/121212?text=K-Art+Highlight"
+                        <div class="relative h-64 md:h-80 lg:h-96">
+                            <!--2410552 임유미 index 실제 이미지 삽입-->
+                            <!-- <img src="https://placehold.co/1200x900/008573/121212?text=K-Art+Highlight"
+                                onerror="this.onerror=null;this.src='https://placehold.co/1200x900/008573/121212?text=K-Art+Highlight';"
+                                alt="대한민국 빛의 기록"
+                                class="w-full h-full object-cover"> -->
+                            <img src="Resources/사유의방_2.jpg"
                                 onerror="this.onerror=null;this.src='https://placehold.co/1200x900/008573/121212?text=K-Art+Highlight';"
                                 alt="대한민국 빛의 기록"
                                 class="w-full h-full object-cover">
@@ -117,10 +123,10 @@
                         </div>
                         <div class="p-6">
                             <h3 class="text-3xl font-bold text-white mb-2">
-                                <a href="#" class="hover:text-cyan-400 transition duration-150">대한민국 빛의 기록</a>
+                                <a href="exhibition.html#사유의방" class="hover:text-cyan-400 transition duration-150">사유의 미소, 영원의 순간</a>
                             </h3>
                             <p class="text-gray-300 text-sm">
-                                미디어 아트와 K-Pop의 시각적 역사를 총망라하는 특별 기획전입니다. 새로운 기술과 예술의 융합을 경험하세요.
+                                고요한 미소 속에 깊은 사유의 순간을 담아낸, 한국 불교 조각의 정수
                             </p>
                             <p class="mt-3 text-xs text-gray-500 font-medium" style="color: var(--color-text-light);">2025년 3월 10일 – 2025년 9월 30일</p>
                         </div>
@@ -128,7 +134,11 @@
 
                     <div class="rounded-xl overflow-hidden card-shadow md:col-span-1 lg:col-span-2">
                         <div class="relative h-56">
-                            <img src="https://placehold.co/1200x600/555555/e0e0e0?text=New+Wave+Exhibit"
+                            <!-- <img src="https://placehold.co/1200x600/555555/e0e0e0?text=New+Wave+Exhibit"
+                                onerror="this.onerror=null;this.src='https://placehold.co/1200x600/555555/e0e0e0?text=New+Wave+Exhibit';"
+                                alt="K-Art 뉴 웨이브"
+                                class="w-full h-full object-cover"> -->
+                                <img src="Resources/head.jpg"
                                 onerror="this.onerror=null;this.src='https://placehold.co/1200x600/555555/e0e0e0?text=New+Wave+Exhibit';"
                                 alt="K-Art 뉴 웨이브"
                                 class="w-full h-full object-cover">
@@ -138,18 +148,22 @@
                         </div>
                         <div class="p-4">
                             <h3 class="text-xl font-semibold text-white mb-1">
-                                <a href="#" class="hover:text-cyan-400 transition duration-150">2025년 K-Art 뉴 웨이브</a>
+                                <a href="exhibition.html" class="hover:text-cyan-400 transition duration-150">중·근세의 길을 걷다</a>
                             </h3>
                             <p class="text-gray-300 text-sm">
-                                대한민국 현대 미술을 이끄는 젊은 작가들의 실험적 작품을 소개합니다.
+                                시대를 바꾼 기술과 문화의 흐름을 통해 한국사의 깊이를 경험하세요.
                             </p>
                             <p class="mt-2 text-xs text-gray-500 font-medium" style="color: var(--color-text-light);">2025년 10월 1일 – 2026년 2월 28일</p>
                         </div>
                     </div>
 
                     <div class="rounded-xl overflow-hidden card-shadow">
-                        <div class="relative h-56">
-                            <img src="https://placehold.co/600x400/9b9b9b/e0e0e0?text=Traditional+Art"
+                        <div class="relative h-80">
+                            <!-- <img src="https://placehold.co/600x400/9b9b9b/e0e0e0?text=Traditional+Art"
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x400/9b9b9b/e0e0e0?text=Traditional+Art';"
+                                alt="한국 고미술"
+                                class="w-full h-full object-cover"> -->
+                                <img src="Resources/index_논갈이.jpg"
                                 onerror="this.onerror=null;this.src='https://placehold.co/600x400/9b9b9b/e0e0e0?text=Traditional+Art';"
                                 alt="한국 고미술"
                                 class="w-full h-full object-cover">
@@ -159,7 +173,7 @@
                         </div>
                         <div class="p-4">
                             <h3 class="text-xl font-semibold text-white mb-1">
-                                <a href="#" class="hover:text-cyan-400 transition duration-150">한국 고미술 특별 기획전</a>
+                                <a href="exhibition.html#중근세관" class="hover:text-cyan-400 transition duration-150">한국 고미술 특별 기획전</a>
                             </h3>
                             <p class="text-gray-300 text-sm">
                                 조선 시대부터 근대에 이르는 아름다운 도자기와 서화 컬렉션을 만나보세요.
@@ -170,9 +184,13 @@
 
                     <div class="rounded-xl overflow-hidden card-shadow">
                         <div class="relative h-56">
-                            <img src="https://placehold.co/600x400/aaaaaa/e0e0e0?text=Emerging+Artists"
+                            <!-- <img src="https://placehold.co/600x400/aaaaaa/e0e0e0?text=Emerging+Artists"
                                 onerror="this.onerror=null;this.src='https://placehold.co/600x400/aaaaaa/e0e0e0?text=Emerging+Artists';"
                                 alt="신진 작가"
+                                class="w-full h-full object-cover"> -->
+                                <img src="Resources/store_stationery.jpg"
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x400/aaaaaa/e0e0e0?text=Emerging+Artists';"
+                                alt="공모전"
                                 class="w-full h-full object-cover">
                             <div class="absolute top-4 right-4 px-3 py-1 text-xs font-semibold uppercase rounded-full tag-primary">
                                 공모전
@@ -180,10 +198,10 @@
                         </div>
                         <div class="p-4">
                             <h3 class="text-xl font-semibold text-white mb-1">
-                                <a href="#" class="hover:text-cyan-400 transition duration-150">신진 작가 발굴 프로젝트</a>
+                                <a href="#" class="hover:text-cyan-400 transition duration-150">뮷즈 기념품 공모전</a>
                             </h3>
                             <p class="text-gray-300 text-sm">
-                                미술계의 미래를 이끌어갈 신진 작가들의 참신한 작품을 소개하고 투표합니다.
+                                참신하고 새로운 아이디어의 기념품을 직접 기획하고 SUM 박물관 기념품샵에서 판매해보세요.
                             </p>
                             <p class="mt-2 text-xs text-gray-500 font-medium" style="color: var(--color-text-light);">매년 11월 - 12월 진행</p>
                         </div>
@@ -191,7 +209,11 @@
 
                     <div class="rounded-xl overflow-hidden card-shadow">
                         <div class="relative h-56">
-                            <img src="https://placehold.co/600x400/cccccc/e0e0e0?text=Museum+Collection"
+                            <!-- <img src="https://placehold.co/600x400/cccccc/e0e0e0?text=Museum+Collection"
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/e0e0e0?text=Museum+Collection';"
+                                alt="소장품 하이라이트"
+                                class="w-full h-full object-cover"> -->
+                                <img src="Resources/index_분청사기_상감_물고기_무늬_매병.jpg"
                                 onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/e0e0e0?text=Museum+Collection';"
                                 alt="소장품 하이라이트"
                                 class="w-full h-full object-cover">
@@ -201,7 +223,7 @@
                         </div>
                         <div class="p-4">
                             <h3 class="text-xl font-semibold text-white mb-1">
-                                <a href="#" class="hover:text-cyan-400 transition duration-150">박물관 소장품 하이라이트</a>
+                                <a href="collection.html" class="hover:text-cyan-400 transition duration-150">박물관 소장품 하이라이트</a>
                             </h3>
                             <p class="text-gray-300 text-sm">
                                 SUM 박물관이 자랑하는 주요 소장품들을 큐레이터의 해설과 함께 감상하세요.
@@ -218,57 +240,84 @@
                 <h2>숨 박물관 +</h2>
                 
                 <div class="video-grid">
-                    <div class="video-item">
-                        <div class="video-item-placeholder">큐레이터 해설 (3:15 min)</div>
-                    </div>
-                    <div class="video-item">
-                        <div class="video-item-placeholder">전시 제작 비하인드 (5:40 min)</div>
-                    </div>
-                    <div class="video-item">
-                        <div class="video-item-placeholder">작가 인터뷰 (2:05 min)</div>
-                    </div>
-                    <div class="video-item">
-                        <div class="video-item-placeholder">역사 속 이야기 (7:30 min)</div>
-                    </div>
+                    <a href="https://youtu.be/EU8XqtAgAz0?si=eyGF6SnXMh6Djo7y" target="_blank" class="video-item">
+                        <div class="video-item-placeholder">
+                            <i class="fas fa-play-circle play-button-icon"></i> 
+                            <div class="video-info">
+                                <span class="video-title">20년의 이야기, 유물과 사람</span>
+                                <span class="video-duration">(4:45 min)</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://youtu.be/cKKAkT7DQP8?si=O2Zv5IpLd54oWG31" target="_blank" class="video-item">
+                        <div class="video-item-placeholder">
+                            <i class="fas fa-play-circle play-button-icon"></i>
+                            <div class="video-info">
+                                <span class="video-title">[유리건판으로 보는 100년 전 기록] 불교의 경주</span>
+                                <span class="video-duration">(3:46 min)</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://youtu.be/PprbicQ9u1U?si=eSGw5ItHsm3k88zY" target="_blank" class="video-item">
+                        <div class="video-item-placeholder">
+                            <i class="fas fa-play-circle play-button-icon"></i>
+                            <div class="video-info">
+                                <span class="video-title">마나 모아나-신성한 바다의 예술, 오세아니아</span>
+                                <span class="video-duration">(1:07 hour)</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://youtu.be/ISIQKHazNNo?si=3VRW7cMJUw1ceUOX" target="_blank" class="video-item">
+                        <div class="video-item-placeholder">
+                            <i class="fas fa-play-circle play-button-icon"></i>
+                            <div class="video-info">
+                                <span class="video-title">새 나라 새 미술-조선 전기 미술 대전</span>
+                                <span class="video-duration">(1:31 hour)</span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-                
-                <a href="#" class="more-button">더 많은 영상 보기 +</a>
+                <a href="https://www.youtube.com/user/koreanmuseum" target="_blank" class="more-button">더 많은 영상 보기 +</a>
             </div>
         </section>
 
         
         <section class="Parallax_container" id="parallaxImageSection">
-            <img src="index_국중박고품질3.png" alt="박물관 전경" class="Image Parallax_image">
+            <img src="Resources/index_국중박고품질3.png" alt="박물관 전경" class="Image Parallax_image">
         </section>
 
         <section class="artifact-section">
             <div class="content-wrapper"> 
                 <h2>역사의 숨결 속으로</h2>
                 <div class="artifact-grid">
-                    <div class="artifact-item"> <img src="index_청자 모란무늬 매병.jpg" alt="청자 모란무늬 매병">
-                    </div>
-                    <div class="artifact-item"> <img src="index_감산사 석조아미타불 입상.jpg" alt="입상">
-                    </div>
-                    <div class="artifact-item"> <img src="index_경주 부부총 금귀걸이.jpg" alt="금 귀걸이">
-                    </div>
-                    <div class="artifact-item"> <img src="index_청자 사자장식 뚜껑 향로.jpg" alt="향로">
-                    </div>
-                    <div class="artifact-item"> <img src="index_청동 은입사 물가풍경무늬 정병.jpg" alt="청동 정병">
-                    </div>
-                    <div class="artifact-item"> <img src="index_신라금관.jpg" alt="신라금관">
-                    </div>
-                    <div class="artifact-item"> <img src="index_논갈이.jpg" alt="신라금관">
-                    </div>
-                    <div class="artifact-item"> <img src="index_분청사기 상감 물고기 무늬 매병.jpg" alt="신라금관">
-                    </div>
-                    <div class="artifact-item"> <img src="index_금동 반가사유상.jpg" alt="신라금관">
-                    </div>
+                    <a href="collection_detail.html?id=2" class="artifact-item"> <img src="Resources/index_청자_모란무늬_매병.jpg" alt="청자 모란무늬 매병">
+                    </a>
+                    <a href="collection_detail.html?id=6" class="artifact-item"> <img src="Resources/index_감산사_석조아미타불_입상.jpg" alt="입상">
+                    </a>
+                    <a href="collection_detail.html?id=5" class="artifact-item"> <img src="Resources/index_경주_부부총_금귀걸이.jpg" alt="금 귀걸이">
+                    </a>
+                    <a href="collection_detail.html?id=3" class="artifact-item"> <img src="Resources/index_청자_사자장식_뚜껑_향로.jpg" alt="향로">
+                    </a>
+                    <a href="collection_detail.html?id=4" class="artifact-item"> <img src="Resources/index_청동_은입사_물가풍경무늬_정병.jpg" alt="청동 정병">
+                    </a>
+                    <a href="collection_detail.html?id=1" class="artifact-item"> <img src="Resources/index_신라금관.jpg" alt="신라금관">
+                    </a>
+                    <a href="collection_detail.html?id=21" class="artifact-item"> <img src="Resources/index_논갈이.jpg" alt="신라금관">
+                    </a>
+                    <a href="collection_detail.html?id=22" class="artifact-item"> <img src="Resources/index_분청사기_상감_물고기_무늬_매병.jpg" alt="신라금관">
+                    </a>
+                    <a href="collection_detail.html?id=9" class="artifact-item"> <img src="Resources/index_금동_반가사유상.jpg" alt="신라금관">
+                    </a>
+                </div>
+                
+            </div>
+        </section>
                 </div>
                 
             </div>
         </section>
         <div class="fade-out-container">
-            <a href="#" class="more-items-link">소장품 더보기</a> 
+            <a href="collection.html" class="more-items-link">소장품 더보기</a> 
             
             <div class="fade-to-black-overlay"></div>
 
@@ -278,7 +327,7 @@
         <hr> 
     </main>
     
-   
+
     
     <footer>        
         <div class="content-wrapper">
@@ -326,6 +375,7 @@
     </button>
 
     <script src="index.js"></script>
-
+    <script src="common.js"></script>
+    <script src="info.js"></script>
 </body>
 </html>
