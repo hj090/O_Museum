@@ -187,7 +187,12 @@
 }
 
 /* 체크박스 컨테이너 스타일 */
-.reservation-card .checkbox-container {
+.reservation-card {
+    margin-right: 40px;
+    margin-top: 5px; /* 내용과 수직 정렬 조정 */
+    flex-shrink: 0; /* 공간이 부족해도 체크박스는 줄어들지 않도록 설정 */
+}
+.checkbox-container {
     margin-right: 40px;
     margin-top: 5px; /* 내용과 수직 정렬 조정 */
     flex-shrink: 0; /* 공간이 부족해도 체크박스는 줄어들지 않도록 설정 */
