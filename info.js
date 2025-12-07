@@ -26,12 +26,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 todayOpenText = "휴관";
             } else {
                 // JSON의 요일 key와 JS 요일 매칭
-                const jsonDay = day;
-                todayOpenText = weekOpenHour[jsonDay];
+                todayOpenText = weekOpenHour[day];
             }
 
-            // 출력
-            document.getElementById("today_open_time").textContent = todayOpenText;
+            // .today_open_time 클래스를 가진 모든 요소에 출력
+            const elements = document.querySelectorAll(".today_open_time");
+            elements.forEach((element) => {
+                element.textContent = todayOpenText;
+            });
         })
         .catch((err) => console.error("JSON 불러오는 중 오류 발생:", err));
 });
