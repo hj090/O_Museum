@@ -31,7 +31,7 @@ document.addEventListener('click', (e) => {
         const productLink = card.querySelector('a');
         const productId = new URLSearchParams(productLink.href.split('?')[1]).get('id');
 
-        // 로그인 확인
+        // 로그인 확인 - 2410552 임유미 코드
         const currentUser = sessionStorage.getItem("currentUser");
 
         if (!currentUser) {

@@ -79,7 +79,7 @@ document.getElementById('addCartBtn').addEventListener('click', function() {
     const productId = getProductIdFromURL();
     const product = findProductById(productId);
 
-    // 로그인 확인
+    // 로그인 확인 - 2410552 임유미 코드
     const currentUser = sessionStorage.getItem("currentUser");
 
     if (!currentUser) {
