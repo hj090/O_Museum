@@ -70,13 +70,6 @@ async function initTicket() {
 // ====================
 // 토글 제어 공통 함수
 // ====================
-
-/**
- * 토글을 열고 해당 위치로 스크롤하는 재사용 가능한 함수
- * @param {string} stepId - 열 토글의 ID (예: 'step1', 'step2')
- * @param {number} delay - 스크롤 지연 시간 (ms) - 기본값 100ms
- * @param {string} scrollBlock - 스크롤 위치 ('start', 'center', 'end') - 기본값 'start'
- */
 function openToggleAndScroll(stepId, delay = 100, scrollBlock = "start") {
     const element = document.getElementById(stepId);
 
@@ -100,13 +93,12 @@ function openToggleAndScroll(stepId, delay = 100, scrollBlock = "start") {
 }
 
 // 토글 활성화
-/*
- * @param {string} stepId - 활성화할 토글 ID
- * @param {boolean} autoOpen - 자동으로 열고 스크롤할지 여부
- */
 function enableStep(stepId, autoOpen = false) {
     const element = document.getElementById(stepId);
-    if (!element) return;
+    if (!element) {
+        console.error(`${stepId} 요소를 찾을 수 없습니다.`);
+        return;
+    }
 
     const wasDisabled = element.classList.contains("disabled");
 
@@ -123,13 +115,13 @@ function enableStep(stepId, autoOpen = false) {
 
     console.log(`${stepId} 활성화`);
 
-    // 처음 활성화될 때만 자동으로 열고 스크롤
-    if (autoOpen && wasDisabled) {
+    // autoOpen이 true면 무조건 열고 스크롤 (wasDisabled 조건 제거)
+    if (autoOpen) {
         element.classList.add("open");
         setTimeout(() => {
             element.scrollIntoView({
                 behavior: "smooth",
-                block: "center",
+                block: "start", // center에서 start로 변경
             });
         }, 100);
         console.log(`${stepId} 자동 열림 및 스크롤`);
@@ -413,6 +405,11 @@ function buildCalendar() {
             td.innerHTML = `<a href="#" onclick="preventDefaultLink(event)" title=""><span>${date}</span></a>`;
         } else {
             td.className = "select_day";
+
+            if (selectedDate === dateString) {
+                td.classList.add("pick_day");
+            }
+
             td.innerHTML = `
                 <a href="#" title="예약 가능일" onclick="selectDate('${dateString}', event)">
                     <span>${date}</span>

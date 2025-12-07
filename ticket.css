@@ -36,6 +36,7 @@
 .receipt {
     display: flex;
     min-width: 260px;
+    max-width: 260px;
     padding: 20px;
     flex-direction: column;
     justify-content: center;
@@ -88,8 +89,10 @@
     border: none;
     border-radius: 4px;
     background: #008573;
+}
 
-    color: #fff;
+#next_btn_text h5 {
+    color: #fff !important;
 }
 
 .next_btn .nav-arrow {
@@ -109,6 +112,14 @@
 
 .stepchk {
     width: 100%;
+}
+
+.stepchk li {
+    scroll-margin-top: 170px;
+}
+
+.stepchk li#step0 {
+    scroll-margin-top: 500px;
 }
 
 /*accordion_wrap 요소*/
@@ -239,6 +250,27 @@
     gap: 10px;
 }
 
+.day_type_box {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.day_type_box.available {
+    background-color: #8abebb;
+}
+
+.day_type_box.selected {
+    background-color: #008573;
+}
+
+.day_type li {
+    display: flex;
+    align-items: center;
+}
+
 /*캘린더 디자인*/
 .calendar_wrap {
     display: flex;
@@ -258,6 +290,14 @@
     display: inline-block;
     position: relative;
     margin-left: 16px;
+}
+
+.month_choice li a {
+    color: black !important;
+}
+
+.calendar_cont caption {
+    visibility: hidden;
 }
 
 /*일 선택*/
@@ -300,10 +340,15 @@
     background-color: #8abebb;
 }
 
+.select_day:hover {
+    background-color: #008573;
+    transition: background-color 0.3s;
+}
+
 .select_day.pick_day {
     border: 1px solid #fff;
     background: #008573;
-    color: #fff;
+    color: #fff !important;
 }
 
 /*step1 시간 선택 토글*/
@@ -319,9 +364,10 @@
     flex-direction: column;
     width: 100%;
     gap: 10px;
+    color: #8c8c8c !important;
 }
 .v-line {
-    border-left: 1px solid #d9d9d9;
+    border-left: 1px solid #d9d9d9 !important;
     height: auto;
 }
 
@@ -343,6 +389,11 @@
     box-sizing: border-box;
     align-items: center;
     justify-content: space-between;
+    color: #000000 !important;
+}
+
+.select_time a:hover {
+    background-color: #fafafa;
 }
 
 .select_time .date {
@@ -362,15 +413,16 @@
 
 /*매진된 시간대*/
 .select_time.sold_out {
-    background-color: #d9d9d9;
+    background-color: #d9d9d9 !important;
 }
 .select_time.sold_out .date {
     text-decoration: line-through;
 }
 /*선택한 시간대*/
-.select_time.pick {
+.select_time.pick a {
     background-color: #008573;
-    color: white;
+    color: white !important;
+    transition: color 0s !important;
 }
 .select_time.pick .time_quantity {
     background-color: #008573;
@@ -441,6 +493,10 @@
     border: 2px solid #1a1a1a;
     background: #fff;
     font-size: 20px;
+}
+
+.choice_box .counter button:hover {
+    background: #fafafa;
 }
 
 .choice_box .counter button:disabled {
