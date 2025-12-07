@@ -215,16 +215,3 @@ button:active {
     border: 1px solid #d9d9d9;
     background: #f8f8f8;
 }
-
-/* Responsive */
-@media (max-width: 1000px) {
-    .info_grid {
-        grid-template-columns: 1fr;
-    }
-    .admission {
-        grid-column: 1 / -1;
-    }
-    .homecover img {
-        height: 360px;
-    }
-}
