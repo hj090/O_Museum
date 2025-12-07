@@ -133,6 +133,22 @@ hr {
 }
 
 /* ------------------ Header and Navigation Styles (Existing) ------------------ */
+.logo a {
+    text-decoration: none;
+    color: var(--color-white); 
+    font-size: 1.5rem; 
+    font-weight: 700;
+    
+    /* **[핵심]** 이미지와 텍스트를 수직 중앙에 정렬 */
+    display: flex;
+    align-items: center; 
+}
+
+.logo a img {
+    height: 100px; /* 로고 이미지의 높이를 텍스트 크기에 맞춰 설정 */
+    width: auto; /* 비율 유지 */
+    margin-right: 7px; /* 로고 이미지와 " 박물관" 텍스트 사이의 간격 */
+}
 
 header {
     width: 100%;
@@ -805,16 +821,16 @@ body.search-active #main-nav {
     object-fit: cover;
 }
 
-.video-gallery-section {
-    background-color: var(--color-background-dark);
-    padding: 60px 0;
-    color: var(--color-white);
-}
+/* ------------------ Video Gallery Section Styles (Modified: Image, Gradient, Play Button) ------------------ */
 
-.video-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+.video-item {
+    text-decoration: none;
+    color: var(--color-white); 
+    cursor: pointer;
+    display: block;
+    overflow: hidden; 
+    border-radius: 5px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .video-grid {
@@ -824,21 +840,91 @@ body.search-active #main-nav {
 }
 
 .video-item-placeholder {
-    background-color: #2a2a2a;
-    color: var(--color-white);
     height: 400px;
+    position: relative; 
+    background-color: #2a2a2a;
+    transition: transform 0.3s ease;
+    
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 500;
-    font-size: 1.05rem;
-    border: 1px solid #333;
-    border-radius: 0px;
-    transition: background-color 0.3s;
+    align-items: center; 
+    justify-content: center; 
 }
+
 .video-item:hover .video-item-placeholder {
-    background-color: #3a3a3a;
-    color: var(--color-primary);
+    transform: scale(1.03);
+}
+
+.video-item-placeholder::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom, 
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.2) 60%,
+        rgba(0, 0, 0, 0.8) 100%
+    );
+    z-index: 1; 
+    transition: background 0.3s;
+}
+
+.play-button-icon {
+    position: relative; 
+    font-size: 5rem; 
+    color: rgba(255, 255, 255, 0.85); 
+    z-index: 2; 
+    transition: color 0.3s ease; 
+}
+
+.video-item:hover .play-button-icon {
+    color: var(--color-primary); 
+}
+
+
+.video-info {
+    position: absolute;
+    bottom: 20px; 
+    left: 20px;
+    right: 20px;
+    z-index: 3; 
+    display: flex;
+    flex-direction: column;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8); 
+}
+
+.video-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.video-duration {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--color-text-light);
+    margin-top: 5px;
+}
+
+.video-item:nth-child(1) .video-item-placeholder {
+    background-image: url('Resources/영상1.png');
+}
+
+.video-item:nth-child(2) .video-item-placeholder {
+    background-image: url('Resources/영상2.png');
+}
+
+.video-item:nth-child(3) .video-item-placeholder {
+    background-image: url('Resources/영상3.png');
+}
+
+.video-item:nth-child(4) .video-item-placeholder {
+    background-image: url('Resources/영상4.png');
 }
 
 .more-button {
@@ -855,7 +941,7 @@ body.search-active #main-nav {
     transition: background-color 0.3s, color 0.3s;
 }
 .more-button:hover {
-    background-color: #afafaf;
+    background-color: #e6e6e6;
     color: var(--color-black);
     text-decoration: none;
     transform: translateY(-1px);
@@ -949,14 +1035,27 @@ footer {
 .footer-bottom {
     border-top: 1px solid #2a2a2a;
     padding-top: 15px;
-    text-align: center;
+    text-align: center; /* 이 속성은 p2에 flex가 적용된 후에는 p2 자체의 중앙 정렬에는 영향을 주지 않습니다. */
 }
+
 .footer-bottom .p2 {
     font-family: "대한민국정부상징체", sans-serif;
     font-size: 1.5rem;
     color: var(--color-white);
     font-weight: 700;
     margin-top: 10px;
+    
+    /* **[추가/수정]** 로고와 텍스트를 위한 Flexbox 설정 */
+    display: flex;
+    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: center; /* **[핵심]** 로고 + 텍스트 덩어리를 수평 중앙에 정렬 */
+}
+
+/* **[추가]** 푸터 로고 이미지 스타일 */
+.footer-bottom .p2 img {
+    height: 40px; /* 로고 이미지 크기 */
+    width: auto; /* 비율 유지 */
+    margin-right: 4px; /* 로고와 "박물관" 텍스트 사이 간격 */
 }
 
 @media (max-width: 768px) {
