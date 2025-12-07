@@ -26,12 +26,35 @@ document.addEventListener("DOMContentLoaded", function () {
                 todayOpenText = "휴관";
             } else {
                 // JSON의 요일 key와 JS 요일 매칭
-                const jsonDay = day;
-                todayOpenText = weekOpenHour[jsonDay];
+                todayOpenText = weekOpenHour[day];
             }
 
-            // 출력
-            document.getElementById("today_open_time").textContent = todayOpenText;
+            // .today_open_time 클래스를 가진 모든 요소에 출력
+            const elements = document.querySelectorAll(".today_open_time");
+            elements.forEach((element) => {
+                element.textContent = todayOpenText;
+            });
         })
         .catch((err) => console.error("JSON 불러오는 중 오류 발생:", err));
+
+    // 로그인 상태 확인
+    const gotoTicketButton = document.getElementById("goto_ticket_button");
+
+    if (gotoTicketButton) {
+        gotoTicketButton.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            // 로그인 확인
+            const currentUser = sessionStorage.getItem("currentUser");
+
+            if (!currentUser) {
+                // 로그인되어 있지 않은 경우
+                alert("로그인 후 사용 가능합니다.");
+                window.location.href = "login.html";
+            } else {
+                // 로그인되어 있는 경우
+                window.location.href = "ticket.html";
+            }
+        });
+    }
 });

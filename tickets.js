@@ -1,9 +1,11 @@
 // 전역 변수
 let currentDate = new Date();
+
 let selectedDate = null;
 let selectedTime = null;
-let calendarData = null;
+let selectedPeople = {};
 
+let calendarData = null;
 let peopleData = [];
 let timeData = [];
 
@@ -18,7 +20,7 @@ async function loadAllData() {
         }
         const data = await response.json();
 
-        // localStorage에서 저장된 데이터가 있는지 확인
+        // localStorage에서 티겟 수량 저장된 데이터가 있는지 확인
         const savedTimeData = localStorage.getItem("timeData");
 
         // localStorage에 저장된 시간 데이터가 있으면 사용, 없으면 JSON에서 로드
@@ -50,16 +52,15 @@ async function loadAllData() {
     }
 }
 
-// 페이지 로드 시 초기화
+// 페이지 로드 시 초기화, 데이터 로드
 async function initTicket() {
-    await loadAllData(); // 모든 데이터 한 번에 로드
+    await loadAllData();
     generateMonthOptions();
     buildCalendar();
     updateNavigationButtons();
 
-    // 페이지 접근 시 첫번째 토글만 접근 가능
+    // 페이지 최초 접근 시 첫번째 토글만 접근 가능
     enableStep("step0", true);
-
     disableStep("step1");
     disableStep("step2");
 
@@ -67,16 +68,41 @@ async function initTicket() {
     updateNextButton();
 }
 
+// 날짜 포맷팅 함수
+function formatDate(dateString, format = "display", timeString = null) {
+    const year = dateString.substring(0, 4);
+    const month = dateString.substring(4, 6);
+    const day = dateString.substring(6, 8);
+    const date = new Date(year, parseInt(month) - 1, parseInt(day));
+    const weekDays = ["일", "월", "화", "수", "목", "금", "토"];
+    const dayOfWeek = weekDays[date.getDay()];
+
+    switch (format) {
+        case "display":
+            return `${parseInt(month)}월 ${parseInt(day)}일 (${dayOfWeek})`;
+
+        case "full":
+            return `${year}년 ${parseInt(month)}월 ${parseInt(day)}일`;
+
+        case "reservation":
+            return `${year}-${month}-${day} (${dayOfWeek})${timeString ? " / " + timeString : ""}`;
+
+        default:
+            return `${year}-${month}-${day}`;
+    }
+}
+
+// 현재 시각 포맷팅
+function getCurrentDateTime() {
+    const now = new Date();
+    return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")} ${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
+}
+
 // ====================
 // 토글 제어 공통 함수
 // ====================
 function openToggleAndScroll(stepId, delay = 100, scrollBlock = "start") {
     const element = document.getElementById(stepId);
-
-    if (!element) {
-        console.error(`${stepId} 요소를 찾을 수 없습니다.`);
-        return;
-    }
 
     // 토글 열기
     element.classList.add("open");
@@ -88,19 +114,14 @@ function openToggleAndScroll(stepId, delay = 100, scrollBlock = "start") {
             block: scrollBlock,
         });
     }, delay);
-
-    console.log(`${stepId} 토글 열림 및 스크롤 완료`);
 }
 
 // 토글 활성화
 function enableStep(stepId, autoOpen = false) {
     const element = document.getElementById(stepId);
-    if (!element) {
-        console.error(`${stepId} 요소를 찾을 수 없습니다.`);
-        return;
-    }
 
     const wasDisabled = element.classList.contains("disabled");
+    const wasAlreadyOpen = element.classList.contains("open");
 
     // 활성화
     element.classList.remove("disabled");
@@ -113,18 +134,19 @@ function enableStep(stepId, autoOpen = false) {
         header.style.cursor = "pointer";
     }
 
-    console.log(`${stepId} 활성화`);
-
-    // autoOpen이 true면 무조건 열고 스크롤 (wasDisabled 조건 제거)
-    if (autoOpen) {
+    // autoOpen이 true이고, 아직 열려있지 않을 때만 열고 스크롤
+    if (autoOpen && !wasAlreadyOpen) {
         element.classList.add("open");
-        setTimeout(() => {
-            element.scrollIntoView({
-                behavior: "smooth",
-                block: "start", // center에서 start로 변경
-            });
-        }, 100);
-        console.log(`${stepId} 자동 열림 및 스크롤`);
+
+        // 비활성화 상태에서 활성화될 때만 스크롤
+        if (wasDisabled) {
+            setTimeout(() => {
+                element.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                });
+            }, 100);
+        }
     }
 }
 
@@ -143,15 +165,12 @@ function disableStep(stepId) {
     if (header) {
         header.style.cursor = "not-allowed";
     }
-
-    console.log(`${stepId} 비활성화`);
 }
+// =====================================
+// 영수증 항목 업데이트 통합 함수
+// 업데이트할 항목 타입 ('date', 'time', 'people', 'total'), 업데이트할 값
+// =====================================
 
-/**
- * 영수증 항목 업데이트 통합 함수
- * @param {string} type - 업데이트할 항목 타입 ('date', 'time', 'people', 'total')
- * @param {*} value - 업데이트할 값
- */
 function updateReceipt(type, value) {
     switch (type) {
         case "date":
@@ -175,53 +194,36 @@ function updateReceipt(type, value) {
             if (receiptTimeElement) {
                 receiptTimeElement.textContent = value;
                 console.log("시간 업데이트:", value);
-            } else {
-                console.error("receipt_time 요소를 찾을 수 없습니다!");
             }
             break;
 
         case "people":
             const receiptPeopleEl = document.getElementById("receipt_people");
             const totalPriceEl = document.getElementById("total_price");
+            const peopleArray = Object.values(selectedPeople);
 
-            if (!Array.isArray(peopleData) || peopleData.length === 0) {
-                return;
-            }
+            // 인원 텍스트 생성
+            const peopleText = peopleArray.length > 0 ? peopleArray.map((p) => `${p.type} ${p.count}`).join(", ") : "";
 
-            const parts = [];
-            let totalPrice = 0;
-
-            peopleData.forEach((item) => {
-                const countEl = document.getElementById(`${item.key}-count`);
-                const cnt = countEl ? Number(countEl.textContent) : 0;
-                if (cnt > 0) {
-                    parts.push(`${item.type} ${cnt}`);
-                    totalPrice += (item.price || 0) * cnt;
-                }
-            });
+            // 총 금액 계산
+            const totalPrice = getTotalPrice();
 
             if (receiptPeopleEl) {
-                receiptPeopleEl.textContent = parts.length ? parts.join(", ") : "";
+                receiptPeopleEl.textContent = peopleText;
             }
             if (totalPriceEl) {
                 totalPriceEl.textContent = totalPrice.toLocaleString();
             }
-            console.log("인원 및 금액 업데이트:", { people: parts.join(", "), total: totalPrice });
+            console.log("인원 및 금액 업데이트:", { people: peopleText, total: totalPrice });
             break;
     }
 
     updateNextButton();
 }
 
-// 빈 링크 클릭 시 기본 동작 방지
-function preventDefaultLink(event) {
-    event.preventDefault();
-    return false;
-}
-
-// ==========
-// STEP1 함수
-// ==========
+// ==============
+// 날짜 선택 기능
+// ==============
 
 // 월 선택 옵션 생성
 function generateMonthOptions() {
@@ -260,17 +262,17 @@ function getAvailableMonthRange() {
     const select = document.getElementById("calendar_date");
     if (!select || select.options.length === 0) return null;
 
-    const firstOption = select.options[0].value; // 예: "202512"
-    const lastOption = select.options[select.options.length - 1].value; // 예: "202601"
+    const firstOption = select.options[0].value;
+    const lastOption = select.options[select.options.length - 1].value;
 
     return {
         first: {
             year: parseInt(firstOption.substring(0, 4)),
-            month: parseInt(firstOption.substring(4, 6)) - 1, // 0부터 시작
+            month: parseInt(firstOption.substring(4, 6)) - 1,
         },
         last: {
             year: parseInt(lastOption.substring(0, 4)),
-            month: parseInt(lastOption.substring(4, 6)) - 1, // 0부터 시작
+            month: parseInt(lastOption.substring(4, 6)) - 1,
         },
     };
 }
@@ -345,7 +347,7 @@ function isTodayDate(date) {
     return date.getFullYear() === today.getFullYear() && date.getMonth() === today.getMonth() && date.getDate() === today.getDate();
 }
 
-// 달력 생성 메인 함수
+// 달력 생성
 function buildCalendar() {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
@@ -367,10 +369,6 @@ function buildCalendar() {
 
     // tbody 초기화
     const tbody = document.getElementById("calendar_body");
-    if (!tbody) {
-        console.error("calendar_body 요소를 찾을 수 없습니다.");
-        return;
-    }
     tbody.innerHTML = "";
 
     let row = document.createElement("tr");
@@ -396,13 +394,13 @@ function buildCalendar() {
         const isBeyondTwoWeeks = currentDateObj > twoWeeksLater;
         const isClosed = isClosedDay(yearMonth, date);
 
-        // 클래스 및 내용 설정
+        // HTML class 및 출력 내용 설정
         if (isClosed) {
             td.className = "closed_day";
-            td.innerHTML = `<a href="#" onclick="preventDefaultLink(event)" title=""><span>휴관</span></a>`;
+            td.innerHTML = `<a href="#" onclick="event.preventDefault()" title=""><span>휴관</span></a>`;
         } else if (isPast || isBeyondTwoWeeks) {
             td.className = "past_day";
-            td.innerHTML = `<a href="#" onclick="preventDefaultLink(event)" title=""><span>${date}</span></a>`;
+            td.innerHTML = `<a href="#" onclick="event.preventDefault()" title=""><span>${date}</span></a>`;
         } else {
             td.className = "select_day";
 
@@ -453,7 +451,6 @@ function buildCalendar() {
 function prevCalendar() {
     // 첫 달이면 실행하지 않음
     if (isFirstMonth()) {
-        console.log("첫 달입니다. 더 이상 이전 달로 이동할 수 없습니다.");
         return;
     }
 
@@ -467,7 +464,6 @@ function prevCalendar() {
 function nextCalendar() {
     // 마지막 달이면 실행하지 않음
     if (isLastMonth()) {
-        console.log("마지막 달입니다. 더 이상 다음 달로 이동할 수 없습니다.");
         return;
     }
 
@@ -479,9 +475,7 @@ function nextCalendar() {
 
 // select 변경 시
 function changeCalendarSelectView(selectElement) {
-    if (!selectElement) return;
-
-    const value = selectElement.value; // 예: "202512"
+    const value = selectElement.value;
     const year = parseInt(value.substring(0, 4));
     const month = parseInt(value.substring(4, 6)) - 1;
 
@@ -558,8 +552,10 @@ function generateTimeUI(dateString) {
 
     console.log(`${dateString} 날짜의 시간 UI 생성 완료`);
 }
+// ==================
+// 시간 선택 기능
+// ==================
 
-// 시간 선택
 // 선택한 시간대의 남은 수량 가져오기
 function getSelectedTimeQuantity() {
     if (!selectedDate || !selectedTime) return 0;
@@ -639,7 +635,7 @@ function increase(key) {
     const currentTotal = getTotalCount();
     const maxQuantity = getSelectedTimeQuantity();
 
-    // 최대 인원(4명) 또는 선택한 시간대의 남은 수량을 초과하면 증가 불가
+    // 최대 인원( 또는 선택한 시간대의 남은 수량을 초과하면 증가 불가
     if (currentTotal >= MAX_PEOPLE || currentTotal >= maxQuantity) {
         if (currentTotal >= maxQuantity) {
             console.log(`선택한 시간대의 남은 수량(${maxQuantity}명)을 초과할 수 없습니다.`);
@@ -649,6 +645,16 @@ function increase(key) {
 
     count++;
     countSpan.textContent = count;
+
+    const peopleItem = peopleData.find((item) => item.key === key);
+    if (peopleItem) {
+        selectedPeople[key] = {
+            type: peopleItem.type,
+            key: key,
+            count: count,
+            price: peopleItem.price,
+        };
+    }
 
     updateReceipt("people");
     updateButtons();
@@ -663,6 +669,20 @@ function decrease(key) {
     count--;
     countSpan.textContent = count;
 
+    if (count === 0) {
+        delete selectedPeople[key];
+    } else {
+        const peopleItem = peopleData.find((item) => item.key === key);
+        if (peopleItem) {
+            selectedPeople[key] = {
+                type: peopleItem.type,
+                key: key,
+                count: count,
+                price: peopleItem.price,
+            };
+        }
+    }
+
     updateReceipt("people");
     updateButtons();
 }
@@ -670,13 +690,18 @@ function decrease(key) {
 //  총 인원 계산
 function getTotalCount() {
     let total = 0;
-
-    peopleData.forEach((item) => {
-        const el = document.getElementById(`${item.key}-count`);
-        const val = el ? parseInt(el.textContent, 10) || 0 : 0;
-        total += val;
+    Object.values(selectedPeople).forEach((item) => {
+        total += item.count;
     });
+    return total;
+}
 
+// 총 금액 계산
+function getTotalPrice() {
+    let total = 0;
+    Object.values(selectedPeople).forEach((item) => {
+        total += item.price * item.count;
+    });
     return total;
 }
 
@@ -708,7 +733,9 @@ function updateButtons() {
     updateReceipt("people");
 }
 
+// ==========
 // 결제 기능
+// ==========
 
 // 다음 버튼 제어
 function updateNextButton() {
@@ -737,19 +764,11 @@ function updateNextButton() {
     }
 }
 
-// 날짜를 표시용 형식으로 변환
-function formatDateForDisplay(dateString) {
-    const year = dateString.substring(0, 4);
-    const month = dateString.substring(4, 6);
-    const day = dateString.substring(6, 8);
-    return `${year}년 ${parseInt(month)}월 ${parseInt(day)}일`;
-}
-
 // ====================
 // 결제 처리
 // ====================
 async function goToPayment() {
-    // 버튼이 비활성화 상태면 실행하지 않음
+    // 버튼이 비활성화 상태면 실행X
     const nextBtn = document.querySelector(".next_btn");
     if (nextBtn && nextBtn.disabled) {
         console.log("모든 항목을 선택해주세요.");
@@ -761,42 +780,29 @@ async function goToPayment() {
     const bookingInfo = {
         date: selectedDate,
         time: selectedTime,
-        people: [],
-        totalPrice: 0,
-
-        totalPeople: getTotalCount(), // 전체 인원수
+        people: Object.values(selectedPeople),
+        totalPrice: getTotalPrice(),
+        totalPeople: getTotalCount(),
     };
 
-    // 인원 정보 수집 (선택된 항목만)
-    peopleData.forEach((item) => {
-        const countEl = document.getElementById(`${item.key}-count`);
-        const count = countEl ? Number(countEl.textContent) : 0;
-        if (count > 0) {
-            bookingInfo.people.push({
-                type: item.type,
-                key: item.key,
-                count: count,
-                price: item.price,
-            });
-            bookingInfo.totalPrice += item.price * count;
-        }
-    });
-
-    // 1. 결제 정보 확인
+    // 결제 정보 확인
     const peopleDetail = bookingInfo.people.map((p) => `${p.type} ${p.count}명`).join(", ");
-    const confirmMessage = `예약 정보를 확인해주세요.\n\n날짜: ${formatDateForDisplay(selectedDate)}\n시간: ${selectedTime}\n인원: ${peopleDetail}\n총 인원: ${bookingInfo.totalPeople}명\n총 금액: ${bookingInfo.totalPrice.toLocaleString()}원`;
+    const confirmMessage = `예약 정보를 확인해주세요.\n\n날짜: ${formatDate(selectedDate, "full")}\n시간: ${selectedTime}\n인원: ${peopleDetail}\n총 인원: ${bookingInfo.totalPeople}명\n총 금액: ${bookingInfo.totalPrice.toLocaleString()}원`;
 
     alert(confirmMessage);
 
-    // 2. 결제 확인
+    // 결제 확인
     const confirmPayment = confirm("결제하시겠습니까?");
 
     if (confirmPayment) {
-        // 결제 진행
         try {
-            const success = await processPayment(bookingInfo);
+            // 결제한 티켓 전체 수량 수정 후 로컬 스토리지 저장
+            const success = await updateTicketQuantity(bookingInfo.date, bookingInfo.time, bookingInfo.totalPeople);
 
             if (success) {
+                // 예약 데이터 로컬 스토리지 저장
+                saveReservationToLocalStorage(bookingInfo);
+
                 alert("결제가 완료되었습니다.\n예매정보는 마이페이지>예매 내역에서 확인할 수 있습니다.");
                 window.location.href = "/info.html";
             }
@@ -811,11 +817,25 @@ async function goToPayment() {
     }
 }
 
-async function processPayment(bookingInfo) {
-    console.log("결제 처리 시작:", bookingInfo);
+// 예약 데이터를 localStorage에 저장
+function saveReservationToLocalStorage(bookingInfo) {
+    // 기존 예약 목록 가져오기
+    const existingReservations = JSON.parse(localStorage.getItem("reservations") || "[]");
 
-    // localStorage를 사용한 로컬 결제 처리
-    return await updateTicketQuantity(bookingInfo.date, bookingInfo.time, bookingInfo.totalPeople);
+    // 새 예약 객체 생성
+    const newReservation = {
+        id: parseInt(bookingInfo.date + Math.floor(1000 + Math.random() * 9000)), // 예약번호
+        date: formatDate(bookingInfo.date, "reservation", bookingInfo.time), // 날짜 포맷팅
+        people: bookingInfo.people.map((p) => `${p.type} ${p.count}`).join(", "), // 인원 텍스트
+        price: bookingInfo.totalPrice.toLocaleString() + "원", // 금액 포맷팅
+        paymentDate: getCurrentDateTime(), // 결제일시
+    };
+
+    // 예약 목록에 추가 및 저장
+    existingReservations.push(newReservation);
+    localStorage.setItem("reservations", JSON.stringify(existingReservations));
+
+    console.log("예약 데이터 저장 완료:", newReservation);
 }
 
 // 티켓 수량 수정
