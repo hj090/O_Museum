@@ -1,5 +1,43 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // [가정] cardData가 전역적으로 사용 가능하다고 가정합니다.
+    // =============================================================
+    // =========== 0. 로그인 세션 확인 및 사용자 정보 로드 ==============
+    // =============================================================
+
+    const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
+
+    // 로그인하지 않은 경우 로그인 페이지로 리다이렉트
+    if (!currentUser) {
+        alert("로그인이 필요합니다.");
+        window.location.href = "login.html";
+        return;
+    }
+
+    // 사용자 정보를 화면에 표시
+    function displayUserInfo() {
+        const nameInput = document.getElementById("user-name");
+        const idInput = document.getElementById("user-id");
+        const contactInput = document.getElementById("user-contact");
+        const emailInput = document.getElementById("user-email");
+        const passwordDisplay = document.getElementById("current-password-display");
+
+        console.log("📝 찾은 요소들:", { nameInput, idInput, contactInput, emailInput, passwordDisplay });
+
+        if (nameInput) {
+            nameInput.value = currentUser.name || "";
+        }
+        if (idInput) {
+            idInput.value = currentUser.id || "";
+        }
+        if (contactInput) {
+            contactInput.value = currentUser.phone || "";
+        }
+        if (emailInput) {
+            emailInput.value = currentUser.email || "";
+        }
+        if (passwordDisplay) {
+            passwordDisplay.textContent = "********";
+        }
+    }
 
     // =============================================================
     // =========== 1. 데이터 및 공통 요소 정의 ==============================
@@ -12,19 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // reservationData를 localStorage에서 불러오기
     let reservationData = JSON.parse(localStorage.getItem("reservations") || "[]");
-
-    // 💡 (새로 추가) 초기 로딩 시, 장바구니/관심상품 데이터를 sessionStorage에 미리 저장
-    // (window.cardData가 없다는 가정 하에 임시 ID를 사용)
-    const initialWishlistIds = [101, 102]; // 임의의 ID
-    const initialCartIds = [201, 202]; // 임의의 ID
-
-    // sessionStorage에 데이터가 없을 경우에만 초기 데이터 설정
-    if (!sessionStorage.getItem("wishlist")) {
-        sessionStorage.setItem("wishlist", JSON.stringify(initialWishlistIds));
-    }
-    if (!sessionStorage.getItem("cart")) {
-        sessionStorage.setItem("cart", JSON.stringify(initialCartIds));
-    }
 
     // =============================================================
     // =========== 2. 예약 내역 렌더링 및 취소 로직 ===================
@@ -106,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderReservations();
 
     // =============================================================
-    // =========== 3. 장바구니/관심상품 렌더링 로직 (수정됨) ==================
+    // =========== 3. 장바구니/관심상품 렌더링 로직  ==================
     // =============================================================
     // 2415347 윤서영 수정완료
 
@@ -117,20 +142,18 @@ document.addEventListener("DOMContentLoaded", () => {
      * @param {string} storageKey - 'wishlist' 또는 'cart' (sessionStorage 키)
      */
     function renderShopList(contentId, storageKey) {
-        console.log(`🛒 renderShopList 호출: contentId=${contentId}, storageKey=${storageKey}`);
         const container = document.getElementById(contentId + "-content");
-        console.log("🛒 container:", container);
         container.innerHTML = "";
 
         // sessionStorage에서 전체 상품 객체 배열 가져오기
         const items = JSON.parse(sessionStorage.getItem(storageKey)) || [];
-        console.log(`🛒 ${storageKey} 항목 수:`, items.length);
-        console.log(`🛒 ${storageKey} 데이터:`, items);
+        console.log(`${storageKey} 항목 수:`, items.length);
+        console.log(`${storageKey} 데이터:`, items);
 
         if (items.length === 0) {
             const emptyMessage = storageKey === "cart" ? '<p class="empty-state">장바구니가 비어있습니다.</p>' : '<p class="empty-state">관심 상품 내역이 없습니다.</p>';
             container.innerHTML = emptyMessage;
-            console.log(`🛒 ${storageKey} 비어있음`);
+            console.log(`${storageKey} 비어있음`);
             return;
         }
 
@@ -216,12 +239,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // =============================================================
-    // =========== 4. 마이페이지 메뉴 토글 로직 ============================
+    // =========== 4. 마이페이지 메뉴 토글 로직 =======================
     // =============================================================
 
     function setActiveContent(contentId) {
-        console.log(`🔄 setActiveContent 호출: ${contentId}`);
-
         // 모든 메뉴에서 active 클래스 제거
         navLinks.forEach((l) => l.classList.remove("active"));
 
@@ -230,7 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // 해당 콘텐츠 활성화
         const targetContent = document.getElementById(contentId + "-content");
-        console.log("🔄 targetContent:", targetContent);
+        console.log("targetContent:", targetContent);
 
         if (targetContent) {
             targetContent.style.display = "block";
@@ -243,6 +264,8 @@ document.addEventListener("DOMContentLoaded", () => {
             renderShopList("favorites", "wishlist");
         } else if (contentId === "cart") {
             renderShopList("cart", "cart");
+        } else if (contentId === "edit-info") {
+            displayUserInfo();
         }
     }
 
@@ -258,30 +281,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // 초기 로딩 시 '예약 내역' 활성화 및 렌더링
-    console.log("🎯 초기화 시작");
     const initialLink = document.querySelector(".mypage-nav li a.active");
-    console.log("🎯 initialLink:", initialLink);
 
     if (initialLink) {
         const initialContentId = initialLink.dataset.contentLink;
-        console.log("🎯 initialContentId:", initialContentId);
-        setActiveContent(initialContentId); // 이 함수가 렌더링도 수행
+        setActiveContent(initialContentId);
     } else {
         // active 클래스가 없는 경우 기본적으로 예약 내역 표시
-        console.log("🎯 active 클래스 없음, 기본값으로 reservations 표시");
         setActiveContent("reservations");
     }
 
     console.log("✅ mypage.js 초기화 완료");
 
     // =============================================================
-    // =========== 5. 회원 정보 수정 (비밀번호 토글) 로직 ====================
+    // =========== 5. 회원 정보 수정 로직 ===========================
     // =============================================================
 
     const passwordToggleButton = document.querySelector(".password-change-toggle-btn");
     const passwordFields = document.getElementById("password-change-fields");
     const passwordCancelButton = document.querySelector(".password-cancel-btn");
+    const passwordSaveButton = document.querySelector(".password-save-btn");
+    const editForm = document.querySelector(".edit-form-container");
 
+    // 비밀번호 변경 토글
     if (passwordToggleButton && passwordFields && passwordCancelButton) {
         passwordToggleButton.addEventListener("click", () => {
             passwordFields.style.display = "block";
@@ -299,9 +321,83 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("confirm-password").value = "";
         });
 
-        document.querySelector(".password-save-btn").addEventListener("click", () => {
-            alert("비밀번호가 성공적으로 변경되었습니다. (기능 구현 X)");
-            passwordCancelButton.click();
+        // 비밀번호 저장
+        passwordSaveButton.addEventListener("click", () => {
+            const oldPassword = document.getElementById("old-password").value;
+            const newPassword = document.getElementById("new-password").value;
+            const confirmPassword = document.getElementById("confirm-password").value;
+
+            if (!oldPassword || !newPassword || !confirmPassword) {
+                alert("모든 비밀번호 필드를 입력해주세요.");
+                return;
+            }
+
+            if (oldPassword !== currentUser.pw) {
+                alert("현재 비밀번호가 일치하지 않습니다.");
+                return;
+            }
+
+            if (newPassword !== confirmPassword) {
+                alert("새 비밀번호가 일치하지 않습니다.");
+                return;
+            }
+
+            if (newPassword.length < 8) {
+                alert("비밀번호는 8자 이상이어야 합니다.");
+                return;
+            }
+
+            // localStorage의 userDB 업데이트
+            const userDB = JSON.parse(localStorage.getItem("userDB")) || [];
+            const userIndex = userDB.findIndex((user) => user.id === currentUser.id);
+
+            if (userIndex !== -1) {
+                userDB[userIndex].pw = newPassword;
+                localStorage.setItem("userDB", JSON.stringify(userDB));
+
+                // sessionStorage의 currentUser 업데이트
+                currentUser.pw = newPassword;
+                sessionStorage.setItem("currentUser", JSON.stringify(currentUser));
+
+                alert("비밀번호가 성공적으로 변경되었습니다.");
+                passwordCancelButton.click();
+            } else {
+                alert("사용자 정보를 찾을 수 없습니다.");
+            }
+        });
+    }
+
+    // 회원 정보 저장 (연락처, 이메일)
+    if (editForm) {
+        editForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const newContact = document.getElementById("user-contact").value;
+            const newEmail = document.getElementById("user-email").value;
+
+            if (!newContact || !newEmail) {
+                alert("모든 필드를 입력해주세요.");
+                return;
+            }
+
+            // localStorage의 userDB 업데이트
+            const userDB = JSON.parse(localStorage.getItem("userDB")) || [];
+            const userIndex = userDB.findIndex((user) => user.id === currentUser.id);
+
+            if (userIndex !== -1) {
+                userDB[userIndex].phone = newContact;
+                userDB[userIndex].email = newEmail;
+                localStorage.setItem("userDB", JSON.stringify(userDB));
+
+                // sessionStorage의 currentUser 업데이트
+                currentUser.phone = newContact;
+                currentUser.email = newEmail;
+                sessionStorage.setItem("currentUser", JSON.stringify(currentUser));
+
+                alert("회원 정보가 성공적으로 저장되었습니다.");
+            } else {
+                alert("사용자 정보를 찾을 수 없습니다.");
+            }
         });
     }
 });

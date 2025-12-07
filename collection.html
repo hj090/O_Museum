@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="kor">
     <head>
-        <meta charset="UTF-8">
-        <meta name="description" content="소장품 페이지">
+        <meta charset="UTF-8" />
+        <meta name="description" content="소장품 페이지" />
         <title>소장품</title>
-        <link rel="stylesheet" href="index.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <link rel="stylesheet" href="collection.css">
+        <link rel="stylesheet" href="index.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+        <link rel="stylesheet" href="collection.css" />
     </head>
     <body>
         <header>
@@ -15,14 +15,12 @@
                     <button id="search-toggle-btn" title="검색">
                         <i class="fas fa-search"></i>
                     </button>
-            
-            
                 </div>
-            
+
                 <div class="logo">
                     <a href="index.html">ㅅㅜㅁ 박물관</a>
                 </div>
-            
+
                 <div id="header-cta-buttons">
                     <a href="login.html" id="login-btn" title="로그인">
                         <span>로그인</span>
@@ -39,90 +37,72 @@
             </div>
 
             <div id="search-bar">
-                <input type="text" placeholder="작품명, 작가, 전시회 검색">
+                <input type="text" placeholder="작품명, 작가, 전시회 검색" />
             </div>
 
             <nav id="main-nav">
                 <a href="info.html">관람정보</a>
                 <a href="exhibition.html">전시·행사</a>
-                <a href="store.html">기념품</a>
                 <a href="collection.html" class="active">소장품</a>
+                <a href="store.html">기념품</a>
             </nav>
         </header>
         <main>
-            <span id="banner"><img src="Resources/collection_banner.png" alt="소장품 배너 이미지"></span>
+            <span id="banner"><img src="Resources/collection_banner.png" alt="소장품 배너 이미지" /></span>
             <div class="layout">
-                
-            <nav class="breadcrumb">
-                <a href="index.html">
-                    <img src="Resources/all_홈아이콘.png" alt="홈" style="width:30px; height:30px;">
-                </a>
-                <img src="Resources/all_화살표아이콘.png" alt="화살표" style="width:24px; height:24px;">
-                <span class="current">소장품</span>
-            </nav>
+                <nav class="breadcrumb">
+                    <a href="index.html">
+                        <img src="Resources/all_홈아이콘.png" alt="홈" style="width: 30px; height: 30px" />
+                    </a>
+                    <img src="Resources/all_화살표아이콘.png" alt="화살표" style="width: 24px; height: 24px" />
+                    <span class="current">소장품</span>
+                </nav>
 
-            <h1 class="page-title">숨 박물관 소장품</h1>
-            <p class="description">5천만년의 시간속<br>한국의 아름다움을 품은 소장품을 만나보세요</p>
-            <section class="search-area">
-    <div class="search-bar">
-        <input
-            type="text"
-            class="search-input"
-            id="searchInput"
-            placeholder="소장품을 검색하세요.">
-        <button type="button" class="search-btn" id="searchBtn">
-            <img src="Resources/all_돋보기아이콘.png" alt="돋보기">
-        </button>
-    </div>
+                <h1 class="page-title">숨 박물관 소장품</h1>
+                <p class="description">5천만년의 시간속<br />한국의 아름다움을 품은 소장품을 만나보세요</p>
+                <section class="search-area">
+                    <div class="search-bar">
+                        <input type="text" class="search-input" id="searchInput" placeholder="소장품을 검색하세요." />
+                        <button type="button" class="search-btn" id="searchBtn">
+                            <img src="Resources/all_돋보기아이콘.png" alt="돋보기" />
+                        </button>
+                    </div>
 
-    <div class="search-filters">
-        <label class="filter-item">
-            <input type="checkbox" class="filter-checkbox" value="청자"> 청자
-        </label>
-        <label class="filter-item">
-            <input type="checkbox" class="filter-checkbox" value="백자"> 백자
-        </label>
-        <label class="filter-item">
-            <input type="checkbox" class="filter-checkbox" value="분청사기"> 분청사기
-        </label>
-        <label class="filter-item">
-            <input type="checkbox" class="filter-checkbox" value="금공"> 금공
-        </label>
-        <label class="filter-item">
-            <input type="checkbox" class="filter-checkbox" value="서화·문헌"> 서화·문헌
-        </label>
-        <label class="filter-item">
-            <input type="checkbox" class="filter-checkbox" value="석조"> 석조
-        </label>
-    </div>
-</section>
+                    <div class="search-filters">
+                        <label class="filter-item"> <input type="checkbox" class="filter-checkbox" value="청자" /> 청자 </label>
+                        <label class="filter-item"> <input type="checkbox" class="filter-checkbox" value="백자" /> 백자 </label>
+                        <label class="filter-item"> <input type="checkbox" class="filter-checkbox" value="분청사기" /> 분청사기 </label>
+                        <label class="filter-item"> <input type="checkbox" class="filter-checkbox" value="금공" /> 금공 </label>
+                        <label class="filter-item"> <input type="checkbox" class="filter-checkbox" value="서화·문헌" /> 서화·문헌 </label>
+                        <label class="filter-item"> <input type="checkbox" class="filter-checkbox" value="석조" /> 석조 </label>
+                    </div>
+                </section>
 
-            <hr>
+                <hr />
 
-<p class="result-count" id="resultCount">총 0건이 검색되었습니다.</p>
+                <p class="result-count" id="resultCount">총 0건이 검색되었습니다.</p>
 
-<section class="item-list">
-    <div class="item-grid" id="itemGrid">
-        <!-- 자바스크립트로 카드 12개씩 채워 넣을 자리 -->
-    </div>
-</section>
+                <section class="item-list">
+                    <div class="item-grid" id="itemGrid">
+                        <!-- 자바스크립트로 카드 12개씩 채워 넣을 자리 -->
+                    </div>
+                </section>
 
-<p class="page-info" id="pageInfo">
-    <span class="current-page">페이지 1</span>
-    <span class="slash">/</span>
-    <span class="total-page">7</span>
-</p>
+                <p class="page-info" id="pageInfo">
+                    <span class="current-page">페이지 1</span>
+                    <span class="slash">/</span>
+                    <span class="total-page">7</span>
+                </p>
 
-<nav class="pagination" id="pagination">
-    <!-- JS가 « ‹ 1 2 3 ... › » 를 생성 -->
-</nav>
-
+                <nav class="pagination" id="pagination">
+                    <!-- JS가 « ‹ 1 2 3 ... › » 를 생성 -->
+                </nav>
             </div>
         </main>
-        <footer>        
+        <footer>
             <div class="content-wrapper">
                 <div class="footer-main">
-                    <div style="display: flex; flex-wrap: wrap;">
+                    <div style="display: flex; flex-wrap: wrap">
                         <div class="footer-links">
                             <a href="#">유휴공간표준관리시스템</a>
                             <a href="#">소속박물관 바로가기</a>
@@ -146,7 +126,7 @@
                         <p>04383 서울시 용산구 서빙고로 137</p>
                         <p>(대표전화) 1688-0000</p>
                         <p>ⓒ National Museum of Korea.</p>
-                        <div style="margin-top: 10px;">
+                        <div style="margin-top: 10px">
                             <span><i class="fab fa-x-twitter"></i></span>
                             <span><i class="fab fa-facebook-f"></i></span>
                             <span><i class="fab fa-instagram"></i></span>

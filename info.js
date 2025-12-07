@@ -36,4 +36,25 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         })
         .catch((err) => console.error("JSON 불러오는 중 오류 발생:", err));
+
+    // 로그인 상태 확인
+    const gotoTicketButton = document.getElementById("goto_ticket_button");
+
+    if (gotoTicketButton) {
+        gotoTicketButton.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            // 로그인 확인
+            const currentUser = sessionStorage.getItem("currentUser");
+
+            if (!currentUser) {
+                // 로그인되어 있지 않은 경우
+                alert("로그인 후 사용 가능합니다.");
+                window.location.href = "login.html";
+            } else {
+                // 로그인되어 있는 경우
+                window.location.href = "ticket.html";
+            }
+        });
+    }
 });
