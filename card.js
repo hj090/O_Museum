@@ -4,7 +4,7 @@ const cardData = {
     "tabmenu1": [
         {
             "id": 1,
-            "image": "Resources/store_stationery.jpg",
+            "image": "Resources/store_stationery2.jpg",
             "category": "나전",
             "name": "이조 연화당초 육각함",
             "description": "상시판매품",
@@ -49,7 +49,7 @@ const cardData = {
         },
         {
             "id": 6,
-            "image": "Resources/store_stationery.jpg",
+            "image": "Resources/store_stationery2.jpg",
             "category": "액세서리",
             "name": "금관 브로치",
             "description": "뮷즈 공모 선정작",
@@ -58,7 +58,7 @@ const cardData = {
         },
         {
             "id": 7,
-            "image": "Resources/store_stationery.jpg",
+            "image": "Resources/store_stationery2.jpg",
             "category": "기타",
             "name": "나전 핸드워시",
             "description": "개관 20주년 기념 상품",
@@ -85,7 +85,7 @@ const cardData = {
         },
         {
             "id": 10,
-            "image": "Resources/store_stationery.jpg",
+            "image": "Resources/store_stationery2.jpg",
             "category": "배지/키링",
             "name": "까치 호랑이 배지",
             "description": "뮷즈 공모 선정작",
@@ -190,7 +190,7 @@ const cardData = {
     "tabmenu3": [
         {
             "id": 21,
-            "image": "Resources/store_stationery.jpg",
+            "image": "Resources/store_stationery2.jpg",
             "category": "기타",
             "name": "나전 핸드워시",
             "description": "개관 20주년 기념 상품",
@@ -199,7 +199,7 @@ const cardData = {
         },
         {
             "id": 22,
-            "image": "Resources/store_stationery.jpg",
+            "image": "Resources/store_stationery2.jpg",
             "category": "배지/키링",
             "name": "까치 호랑이 배지",
             "description": "뮷즈 공모 선정작",
@@ -208,7 +208,7 @@ const cardData = {
         },
         {
             "id": 23,
-            "image": "Resources/store_stationery.jpg",
+            "image": "Resources/store_stationery2.jpg",
             "category": "액세서리",
             "name": "금관 브로치",
             "description": "뮷즈 공모 선정작",
@@ -217,7 +217,7 @@ const cardData = {
         },
         {
             "id": 24,
-            "image": "Resources/store_stationery.jpg",
+            "image": "Resources/store_stationery2.jpg",
             "category": "액세서리",
             "name": "금관 이어링",
             "description": "뮷즈 공모 선정작",
@@ -226,7 +226,7 @@ const cardData = {
         },
         {
             "id": 25,
-            "image": "Resources/store_stationery.jpg",
+            "image": "Resources/store_stationery2.jpg",
             "category": "기타",
             "name": "곤룡포 비치 타월",
             "description": "뮷즈 공모 선정작",
@@ -235,7 +235,7 @@ const cardData = {
         },
         {
             "id": 26,
-            "image": "Resources/store_stationery.jpg",
+            "image": "Resources/store_stationery2.jpg",
             "category": "도자기",
             "name": "흑자 달항아리",
             "description": "상시판매품",
@@ -244,7 +244,7 @@ const cardData = {
         },
         {
             "id": 27,
-            "image": "Resources/store_stationery.jpg",
+            "image": "Resources/store_stationery2.jpg",
             "category": "도자기",
             "name": "청자 12간지 인형",
             "description": "고려 상형청자 전시",
@@ -253,7 +253,7 @@ const cardData = {
         },
         {
             "id": 28,
-            "image": "Resources/store_stationery.jpg",
+            "image": "Resources/store_stationery2.jpg",
             "category": "나전",
             "name": "이조 연화당초 육각함",
             "description": "상시판매품",
@@ -262,7 +262,7 @@ const cardData = {
         },
         {
             "id": 29,
-            "image": "Resources/store_stationery.jpg",
+            "image": "Resources/store_stationery2.jpg",
             "category": "도자기",
             "name": "십장생문 찻잔과 받침",
             "description": "상시판매품",
@@ -271,7 +271,7 @@ const cardData = {
         },
         {
             "id": 30,
-            "image": "Resources/store_stationery.jpg",
+            "image": "Resources/store_stationery2.jpg",
             "category": "금속",
             "name": "금제태환귀걸이 액자",
             "description": "상시판매품",
