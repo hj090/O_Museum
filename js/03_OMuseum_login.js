@@ -4,7 +4,7 @@ async function initUserDB() {
         return;
     }
     try {
-        const response = await fetch("./data.json");
+        const response = await fetch("./03_OMuseum_data.json");
         const initialData = await response.json();
         localStorage.setItem("userDB", JSON.stringify(initialData));
         console.log("데이터가 새로 로드되었습니다:", initialData);
@@ -31,7 +31,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
         if (targetUser.pw === inputPw) {
             alert(`${targetUser.name}님 환영합니다!`);
             sessionStorage.setItem("currentUser", JSON.stringify(targetUser));
-            location.href = "index.html";
+            location.href = "03_OMuseum_index.html";
         } else {
             alert("비밀번호가 일치하지 않습니다.");
         }

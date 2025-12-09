@@ -14,9 +14,9 @@ const MAX_PEOPLE = 4;
 // json 데이터 로드
 async function loadAllData() {
     try {
-        const response = await fetch("./ticket.json");
+        const response = await fetch("data/03_OMuseum_tickets.json");
         if (!response.ok) {
-            throw new Error("ticket.json 파일을 불러올 수 없습니다.");
+            throw new Error("03_OMuseum_tickets.json 파일을 불러올 수 없습니다.");
         }
         const data = await response.json();
 
@@ -804,16 +804,16 @@ async function goToPayment() {
                 saveReservationToLocalStorage(bookingInfo);
 
                 alert("결제가 완료되었습니다.\n예매정보는 마이페이지>예매 내역에서 확인할 수 있습니다.");
-                window.location.href = "/info.html";
+                window.location.href = "/03_OMuseum_info.html";
             }
         } catch (error) {
             alert(`결제 처리 중 오류가 발생했습니다.\n${error.message}`);
-            window.location.href = "/info.html";
+            window.location.href = "/03_OMuseum_info.html";
         }
     } else {
         // 취소
         alert("결제가 취소되었습니다.");
-        window.location.href = "/info.html";
+        window.location.href = "/03_OMuseum_info.html";
     }
 }
 
@@ -878,6 +878,15 @@ async function updateTicketQuantity(dateString, timeString, peopleCount) {
 
 // 페이지 로드 시 실행
 document.addEventListener("DOMContentLoaded", async function () {
+    // 로그인 확인 (가장 먼저 실행)
+    const currentUser = sessionStorage.getItem("currentUser");
+
+    if (!currentUser) {
+        alert("로그인 후 사용 가능합니다.");
+        window.location.href = "03_OMuseum_login.html";
+        return; // 리다이렉트하므로 이후 코드 실행 중단
+    }
+
     await initTicket(); // async로 변경하여 데이터 로드 완료 대기
     updateButtons(); // 이제 peopleData가 로드된 후 실행됨
 });

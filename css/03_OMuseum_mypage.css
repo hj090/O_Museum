@@ -1,19 +1,15 @@
 /* ------------------ 마이페이지 화이트 테마 변수 정의 ------------------ */
 
 :root {
-    /* 마이페이지 화이트 테마용 독립 변수 */
-    --color-content-bg-white: #f0f2f5; /* 마이페이지 영역 배경색 (아주 밝은 회색) */
-    --color-section-bg-white: #ffffff; /* 마이페이지 카드/컨테이너 배경색 (순수 흰색) */
-    --color-content-text-dark: #333333; /* 마이페이지 주요 텍스트 */
-    --color-content-text-light: #666666; /* 마이페이지 보조 텍스트 */
-    --color-border-light-white: #e0e0e0; /* 마이페이지 일반적인 테두리 */
-    --color-active-bg: #e6f7ff; /* 활성 메뉴 배경색 (연한 파랑) */
-    
-    /* index.css의 primary color를 재사용 (녹색) */
-    /* --color-primary: #008573; */ 
+    --color-content-bg-white: #f0f2f5;
+    --color-section-bg-white: #ffffff;
+    --color-content-text-dark: #333333;
+    --color-content-text-light: #666666;
+    --color-border-light-white: #e0e0e0;
+    --color-active-bg: #e6f7ff;
 }
 
-.breadcrumb{
+.breadcrumb {
     font-size: 1.25rem;
     color: #8c8c8c;
     display: flex; /* 요소들을 한 줄에 정렬 */
@@ -48,18 +44,14 @@
     font-weight: 400;
     color: #8c8c8c;
 }
- 
 
-/* ------------------ 마이페이지 BODY (화이트 콘텐츠 오버라이드) ------------------ */
+/* ------------------ 마이페이지 BODY ------------------ */
 
 .white-content-wrapper {
-    /* 이 영역이 body의 다크 배경 위에 덮어씌워져 화이트 테마가 적용됩니다. */
-    background-color: var(--color-content-bg-white); 
-    color: var(--color-content-text-dark); /* 내부 텍스트 기본색 변경 */
-    padding: 80px 0 100px; /* 상하 여백 조정 */
-    margin-top: calc(var(--header-height) + var(--nav-height) - 155px); 
-    /* body padding-top을 기준으로 여백을 조정해야 하지만,
-       mypage.html에서 main을 div로 감싸 body의 padding-top은 헤더 공간 확보용으로 유지합니다. */
+    background-color: var(--color-content-bg-white);
+    color: var(--color-content-text-dark);
+    padding: 80px 0 100px;
+    margin-top: calc(var(--header-height) + var(--nav-height) - 155px);
 }
 
 /* ------------------ 마이페이지 공통 스타일 ------------------ */
@@ -71,28 +63,26 @@
 }
 
 .mypage-wrapper h1 {
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 3rem; 
+    font-family: "Noto Sans", sans-serif;
+    font-size: 3rem;
     text-align: left;
     font-weight: 700;
     margin-bottom: 40px;
     color: var(--color-content-text-dark);
-    /* 추가: 마이페이지 제목 아래 구분선 */
-    padding-bottom: 20px; /* 구분선과 제목 사이 간격 */
-    border-bottom: 2px solid var(--color-border-light-white); /* 가느다란 구분선 */
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--color-border-light-white);
 }
 
 /* 마이페이지 레이아웃 컨테이너 */
 .mypage-layout {
     display: flex;
     gap: 30px;
-    background-color: var(--color-section-bg-white); /* 흰색 배경 */
+    background-color: var(--color-section-bg-white);
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); 
-    min-height: 500px; 
-    /* 추가: 제목 구분선과의 상단 간격 */
-    margin-top: 40px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    min-height: 500px;
+    margin-top: 40px;
 }
 /* ------------------ 상단 탭 스타일 ------------------ */
 .mypage-tabs {
@@ -113,18 +103,16 @@
 }
 
 .mypage-tabs .tab.active {
-    /* index.css의 primary color 사용 */
-    color: var(--color-primary, #008573); 
+    color: var(--color-primary, #008573);
     border-bottom: 2px solid var(--color-primary, #008573);
     font-weight: bold;
 }
 
-
 /* ------------------ 좌측 메뉴 스타일 ------------------ */
 .mypage-nav {
-    width: 200px; 
+    width: 200px;
     flex-shrink: 0;
-    padding-top: 50px; 
+    padding-top: 50px;
     border-right: 1px solid var(--color-border-light-white);
 }
 
@@ -154,31 +142,29 @@
 }
 
 .mypage-nav li a.active {
-    /* index.css의 primary color 사용 */
-    color: var(--color-primary, #008573); 
-    background-color: var(--color-active-bg); 
+    /* 03_OMuseum_index.css의 primary color 사용 */
+    color: var(--color-primary, #008573);
+    background-color: var(--color-active-bg);
     border-left: 3px solid var(--color-primary, #008573);
     font-weight: bold;
 }
 
 .mypage-nav li a:hover {
-    /* index.css의 primary color 사용 */
     color: var(--color-primary, #008573);
 }
-
 
 /* ------------------ 콘텐츠 영역 스타일 ------------------ */
 .mypage-content {
     flex-grow: 1;
-    padding-left: 30px; 
-    padding-top: 30px; 
+    padding-left: 30px;
+    padding-top: 30px;
     padding-right: 30px;
 }
 
-/* 예약 내역 카드 스타일 (수정: 체크박스 포함을 위해 flex로 변경) */
+/* 예약 내역 카드 스타일 */
 .reservation-card {
-    display: flex; /* 체크박스와 콘텐츠를 옆으로 배치 */
-    align-items: flex-start; /* 상단 정렬 */
+    display: flex;
+    align-items: flex-start;
     border: 1px solid var(--color-border-light-white);
     border-radius: 5px;
     padding: 20px;
@@ -189,13 +175,13 @@
 /* 체크박스 컨테이너 스타일 */
 .reservation-card {
     margin-right: 40px;
-    margin-top: 5px; /* 내용과 수직 정렬 조정 */
-    flex-shrink: 0; /* 공간이 부족해도 체크박스는 줄어들지 않도록 설정 */
+    margin-top: 5px;
+    flex-shrink: 0;
 }
 .checkbox-container {
     margin-right: 40px;
-    margin-top: 5px; /* 내용과 수직 정렬 조정 */
-    flex-shrink: 0; /* 공간이 부족해도 체크박스는 줄어들지 않도록 설정 */
+    margin-top: 5px;
+    flex-shrink: 0;
 }
 
 /* 체크박스 기본 스타일 */
@@ -203,7 +189,7 @@
     width: 20px;
     height: 20px;
     cursor: pointer;
-    appearance: none; /* 기본 브라우저 스타일 제거 */
+    appearance: none;
     border: 2px solid var(--color-border-light-white);
     border-radius: 4px;
     position: relative;
@@ -217,8 +203,7 @@
 }
 
 .reservation-card input[type="checkbox"]:checked::after {
-    /* 체크 마크 (V) 아이콘 */
-    content: '\2713'; 
+    content: "\2713";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -228,11 +213,10 @@
     font-weight: bold;
 }
 
-/* 카드 콘텐츠 래퍼: 남은 공간 모두 사용 */
+/* 카드 콘텐츠 래퍼 */
 .reservation-card .card-content-wrapper {
     flex-grow: 1;
 }
-
 
 .card-header {
     display: flex;
@@ -261,7 +245,6 @@
 }
 
 .card-details strong {
-    /* index.css의 primary color 사용 */
     color: var(--color-primary, #008573);
     font-weight: bold;
 }
@@ -270,18 +253,16 @@
 .reservation-actions {
     margin-top: 30px;
     display: flex;
-    justify-content: flex-end; /* 우측 정렬 */
+    justify-content: flex-end;
 }
 
 /* 선택 취소 버튼 스타일 */
 .cancel-selected-btn {
-    /* receipt-btn 스타일 재사용 */
     padding: 10px 20px;
     font-size: 1rem;
 }
 
 .receipt-btn {
-    /* index.css의 primary color 사용 */
     background-color: var(--color-primary, #008573);
     color: var(--color-section-bg-white);
     padding: 8px 15px;
@@ -316,9 +297,8 @@
 .form-group label {
     font-weight: bold;
     color: var(--color-content-text-dark);
-    flex-basis: 150px; /* 라벨 너비 고정 */
+    flex-basis: 150px;
     flex-shrink: 0;
-    /* label과 input/text/button 사이의 가로 간격을 추가 */
     margin-left: -50px;
     margin-right: 30px;
 }
@@ -335,8 +315,8 @@
 
 /* 1. 읽기 전용 (이름, 아이디) - 회색 배경 */
 .form-group input[readonly] {
-    background-color: var(--color-section-bg-white); /* 순수 흰색 배경으로 대비 */
-    border: 1px solid var(--color-border-light-white); /* 일반 테두리 */
+    background-color: var(--color-section-bg-white);
+    border: 1px solid var(--color-border-light-white);
 }
 
 /* 2. 수정 가능 필드 (연락처, 이메일) - 흰색 배경 */
@@ -352,10 +332,10 @@
     padding: 10px;
     font-size: 1rem;
     color: var(--color-content-text-light);
-    background-color: #eee; /* 회색 박스 유지 */
+    background-color: #eee;
     border: 1px dashed var(--color-border-light-white);
     border-radius: 5px;
-    margin-right: 10px; /* 버튼과의 간격 */
+    margin-right: 10px;
     text-align: left;
 }
 
@@ -363,24 +343,22 @@
 .password-save-actions {
     display: flex;
     /* 우측 정렬로 수정 */
-    justify-content: flex-end; 
+    justify-content: flex-end;
     gap: 15px;
     margin-top: 20px;
     margin-bottom: 40px;
-    padding-right: 0px; /* 필요한 경우, 우측 패딩 제거 */
+    padding-right: 0px;
 }
 
 .password-save-btn {
     padding: 10px 20px;
-    /* receipt-btn 스타일 재사용 */
 }
 
 /* 취소 버튼 스타일: 회색으로 변경 */
 .password-cancel-btn {
-    /* 회색 배경 버튼으로 변경 */
-    background: #f0f0f0; 
+    background: #f0f0f0;
     border: none;
-    color: var(--color-content-text-dark); /* 진한 텍스트 색상 */
+    color: var(--color-content-text-dark);
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
@@ -393,22 +371,20 @@
     background-color: #e0e0e0;
 }
 
-/* 하단 '정보 저장' 버튼 그룹: 우측 정렬 */
 .form-actions {
     margin-top: 40px;
-    /* 우측 정렬로 수정 */
-    text-align: right; 
+    text-align: right;
 }
 
 .form-actions .receipt-btn {
     padding: 12px 30px;
     font-size: 1.1rem;
 }
-/* ------------------ 장바구니 (Cart) 스타일 (새로 추가) ------------------ */
+/* ------------------ 장바구니 (Cart) 스타일 ------------------ */
 
 .cart-item-card {
     display: flex;
-    align-items: center; /* 수직 중앙 정렬 */
+    align-items: center;
     border: 1px solid var(--color-border-light-white);
     border-radius: 5px;
     padding: 15px 20px;
@@ -421,12 +397,11 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* 🌟 사용자 요청: 장바구니 체크박스 기본 스타일 추가 🌟 */
 .cart-item-card input[type="checkbox"] {
     width: 20px;
     height: 20px;
     cursor: pointer;
-    appearance: none; /* 기본 브라우저 스타일 제거 */
+    appearance: none;
     border: 2px solid var(--color-border-light-white);
     border-radius: 4px;
     position: relative;
@@ -441,7 +416,7 @@
 
 .cart-item-card input[type="checkbox"]:checked::after {
     /* 체크 마크 (V) 아이콘 */
-    content: '\2713'; 
+    content: "\2713";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -450,11 +425,10 @@
     font-size: 14px;
     font-weight: bold;
 }
-/* 🌟 새로 추가: 장바구니 전체 액션 버튼 (선택 항목 삭제) 컨테이너 우측 정렬 */
 .cart-actions {
     margin-top: 30px;
     display: flex;
-    justify-content: flex-end; /* 버튼을 컨테이너의 오른쪽 끝으로 정렬 */
+    justify-content: flex-end;
 }
 /* 이미지 래퍼 및 이미지 스타일 */
 .item-image-wrapper {
@@ -476,7 +450,7 @@
 .item-info {
     flex-grow: 1;
     display: flex;
-    justify-content: space-between; /* 이름과 가격을 양 끝으로 분리 */
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -492,15 +466,15 @@
     color: var(--color-primary, #008573); /* 가격 강조 */
 }
 
-/* ------------------ 관심 상품 (Favorites) 스타일 (새로 추가) ------------------ */
+/* ------------------ 관심 상품 (Favorites) 스타일 ------------------ */
 
 .favorite-item-card {
     display: flex;
-    align-items: center; 
+    align-items: center;
     border: 1px solid var(--color-border-light-white);
     border-radius: 5px;
     /* 체크박스 공간만큼 왼쪽 패딩을 줄여 좌측 정렬 */
-    padding: 15px 20px; 
+    padding: 15px 20px;
     margin-bottom: 20px;
     background-color: var(--color-section-bg-white);
     transition: box-shadow 0.2s;
@@ -510,7 +484,7 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* 이미지 래퍼 스타일 (장바구니와 동일) */
+/* 이미지 래퍼 스타일 */
 .favorite-item-card .item-image-wrapper {
     width: 80px;
     height: 80px;
@@ -526,11 +500,11 @@
     object-fit: cover;
 }
 
-/* 상품 정보 스타일 (장바구니와 동일) */
+/* 상품 정보 스타일 */
 .favorite-item-card .item-info {
     flex-grow: 1;
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -543,14 +517,14 @@
 .favorite-item-card .item-price {
     font-size: 1.1rem;
     font-weight: bold;
-    color: var(--color-primary, #008573); 
+    color: var(--color-primary, #008573);
 }
 /* ------------------ Mobile Responsive Adjustments ------------------ */
 @media (max-width: 992px) {
     .mypage-layout {
         flex-direction: column;
     }
-    
+
     .mypage-nav {
         width: 100%;
         border-right: none;
@@ -560,19 +534,19 @@
     .mypage-nav h2 {
         display: none;
     }
-    
+
     .mypage-nav ul {
         display: flex;
         flex-wrap: wrap;
         margin-bottom: 10px;
         border-bottom: 1px solid var(--color-border-light-white);
     }
-    
+
     .mypage-nav li {
-        flex: 1 1 50%; 
+        flex: 1 1 50%;
         box-sizing: border-box;
     }
-    
+
     .mypage-nav li a {
         padding: 10px 5px;
         text-align: center;
@@ -583,7 +557,7 @@
     .mypage-nav li a.active {
         border-bottom: 3px solid var(--color-primary, #008573);
         border-left: none;
-        background-color: transparent; /* 모바일에서는 배경색 제거 */
+        background-color: transparent;
     }
 
     .mypage-content {
