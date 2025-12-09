@@ -7,27 +7,24 @@
 }
 
 :root {
-    /* 다크 테마 색상 적용 - 사용자 요청 #008573 반영 */
+    /* 다크 테마 색상 적용 */
     --color-primary: #008573;
-    --color-primary-hover: #00695b; /* #008573의 어두운 버전 */
-    --color-black: #0a0a0a; /* 더 어둡게 */
-    --color-white: #e0e0e0; /* 밝은 텍스트 색상 */
-    --color-text-light: #b0b0b0; /* 보조 텍스트 색상 */
-    --color-background-dark: #1a1a1a; /* 전체 배경색 */
-    --header-height: 90px; /* 메인 헤더 높이 */
-    --nav-height: 65px; /* 메인 네비게이션 높이 */
+    --color-primary-hover: #00695b;
+    --color-black: #0a0a0a;
+    --color-white: #e0e0e0;
+    --color-text-light: #b0b0b0;
+    --color-background-dark: #1a1a1a;
+    --header-height: 90px;
+    --nav-height: 65px;
     --search-bar-height: 100px;
-    --section-bg: #1e1e1e; /* 섹션 내부 배경색 */
+    --section-bg: #1e1e1e;
 
-    /* --- 사용자 요청 새 색상 정의 --- */
     --color-dark-gray-request: #8c8c8c; /* 짙은 회색 */
     --color-medium-gray-request: #d9d9d9; /* 회색 */
     --color-light-gray-request: #f8f8f8; /* 옅은 회색 */
 }
 
 /* ------------------ Base & Reset Styles ------------------ */
-
-/* --- 사용자 요청 폰트 스타일 적용 --- */
 
 h1 {
     /* <h1> : 28px, bold, 대한민국 정부 상징 서체 */
@@ -36,55 +33,44 @@ h1 {
     font-weight: 700;
 }
 
-/* 기존 section h2 스타일을 사용자 요청으로 덮어씁니다. */
 section h2 {
-    /* <h2> : 48px , bold, 대한민국 정부 상징 서체 */
     font-family: "대한민국정부상징체", sans-serif;
     font-size: 48px;
     font-weight: 700;
-    /* text-align: center; 속성을 제거하여 좌측 정렬이 기본 적용됩니다. */
     margin-bottom: 40px;
 }
 
-/* h3와 .encart-title에 사용자 요청 스타일을 적용합니다. */
 h3,
 .encart-title {
-    /* <h3> : 32px , bold, Noto Sans */
     font-family: "Noto Sans", sans-serif;
     font-size: 32px;
     font-weight: 700;
-    color: var(--color-white); /* 기존 .encart-title 색상 유지 */
+    color: var(--color-white);
 }
 
 h4 {
-    /* <h4> : 28px, Medium, Noto Sans */
     font-family: "Noto Sans", sans-serif;
     font-size: 28px;
     font-weight: 500;
 }
 
 h5 {
-    /* <h5> : 18px , bold, Noto Sans */
     font-family: "Noto Sans", sans-serif;
     font-size: 18px;
     font-weight: 700;
 }
 
 .p1 {
-    /* <p1> : 24px, Regular, Noto Sans */
     font-family: "Noto Sans", sans-serif;
     font-size: 24px;
     font-weight: 400;
 }
 
 .p2 {
-    /* <p2> : 12px, Regular, Noto Sans */
     font-family: "Noto Sans", sans-serif;
     font-size: 12px;
     font-weight: 400;
 }
-
-/* ------------------ (사용자 요청 폰트 스타일 종료) ------------------ */
 
 /* ------------------ Base & Reset Styles ------------------ */
 
@@ -97,31 +83,29 @@ h5 {
 body {
     font-family: "Noto Sans", sans-serif;
     line-height: 1.6;
-    background-color: var(--color-background-dark); /* 전체 배경색 변경 */
-    color: var(--color-white); /* 기본 글자색 변경 */
-    /* body 상단 패딩: 메인 헤더(90px) + 메인 내비(65px) = 155px (고정 헤더 공간 확보) */
+    background-color: var(--color-background-dark);
+    color: var(--color-white);
     padding-top: calc(var(--header-height) + var(--nav-height));
     transition: padding-top 0.3s ease;
 }
 
 body.search-active {
-    /* 검색창 활성화 시: 헤더(90) + 검색창(100) + 메인 내비(65) = 255px */
     padding-top: calc(var(--header-height) + var(--search-bar-height) + var(--nav-height));
 }
 
 a {
     text-decoration: none;
-    color: var(--color-white); /* 링크 색상 변경 */
+    color: var(--color-white);
     transition: color 0.3s;
 }
 
 a:hover {
-    color: var(--color-primary); /* 호버 시 강조색 */
+    color: var(--color-primary);
 }
 
 /* 섹션 공통 스타일 */
 .content-wrapper {
-    max-width: 1200px; /* 모든 섹션 내부 콘텐츠의 최대 너비를 1200px로 제한합니다. */
+    max-width: 1200px;
     margin: 0 auto;
     padding: 40px 20px;
 }
@@ -132,32 +116,32 @@ hr {
     margin: 0;
 }
 
-/* ------------------ Header and Navigation Styles (Existing) ------------------ */
+/* ------------------ Header and Navigation Styles ------------------ */
 .logo a {
     text-decoration: none;
-    color: var(--color-white); 
-    font-size: 1.5rem; 
+    color: var(--color-white);
+    font-size: 1.5rem;
     font-weight: 700;
-    
-    /* **[핵심]** 이미지와 텍스트를 수직 중앙에 정렬 */
+
     display: flex;
-    align-items: center; 
+    align-items: center;
 }
 
 .logo a img {
-    height: 100px; /* 로고 이미지의 높이를 텍스트 크기에 맞춰 설정 */
-    width: auto; /* 비율 유지 */
-    margin-right: 7px; /* 로고 이미지와 " 박물관" 텍스트 사이의 간격 */
+    height: 100px;
+    width: auto;
+    margin-right: 7px;
 }
 
 header {
+    min-width: 1000px;
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
-    background-color: #000000; /* 헤더 배경색 변경 */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* 어두운 배경에 맞는 그림자 */
+    background-color: #000000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 #header-main {
@@ -209,33 +193,29 @@ header {
     font-size: 1.5rem;
 }
 
-/* ------------------ Header CTA Buttons Container ------------------ */
+/* ------------------ Header Buttons Container ------------------ */
 #header-cta-buttons {
     /* 버튼들을 가로로 나열하고 가운데 정렬 */
     display: flex;
     align-items: center;
-    gap: 10px; /* 버튼 사이 간격 */
+    gap: 10px;
     z-index: 20;
 }
 
-/* ------------------ My Page Button Styles (#mypage-btn) ------------------ */
+/* ------------------ My Page Button Styles ------------------ */
 
 #mypage-btn {
-    /* 모든 버튼 스타일 초기화 */
-    border: none; /* 테두리 제거 */
-    padding: 10; /* 패딩 제거 */
-    border-radius: 0; /* 둥근 모서리 제거 */
-    font-weight: 700; /* 폰트 두께 유지 (텍스트 강조) */
-    font-size: 0.8rem; /* 폰트 크기 유지 */
-    display: inline-block; /* 텍스트 크기에 맞춰 폭 조정 */
-    text-decoration: none; /* 기본 밑줄 제거 */
-    margin-left: 5px; /* 왼쪽 마진 유지 */
-    margin-right: 10px; /* 오른쪽 마진 제거 */
-    /* 기존 색상: 투명 배경에 밝은 텍스트로 대비 */
+    border: none;
+    padding: 10;
+    border-radius: 0;
+    font-weight: 700;
+    font-size: 0.8rem;
+    display: inline-block;
+    text-decoration: none;
+    margin-left: 5px;
+    margin-right: 10px;
     background-color: transparent;
-    color: var(--color-white); /* 흰색 텍스트 유지 */
-
-    /* [수정] 아이콘과 텍스트 간격 제거 (아이콘이 없다는 가정 하에) */
+    color: var(--color-white);
     gap: 0;
 
     /* 부드러운 전환 효과 유지 */
@@ -243,12 +223,10 @@ header {
 }
 
 #mypage-btn:hover {
-    /* 호버 시: 배경색 및 테두리 변경 없음 */
     background-color: transparent;
     border-color: transparent;
     color: var(--color-white);
 
-    /* [핵심] 텍스트에만 밑줄 추가 */
     text-decoration: underline;
 }
 
@@ -361,7 +339,7 @@ body.search-active #main-nav {
     width: 100%;
 }
 
-/* ------------------ Video Hero Section Styles (Existing) ------------------ */
+/* ------------------ Video Hero Section Styles------------------ */
 #hero-video {
     width: 100%;
     height: 50vh;
@@ -378,18 +356,18 @@ body.search-active #main-nav {
 
 .video-controls {
     position: absolute;
-    bottom: 30px; /* 푸터 위로 올릴 위치 조정 */
+    bottom: 30px;
     left: 8%;
     transform: translateX(-50%);
-    z-index: 100; /* 다른 요소 위에 표시 */
-    pointer-events: auto; /* 버튼 클릭 가능하게 */
+    z-index: 100;
+    pointer-events: auto;
 }
 
 .play-pause-btn {
-    background-color: rgba(0, 0, 0, 0); /* 반투명 검은색 배경 */
-    color: var(--color-white); /* 흰색 아이콘 */
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--color-white);
     border: none;
-    border-radius: 50%; /* 원형 버튼 */
+    border-radius: 50%;
     width: 40px;
     height: 40px;
     font-size: 1rem;
@@ -401,7 +379,6 @@ body.search-active #main-nav {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
-/* 태블릿 및 모바일 반응형 조정 */
 @media (max-width: 768px) {
     .video-controls {
         bottom: 20px;
@@ -412,10 +389,9 @@ body.search-active #main-nav {
         font-size: 1.5rem;
     }
 }
-/* ------------------ Visitor Encart Styles (Modified) ------------------ */
+/* ------------------ Visitor Encart Style ------------------ */
 .visitor-encart {
     position: absolute;
-    /* **수정: 상단에서 505px 위치** */
     top: 505px;
     right: 0;
 
@@ -428,7 +404,6 @@ body.search-active #main-nav {
     align-items: center;
     justify-content: space-between;
     z-index: 500;
-    /* [추가] top 속성에 트랜지션 효과를 추가하여 부드럽게 움직이도록 함 */
     transition: top 0.3s ease;
 }
 
@@ -508,24 +483,19 @@ body.search-active #main-nav {
     background-color: #bcbcbc;
 }
 
-/* ------------------ Exhibition Container Styles (New) ------------------ */
+/* ------------------ Exhibition Container Styles------------------ */
 .ExhibitionContainer {
-    /* 배경색을 흰색으로 설정 */
     background-color: #fff;
-    /* 최대 너비 (max-w-7xl) */
     max-width: 100%;
-    /* 가운데 정렬 (mx-auto) */
     margin-left: auto;
     margin-right: auto;
 
-    /* 기본 패딩 (py-12 px-4) - 제거 */
     padding-top: 0;
     padding-bottom: 0;
     padding-left: 0;
     padding-right: 0;
 }
 
-/* 태블릿 이상 (md:px-8) - 제거 */
 @media (min-width: 768px) {
     .ExhibitionContainer {
         /* padding-left: 32px; 
@@ -533,12 +503,10 @@ body.search-active #main-nav {
     }
 }
 
-/* 사용자 요청: 내부 콘텐츠를 1200px로 제한하는 새로운 Wrapper 스타일 */
 .exhibition-inner-wrapper {
-    max-width: 1200px; /* 사용자 요청 너비 */
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    /* 기존 ExhibitionContainer의 패딩을 이리로 이동 */
     padding-top: 100px;
     padding-bottom: 48px;
     padding-left: 16px;
@@ -549,90 +517,72 @@ body.search-active #main-nav {
 }
 
 .card-shadow {
-    /* 기존 스타일 유지 */
     box-shadow: 0 4px 12px rgba(211, 211, 211, 0.4);
     background-color: var(--section-bg);
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    border-radius: 0rem; /* rounded-xl */
+    border-radius: 0rem;
 }
 .card-shadow:hover {
-    /* 기존 스타일 유지 */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
     transform: translateY(-4px);
 }
 .tag-primary {
-    /* 기존 스타일 유지 */
     background-color: var(--color-primary);
     color: var(--color-black);
 }
 
 .exhibition-grid {
     display: grid;
-    /* 루브르 CSS처럼 3열 그리드 기본 설정 (gap은 기존 것을 사용) */
     grid-template-columns: repeat(1, 1fr);
     gap: 1.5rem;
 }
 @media (min-width: 768px) {
     .exhibition-grid {
-        /* 태블릿: 2열 유지 */
         grid-template-columns: repeat(2, 1fr);
     }
 }
 @media (min-width: 1024px) {
     .exhibition-grid {
-        /* 데스크탑: 3열 그리드 설정 */
         grid-template-columns: repeat(3, 1fr);
-        /* 48px 24px의 갭은 기존 1.5rem(약 24px)으로 유지합니다. */
     }
 
-    /* Card 1: 대한민국 빛의 기록 (HIGHLIGHTED) - 2x2 크기 */
     .highlight-card {
         grid-column: span 2;
         grid-row: span 2;
     }
 
-    /* Card 2: 2024년 K-Art 뉴 웨이브 - 1x1 크기로 변경 */
-    /* 기존 lg:col-span-2를 제거하고 1열을 차지하도록 둡니다. */
     .exhibition-grid > :nth-child(2) {
         grid-column: 3 / 4;
         grid-row: 1 / 2;
     }
 
-    /* Card 3: 한국 고미술 특별 기획전 - 1x1 크기 */
     .exhibition-grid > :nth-child(3) {
         grid-column: 3 / 4;
         grid-row: 2 / 4;
     }
 
-    /* Card 4: 신진 작가 발굴 프로젝트 - 1x1 크기 */
     .exhibition-grid > :nth-child(4) {
         grid-column: 1 / 2;
         grid-row: 3 / 4;
     }
 
-    /* Card 5: 박물관 소장품 하이라이트 - 1x1 크기 */
     .exhibition-grid > :nth-child(5) {
         grid-column: 2 / 3;
         grid-row: 3 / 4;
     }
 }
 
-/* ------------------ Artifact Section Styles (통합) ------------------ */
+/* ------------------ Artifact Section Styles ------------------ */
 
 .artifact-section {
-    /* 변수명은 :root에 정의된 것을 따릅니다. */
     background-color: var(--color-background-dark);
     padding: 60px 0 0 0;
-    /* NEW: 이 섹션의 경계를 넘어가는 모든 자식 요소(사진)를 잘라냅니다. */
     overflow: hidden;
-
-    /* 겹치는 요소 위에 깔끔하게 잘리도록 기본 position을 설정해주는 것이 좋습니다. */
     position: relative;
 }
 
 .artifact-grid {
     display: grid;
-    /* 기본값: 모바일 우선 1열 */
     grid-template-columns: 1fr;
     gap: 20px;
 }
@@ -713,12 +663,11 @@ body.search-active #main-nav {
     .artifact-grid > :nth-child(1) {
         grid-column: 1 / 2;
         grid-row: 1 / 2;
-        /* 오프셋 */
         margin-top: 80px;
         margin-bottom: -50px;
     }
 
-    /* 2. 감산사 석조아미타불 입상.jpg (3개 행 차지) */
+    /* 2. 감산사 석조아미타불 입상.jpg */
     .artifact-grid > :nth-child(2) {
         grid-column: 2 / 3;
         grid-row: 1 / 2;
@@ -821,15 +770,15 @@ body.search-active #main-nav {
     object-fit: cover;
 }
 
-/* ------------------ Video Gallery Section Styles (Modified: Image, Gradient, Play Button) ------------------ */
+/* ------------------ Video Gallery Section Styles ------------------ */
 
 .video-item {
     text-decoration: none;
-    color: var(--color-white); 
+    color: var(--color-white);
     cursor: pointer;
     display: block;
-    overflow: hidden; 
-    border-radius: 5px; 
+    overflow: hidden;
+    border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
@@ -841,17 +790,17 @@ body.search-active #main-nav {
 
 .video-item-placeholder {
     height: 400px;
-    position: relative; 
+    position: relative;
     background-color: #2a2a2a;
     transition: transform 0.3s ease;
-    
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat; 
-    
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     display: flex;
-    align-items: center; 
-    justify-content: center; 
+    align-items: center;
+    justify-content: center;
 }
 
 .video-item:hover .video-item-placeholder {
@@ -865,38 +814,32 @@ body.search-active #main-nav {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        to bottom, 
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.2) 60%,
-        rgba(0, 0, 0, 0.8) 100%
-    );
-    z-index: 1; 
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0.8) 100%);
+    z-index: 1;
     transition: background 0.3s;
 }
 
 .play-button-icon {
-    position: relative; 
-    font-size: 5rem; 
-    color: rgba(255, 255, 255, 0.85); 
-    z-index: 2; 
-    transition: color 0.3s ease; 
+    position: relative;
+    font-size: 5rem;
+    color: rgba(255, 255, 255, 0.85);
+    z-index: 2;
+    transition: color 0.3s ease;
 }
 
 .video-item:hover .play-button-icon {
-    color: var(--color-primary); 
+    color: var(--color-primary);
 }
-
 
 .video-info {
     position: absolute;
-    bottom: 20px; 
+    bottom: 20px;
     left: 20px;
     right: 20px;
-    z-index: 3; 
+    z-index: 3;
     display: flex;
     flex-direction: column;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8); 
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .video-title {
@@ -912,19 +855,19 @@ body.search-active #main-nav {
 }
 
 .video-item:nth-child(1) .video-item-placeholder {
-    background-image: url('Resources/영상1.png');
+    background-image: url("Resources/03_영상1.png");
 }
 
 .video-item:nth-child(2) .video-item-placeholder {
-    background-image: url('Resources/영상2.png');
+    background-image: url("Resources/03_영상2.png");
 }
 
 .video-item:nth-child(3) .video-item-placeholder {
-    background-image: url('Resources/영상3.png');
+    background-image: url("Resources/03_영상3.png");
 }
 
 .video-item:nth-child(4) .video-item-placeholder {
-    background-image: url('Resources/영상4.png');
+    background-image: url("Resources/03_index_청자_모란무늬_매병.jpg");
 }
 
 .more-button {
@@ -1035,7 +978,7 @@ footer {
 .footer-bottom {
     border-top: 1px solid #2a2a2a;
     padding-top: 15px;
-    text-align: center; /* 이 속성은 p2에 flex가 적용된 후에는 p2 자체의 중앙 정렬에는 영향을 주지 않습니다. */
+    text-align: center;
 }
 
 .footer-bottom .p2 {
@@ -1044,18 +987,16 @@ footer {
     color: var(--color-white);
     font-weight: 700;
     margin-top: 10px;
-    
-    /* **[추가/수정]** 로고와 텍스트를 위한 Flexbox 설정 */
+
     display: flex;
-    align-items: center; /* 수직 중앙 정렬 */
-    justify-content: center; /* **[핵심]** 로고 + 텍스트 덩어리를 수평 중앙에 정렬 */
+    align-items: center;
+    justify-content: center;
 }
 
-/* **[추가]** 푸터 로고 이미지 스타일 */
 .footer-bottom .p2 img {
-    height: 40px; /* 로고 이미지 크기 */
-    width: auto; /* 비율 유지 */
-    margin-right: 4px; /* 로고와 "박물관" 텍스트 사이 간격 */
+    height: 40px;
+    width: auto;
+    margin-right: 4px;
 }
 
 @media (max-width: 768px) {
@@ -1075,7 +1016,7 @@ footer {
     }
 }
 
-/* ------------------ Scroll To Top Button (Existing Style Refined) ------------------ */
+/* ------------------ Scroll To Top Button ------------------ */
 .scroll-to-top {
     position: fixed;
     bottom: 20px;

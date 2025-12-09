@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (currentUser) {
         if (signupBtn) {
-            signupBtn.href = "mypage.html";
+            signupBtn.href = "03_OMuseum_mypage.html";
             signupBtn.title = "마이페이지";
             const span = signupBtn.querySelector("span");
             if (span) span.textContent = "마이페이지";
@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 e.preventDefault();
                 sessionStorage.removeItem("currentUser");
                 alert("로그아웃 되었습니다.");
-                if (window.location.pathname.includes("mypage.html") || window.location.pathname.includes("ticket.html")) {
-                    window.location.href = "index.html";
+                if (window.location.pathname.includes("03_OMuseum_mypage.html") || window.location.pathname.includes("03_OMuseum_ticket.html")) {
+                    window.location.href = "03_OMuseum_index.html";
                 } else {
                     window.location.reload();
                 }

@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     // =============================================================
-    // =========== 0. 로그인 세션 확인 및 사용자 정보 로드 ==============
+    // =========== 0. 로그인 세션 확인 및 사용자 정보 로드 =============
     // =============================================================
 
     const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 로그인하지 않은 경우 로그인 페이지로 리다이렉트
     if (!currentUser) {
         alert("로그인이 필요합니다.");
-        window.location.href = "login.html";
+        window.location.href = "03_OMuseum_login.html";
         return;
     }
 
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // =============================================================
-    // =========== 1. 데이터 및 공통 요소 정의 ==============================
+    // =========== 1. 데이터 및 공통 요소 정의 ========================
     // =============================================================
 
     const navLinks = document.querySelectorAll(".mypage-nav li a[data-content-link]");
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /**
      * 장바구니/관심상품 목록을 렌더링하는 함수
-     * store_detail.js와 store_tabpanel.js가 전체 객체를 저장하므로 이에 맞춰 수정
+     * 03_OMuseum_store_detail.js와 03_OMuseum_store_tabpanel.js가 전체 객체를 저장하므로 이에 맞춰 수정
      * @param {string} contentId - 'favorites' 또는 'cart'
      * @param {string} storageKey - 'wishlist' 또는 'cart' (sessionStorage 키)
      */
@@ -291,7 +291,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setActiveContent("reservations");
     }
 
-    console.log("✅ mypage.js 초기화 완료");
+    console.log("03_OMuseum_mypage.js 초기화 완료");
 
     // =============================================================
     // =========== 5. 회원 정보 수정 로직 ===========================
