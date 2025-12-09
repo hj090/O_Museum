@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const paginationEl = document.getElementById('pagination');
 
   // 1) JSON 데이터 불러오기 (Fetch + JSON)
-  fetch('collections.json')
+  fetch('data/collections.json')
     .then((res) => res.json())
     .then((data) => {
       const baseItems = data.items || [];

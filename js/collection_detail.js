@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 2) JSON 불러오기
-  fetch('collections.json')
+  fetch('data/collections.json')
     .then((res) => res.json())
     .then((data) => {
       const items = data.items || [];
